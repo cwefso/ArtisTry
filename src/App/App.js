@@ -39,7 +39,7 @@ function App() {
 
   const loadPaintings = () => {
     getPaintings()
-    .then(result => setPaintings(result.data))
+    .then(result => setPaintings(result))
     .catch(err => console.log(err.message))
   }
 

@@ -6,7 +6,7 @@ function Painting (props) {
 
   return(
     <div>
-      <img src={props.painting.image} alt={props.painting.title} className="art" />
+      <img src={props.painting.image} alt={props.painting.title} className="art" onError={} />
     </div>
   )
 }
