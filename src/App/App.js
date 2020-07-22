@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery.js';
 import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
-import { getPainting } from '../apiCalls';
+import { getPaintings } from '../apiCalls';
 import { Route, withRouter } from 'react-router-dom'
 import './App.css';
 // import PropTypes from 'prop-types';
@@ -40,8 +40,8 @@ function App() {
 
   const loadPaintings = () => {
     getPaintings()
-    .then(result => setPaintings(result))
-    .catch(err => console.log(err.message))
+      .then(result => setPaintings(result))
+      .catch(err => console.log(err.message))
   }
 
 // useEffect 

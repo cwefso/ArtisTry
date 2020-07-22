@@ -2,10 +2,9 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Gallery.css';
 import Painting from '../Painting/Painting';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 function Gallery (props) {
-  console.log(props);
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
@@ -27,8 +26,8 @@ function Gallery (props) {
 
   return (
     <section>
-      {paintings.length === 0 && <h1>Loading Collection</h1>}
-      {paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+      {props.paintings.length === 0 && <h1>Loading Collection</h1>}
+      {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
     </section>
   )  
 }
