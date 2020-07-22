@@ -14,11 +14,12 @@ function Gallery (props) {
       <Link
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
         aria-label='painting'
-        key={painting.id}
+        data-testid={painting.contentId}
+        key={painting.contentId}
         style={{textDecoration: 'none'}}
         onClick={() => setSelectedPainting(painting)}
       >
-        <Painting painting={painting} key={painting.id} />
+        <Painting painting={painting} key={painting.contentId} />
       </Link>
     )
   })
