@@ -1,6 +1,6 @@
 import React from 'react';
 import './Painting.css';
-
+// import PropTypes from 'prop-types';
 
 function Painting (props) {
 
@@ -11,7 +11,12 @@ function Painting (props) {
 
   return(
     <section className="painting" id={props.painting.contentId}>
-      <img src={props.painting.image} alt={props.painting.title} className={'art'} onError={hideBrokenImages} />
+      <img 
+        src={props.painting.image} 
+        alt={props.painting.title}
+        name={props.painting.title} 
+        className={'art'} 
+        onError={hideBrokenImages} />
     </section>
   )
 }

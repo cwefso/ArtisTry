@@ -4,7 +4,6 @@ import "@testing-library/jest-dom";
 import { render } from "@testing-library/react";
 import { BrowserRouter } from 'react-router-dom';
 
-
 describe("Painting", () => {
 
   it("should display paintings on load", () => {

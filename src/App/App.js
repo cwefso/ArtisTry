@@ -1,9 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery.js';
 import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
-import {getPaintings} from '../apiCalls';
+import { getPaintings } from '../apiCalls';
 import { Route, withRouter } from 'react-router-dom'
 import './App.css';
+// import PropTypes from 'prop-types';
 
 function App() {
 
@@ -39,8 +40,8 @@ function App() {
 
   const loadPaintings = () => {
     getPaintings()
-    .then(result => setPaintings(result))
-    .catch(err => console.log(err.message))
+      .then(result => setPaintings(result))
+      .catch(err => console.log(err.message))
   }
 
 // useEffect 
@@ -52,27 +53,39 @@ function App() {
 
 // render
  const mainPage = (
- <main>
+    <main>
       <section className="header">
-        <h1>ArtisTry</h1>
+        <h1 className="page-title">ArtisTry</h1>
         {!loggedIn && <form className="login">
-          <input 
-            type="text"
-            name="username"
-            value={username}
-            placeholder-text="username"
-            onChange= {handleChange}
-          />
-          <input 
-            type="text"
-            name="password"
-            value={password}
-            placeholder-text="password"
-            onChange= {handleChange}
-          />
-          <button onClick= {handleSubmit}>Log In</button>
+          <section className="inputs-container">
+            <input 
+              type="text"
+              name="username"
+              value={username}
+              placeholder="username"
+              onChange={handleChange}
+            />
+            <input 
+              type="text"
+              name="password"
+              value={password}
+              placeholder="password"
+              onChange={handleChange}
+            />
+          </section>
+          <button 
+            onClick={handleSubmit}
+            className="login-btn"
+          >
+            Log In
+          </button>
           </form> }
-        {loggedIn && <button>My Gallery</button>}
+        {loggedIn && 
+        <button
+        className="my-gallery-btn"
+        >
+          My Gallery
+        </button>}
       </section>
       <section className="gallery">
         <Gallery paintings={paintings} setSelected={setSelected} />
