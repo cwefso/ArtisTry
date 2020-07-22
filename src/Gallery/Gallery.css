@@ -1,0 +1,14 @@
+.art {
+  max-height: 40vh;
+  max-width: fit-content;
+ }
+ 
+ .displayed-paintings {
+   display: grid;
+   flex-grow: 3;
+   font-size: 14px;
+   grid-gap: 15px;
+   grid-template-columns: repeat(4, 1fr);
+   min-height: 200px;
+   padding: 30px;
+ }

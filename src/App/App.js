@@ -1,14 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Gallery from '../Gallery/Gallery.js';
+import {getPaintings} from '../apiCalls';
 import './App.css';
 
 function App() {
 
+// state declarations and default value
   const [loggedIn, setLoggedIn] = useState(false);
   const [paintings, setPaintings] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+// form handlers
   const handleChange = (e) => {
     const {name, value} = e.target
     if(name === "username"){
@@ -29,6 +32,22 @@ function App() {
     setUsername('')
   }
 
+// fetch data
+
+  const loadPaintings = () => {
+    getPaintings()
+    .then(result => setPaintings(result.data))
+    .catch(err => console.log(err.message))
+  }
+
+// useEffect 
+
+  useEffect(() => {
+    loadPaintings()
+  }, [])
+
+
+// render
   return (
     <div>
       <section className="header">
