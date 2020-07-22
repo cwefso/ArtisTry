@@ -1,17 +1,27 @@
 .art {
-  max-height: 40vh;
+  /* max-height: 40vh; */
+  max-height: 50vh;
   max-width: fit-content;
+
+  margin: 2vw;
+  border: 7px solid #caa472;
  }
  
- .displayed-paintings {
-   display: flex;
-   flex-direction: row;
-   flex-wrap: wrap;
-   font-size: 14px;
-   grid-gap: 15px;
-   grid-template-columns: repeat(4, 1fr);
-   justify-content: center;
-   min-height: 200px;
-   padding: 30px;
-   width: auto;
- }
+.displayed-paintings {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  /* font-size: 14px; */
+  /* grid-gap: 15px; */
+  /* grid-template-columns: repeat(4, 1fr); */
+  /* min-height: 200px; */
+  /* padding: 5vh; */
+  /* width: auto; */
+  /* background: radial-gradient(#d9dcdf, #f9f5f7); */
+  height: 90vh;
+  width: 100vw;
+  padding-top: 3vh;
+  overflow: scroll;
+  background-color: #fffaf0;
+}

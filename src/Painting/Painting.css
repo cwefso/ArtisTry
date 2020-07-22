@@ -2,7 +2,7 @@
   height: 40vh;
  }
  
- .allMovies {
+ /* .allMovies {
    background: black;
    display: grid;
    flex-grow: 3;
@@ -11,4 +11,4 @@
    grid-template-columns: repeat(4, 1fr);
    min-height: 200px;
    padding: 30px;
- }
+ } */

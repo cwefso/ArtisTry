@@ -1,21 +1,22 @@
 import React from 'react';
 import './Gallery.css';
 import Painting from '../Painting/Painting';
+import PropTypes from 'prop-types';
 
-function Gallery (props) {
+function Gallery ({ paintings }) {
 
-  const displayedPaintings = props.paintings.map(painting => {
-    return <Painting painting={painting} key={painting.id} />
+  const displayedPaintings = paintings.map(painting => {
+    return (
+      <Painting painting={painting} key={painting.id} />
+    )
   })
 
-  return(
-  <div>
-    {props.paintings.length === 0 && <h1>Add Paintings</h1>}
-    {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
-  </div>
-  
+  return (
+    <section>
+      {paintings.length === 0 && <h1>Loading Collection</h1>}
+      {paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+    </section>
   )  
-
 }
 
 export default Gallery;
