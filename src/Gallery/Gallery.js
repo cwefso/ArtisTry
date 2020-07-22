@@ -13,7 +13,7 @@ function Gallery (props) {
 
     return (
       <Link
-        to={`/${painting.url}`}
+        to={`/${painting.title}`}
         aria-label='painting'
         key={painting.id}
         style={{textDecoration: 'none'}}

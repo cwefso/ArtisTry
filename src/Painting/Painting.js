@@ -14,7 +14,8 @@ function Painting (props) {
     <section className="painting" id={props.painting.contentId}>
       <img 
         src={props.painting.image} 
-        alt={props.painting.title} 
+        alt={props.painting.title}
+        name={props.painting.title} 
         className={'art'} 
         onError={hideBrokenImages} />
     </section>
