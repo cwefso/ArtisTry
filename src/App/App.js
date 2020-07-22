@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import Gallery from '../Gallery/Gallery.js';
+import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
 import {getPaintings} from '../apiCalls';
+import { Route, withRouter } from 'react-router-dom'
 import './App.css';
 
 function App() {
@@ -10,6 +12,7 @@ function App() {
   const [paintings, setPaintings] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [selected, setSelected] = useState({})
 
 // form handlers
   const handleChange = (e) => {
@@ -48,8 +51,8 @@ function App() {
 
 
 // render
-  return (
-    <div>
+ const mainPage = (
+ <main>
       <section className="header">
         <h1>ArtisTry</h1>
         {!loggedIn && <form className="login">
@@ -72,10 +75,19 @@ function App() {
         {loggedIn && <button>My Gallery</button>}
       </section>
       <section className="gallery">
-        <Gallery paintings={paintings}/>
+        <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
-    </div>
-  );
+    </main>
+ )
+  return (
+  <>
+    <Route exact path= '/' render={() => mainPage} />
+    <Route exact path= '/:paintingTitle' render={({match}) => {
+      const {id} = match.params
+      return <PaintingInfo paintingInfo={selected} />
+    
+    }} />
+  </> )
 }
 
-export default App;
+export default withRouter(App);
