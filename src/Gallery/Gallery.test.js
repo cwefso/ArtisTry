@@ -41,7 +41,7 @@ describe('Gallery', () => {
 
   it('renders loading message', () => {
     const { getByText } = render(<BrowserRouter><Gallery paintings= {[]}/></BrowserRouter>);
-    const loadingMessage = getByText("Loading Collection");
+    const loadingMessage = getByText("Loading Collection...");
     expect(loadingMessage).toBeInTheDocument();
   });
   

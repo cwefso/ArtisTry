@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery.js';
 import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
-import { getPaintings } from '../apiCalls';
 import { Route, withRouter } from 'react-router-dom'
 import './App.css';
+import usePaintings from '../Hooks/usePaintings'
 // import PropTypes from 'prop-types';
 
 function App() {
 
 // state declarations and default value
   const [loggedIn, setLoggedIn] = useState(false);
-  const [paintings, setPaintings] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [selected, setSelected] = useState({})
-
+  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
 // form handlers
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -36,19 +35,7 @@ function App() {
     setUsername('')
   }
 
-// fetch data
 
-  const loadPaintings = () => {
-    getPaintings()
-      .then(result => setPaintings(result))
-      .catch(err => console.log(err.message))
-  }
-
-// useEffect 
-
-  useEffect(() => {
-    loadPaintings()
-  }, [])
 
 
 // render
