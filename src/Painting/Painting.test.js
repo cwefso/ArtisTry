@@ -1,20 +1,33 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Painting from './Painting'
-import { render } from '@testing-library/react';
-// import '@testing-library/jest-dom';
-// import App from '../App/App'
+import React from "react";
+import Painting from "./Painting";
+import "@testing-library/jest-dom";
+import { render } from "@testing-library/react";
+import { BrowserRouter } from 'react-router-dom';
 
-describe.skip('Painting', () => {
-  // it('should render and display all the paintings', () => {
-  //   const section = document.createElement('section');
-  //   ReactDOM.render(<Gallery />, section);
-  //   ReactDOM.unmountComponentAtNode(section);
-  // })
-  
-  // it('renders loading message', () => {
-  //   const { getByText } = render(<Gallery />);
-  //   const loadingMessage = getByText("Loading Collection");
-  //   expect(loadingMessage).toBeInTheDocument();
-  // });
+describe("Painting", () => {
+
+  it("should display paintings on load", () => {
+    const painting = {
+      artistId: "57726d85edc2cb3880b48ccd",
+      artistName: "Leonardo da Vinci",
+      artistUrl: "leonardo-da-vinci",
+      competitionYear: 1519,
+      height: 600,
+      id: "57726d85edc2cb3880b48ccd",
+      image: "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+      title: "Mona Lisa",
+      url: "mona-lisa",
+      width: 397
+    }
+
+    const { getByRole, getByAltText } = render(
+      <BrowserRouter><Painting painting= {painting}/></BrowserRouter>
+    )
+      
+    const title = getByAltText("Mona Lisa");
+    expect(title).toBeInTheDocument();
+    const img = getByRole("img")
+    expect(img).toBeInTheDocument();
+  })
+
 })

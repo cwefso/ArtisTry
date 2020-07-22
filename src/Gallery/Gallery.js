@@ -1,13 +1,27 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import './Gallery.css';
 import Painting from '../Painting/Painting';
 import PropTypes from 'prop-types';
 
-function Gallery ({ paintings }) {
+function Gallery (props) {
+  console.log(props);
+  const setSelectedPainting = (painting) => {
+    props.setSelected(painting)
+  }
 
-  const displayedPaintings = paintings.map(painting => {
+  const displayedPaintings = props.paintings.map(painting => {
+
     return (
-      <Painting painting={painting} key={painting.id} />
+      <Link
+        to={`/${painting.url}`}
+        aria-label='painting'
+        key={painting.id}
+        style={{textDecoration: 'none'}}
+        onClick={() => setSelectedPainting(painting)}
+      >
+        <Painting painting={painting} key={painting.id} />
+      </Link>
     )
   })
 

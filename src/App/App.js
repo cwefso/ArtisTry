@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery.js';
-import { getPaintings } from '../apiCalls';
+import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
+import { getPainting } from '../apiCalls';
+import { Route, withRouter } from 'react-router-dom'
 import './App.css';
 // import PropTypes from 'prop-types';
 
@@ -11,6 +13,7 @@ function App() {
   const [paintings, setPaintings] = useState([]);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [selected, setSelected] = useState({})
 
 // form handlers
   const handleChange = (e) => {
@@ -37,7 +40,7 @@ function App() {
 
   const loadPaintings = () => {
     getPaintings()
-    .then(result => setPaintings(result.data))
+    .then(result => setPaintings(result))
     .catch(err => console.log(err.message))
   }
 
@@ -49,8 +52,8 @@ function App() {
 
 
 // render
-  return (
-    <section>
+ const mainPage = (
+    <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
         {!loggedIn && <form className="login">
@@ -85,10 +88,19 @@ function App() {
         </button>}
       </section>
       <section className="gallery">
-        <Gallery paintings={paintings}/>
+        <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
-    </section>
-  );
+    </main>
+ )
+  return (
+  <>
+    <Route exact path= '/' render={() => mainPage} />
+    <Route exact path= '/:paintingTitle' render={({match}) => {
+      const {id} = match.params
+      return <PaintingInfo paintingInfo={selected} />
+    
+    }} />
+  </> )
 }
 
-export default App;
+export default withRouter(App);
