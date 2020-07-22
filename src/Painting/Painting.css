@@ -1,14 +1,4 @@
-.poster {
-  height: 40vh;
+.art {
+  height: 20vh;
  }
  
- .allMovies {
-   background: black;
-   display: grid;
-   flex-grow: 3;
-   font-size: 14px;
-   grid-gap: 15px;
-   grid-template-columns: repeat(4, 1fr);
-   min-height: 200px;
-   padding: 30px;
- }

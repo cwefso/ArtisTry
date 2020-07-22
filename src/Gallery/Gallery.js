@@ -4,7 +4,9 @@ import Painting from '../Painting/Painting';
 
 function Gallery (props) {
 
-  const displayedPaintings = props.paintings.map(painting => {
+  const shuffled = props.paintings.sort(() => Math.random() - 0.5)
+  const sliced = shuffled.slice(0, 10)
+  const displayedPaintings = sliced.map(painting => {
     return <Painting painting={painting} key={painting.id} />
   })
 
