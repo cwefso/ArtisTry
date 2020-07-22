@@ -1,10 +1,10 @@
 import React from 'react';
-// import ReactDOM from 'react-dom';
-import { render, waitFor } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'
+import { render, waitFor, fireEvent } from '@testing-library/react';
+import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
 import { getPaintings } from '../apiCalls'
+import { createMemoryHistory } from 'history';
 jest.mock('../apiCalls.js')
 
 describe('App', () => {
@@ -76,6 +76,24 @@ describe('App', () => {
     const { getAllByRole } = render(<MemoryRouter><App /></MemoryRouter>)
     const images = await waitFor(() => getAllByRole('img'))
     expect(images).toHaveLength(3)
+  })
+
+  it('should change page if image gets clicked', async () => {
+
+  })
+
+  it('should change locations when a painting is clicked', async () => {
+    const testHistoryObject = createMemoryHistory()
+    const { getByTestId, getByRole } = render(
+      <Router history={ testHistoryObject }>
+        <App />
+      </Router>
+    )
+    expect(testHistoryObject.location.pathname).toEqual('/')
+
+    const paintingButton = await waitFor(() => getByTestId('243774'))
+    fireEvent.click(paintingButton)
+    expect(testHistoryObject.location.pathname).toEqual(`/Just what is it that makes today's homes so different, so appealing`)
   })
 
   afterAll(() => {

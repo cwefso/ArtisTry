@@ -7,7 +7,10 @@ function PaintingInfo(props) {
             <h1>Painting Title: {title}</h1>
             <h1>Artist Name: {artistName}</h1>
             <h1>Completion Year: {completitionYear}</h1>
-            <img src={image} alt={title} />
+            <img 
+                src={image} 
+                alt={title}    
+            />
         </section>
     )
 }
