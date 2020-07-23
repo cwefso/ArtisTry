@@ -27,7 +27,7 @@ describe('PaintingInfo', () => {
 
   it('should render the painting title, artist name, and year to the dom', () => {
     const { getByText } = render(paintingInfoElement)
-    const title = getByText('Painting Title: Mona Lisa')
+    const title = getByText('Mona Lisa')
     const artistName = getByText('Artist Name: Leonardo da Vinci')
     const completionYear = getByText('Completion Year: 1519')
 

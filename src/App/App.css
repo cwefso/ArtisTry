@@ -5,35 +5,34 @@
 .header {
   width: 100vw;
   height: 10vh;
-  border: 1px solid black;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 4vh;
   letter-spacing: .3vh;
-  background: radial-gradient(#d9dcdf, #f9f5f7);
-  /* background-color: #fffaf0; */
+  background-color: #fffaf0;
+  -webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+  box-shadow: 0 8px 6px -6px black;
+  z-index: 2;
+  position: absolute;
 }
 
 .page-title {
   font-size: 4vw;
-}
-
-.login {
-  display: flex;
-  padding-right: 4vw;
-  /* flex-direction: column; */
-}
-
-.inputs-container {
-  display: flex;
-  flex-direction: column;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  margin-left: 1vw;
 }
 
 .my-gallery-btn {
   margin-right: 4vw;
-  width: 10vw;
+  width: 12vw;
   height: 6vh;
   font-size: 1.5vw;
   text-align: center;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .2vh;
+  border-radius: 1vh;
+  background-color: #ffff;
 }
