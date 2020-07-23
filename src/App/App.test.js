@@ -3,8 +3,7 @@ import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
-import { getPaintings } from '../apiCalls'
-import { usePaintings } from '../Hooks/usePaintings'
+import usePaintings from '../Hooks/usePaintings'
 import { createMemoryHistory } from 'history';
 jest.mock('../apiCalls.js')
 
@@ -19,7 +18,7 @@ describe('App', () => {
     }
   })
 
-  getPaintings.mockResolvedValue([
+  const paintings = [
     {
       "title": "The River Thames with St. Paul's Cathedral on Lord Mayor's Day",
       "contentId": 250550,
@@ -56,7 +55,7 @@ describe('App', () => {
       "height": 857,
       "name": 'image'
     }
-  ])
+  ]
 
   it('should display all nav elements on load', () => {
     const { getByText, getByPlaceholderText, getByRole } = render(<MemoryRouter><App /></MemoryRouter>);
@@ -93,8 +92,9 @@ describe('App', () => {
         <App />
       </Router>
     )
-    const paintingButton = await waitFor(() => getByTestId('243774'))
     expect(testHistoryObject.location.pathname).toEqual('/')
+
+    const paintingButton = await waitFor(() => getByRole('img'))
     fireEvent.click(paintingButton)
     expect(testHistoryObject.location.pathname).toEqual(`/Just what is it that makes today's homes so different, so appealing`)
   })

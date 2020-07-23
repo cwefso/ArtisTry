@@ -1,8 +1,9 @@
 import {useState, useEffect} from 'react';
 
+// http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
+
 const usePaintings = (url) => {
   const [paintings, setPaintings] = useState([]);
-
 
 // useEffect 
 
