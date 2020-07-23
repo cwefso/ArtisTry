@@ -10,69 +10,20 @@ import usePaintings from '../Hooks/usePaintings';
 function App() {
 
 // state declarations and default value
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [selected, setSelected] = useState({})
   const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
-// form handlers
-  const handleChange = (e) => {
-    const {name, value} = e.target
-    if(name === "username"){
-      setUsername(value)
-    } else {
-      setPassword(value)
-    }
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoggedIn(true);
-    resetForm();
-  }
-
-  const resetForm = () => {
-    setPassword('')
-    setUsername('')
-  }
 
 // render
  const mainPage = (
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        {!loggedIn && <form className="login">
-          <section className="inputs-container">
-            <input 
-              type="text"
-              name="username"
-              value={username}
-              placeholder="username"
-              onChange={handleChange}
-            />
-            <input 
-              type="text"
-              name="password"
-              value={password}
-              placeholder="password"
-              onChange={handleChange}
-            />
-          </section>
-          <button 
-            onClick={handleSubmit}
-            className="login-btn"
-          >
-            Log In
-          </button>
-          </form> }
-        {loggedIn && 
-        <button
-        className="my-gallery-btn"
-        >
+        <button className="my-gallery-btn">
           My Gallery
-        </button>}
+        </button>
       </section>
       <section className="gallery">
+        <img src='../assets/offwhite wallpaper.jpg' alt="background-img" className="background-img" />
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
@@ -81,8 +32,6 @@ function App() {
   <>
     <Route exact path='/' render={() => mainPage} />
     <Route path='/:paintingTitle' render={() => {
-      // removed destructured match from render param
-      // const {id} = match.params
       return <PaintingInfo paintingInfo={selected} />
     
     }} />
