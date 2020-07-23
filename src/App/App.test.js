@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, waitFor, fireEvent } from '@testing-library/react';
+import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
@@ -28,7 +28,8 @@ describe('App', () => {
       "yearAsString": "1746",
       "width": 1296,
       "image": "https://uploads6.wikiart.org/images/canaletto/the-river-thames-with-st-paul-s-cathedral-on-lord-mayor-s-day.jpg!Large.jpg",
-      "height": 676
+      "height": 676,
+      "name": 'image'
     },
     {
       "title": "Just what is it that makes today's homes so different, so appealing?",
@@ -39,7 +40,8 @@ describe('App', () => {
       "yearAsString": "1956",
       "width": 1211,
       "image": "https://uploads3.wikiart.org/images/richard-hamilton/http-en-wikipedia-org-wiki-file-hamilton-appealing2-jpg-1956.jpg!Large.jpg",
-      "height": 1260
+      "height": 1260,
+      "name": 'image'
     },
     {
       "title": "Cape Cod Morning",
@@ -50,7 +52,8 @@ describe('App', () => {
       "yearAsString": "1950",
       "width": 1000,
       "image": "https://uploads1.wikiart.org/images/edward-hopper/cape-cod-morning.jpg!Large.jpg",
-      "height": 857
+      "height": 857,
+      "name": 'image'
     }
   ])
 
@@ -73,25 +76,24 @@ describe('App', () => {
   })
 
   it('should display all paintings once fetch is resolved', async () => {
-    const { getAllByRole } = render(<MemoryRouter><App /></MemoryRouter>)
-    const images = await waitFor(() => getAllByRole('img'))
+    const { getAllByRole, findByRole} = render(<MemoryRouter><App /></MemoryRouter>)
+    const images = await screen.findByRole('img', { "name": "image" })
     expect(images).toHaveLength(3)
   })
 
-  it('should change page if image gets clicked', async () => {
+  it.skip('should change page if image gets clicked', async () => {
 
   })
 
-  it('should change locations when a painting is clicked', async () => {
+  it('should change path locations when a painting is clicked', async () => {
     const testHistoryObject = createMemoryHistory()
     const { getByTestId, getByRole } = render(
       <Router history={ testHistoryObject }>
         <App />
       </Router>
     )
-    expect(testHistoryObject.location.pathname).toEqual('/')
-
     const paintingButton = await waitFor(() => getByTestId('243774'))
+    expect(testHistoryObject.location.pathname).toEqual('/')
     fireEvent.click(paintingButton)
     expect(testHistoryObject.location.pathname).toEqual(`/Just what is it that makes today's homes so different, so appealing`)
   })

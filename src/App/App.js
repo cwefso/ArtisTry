@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Gallery from '../Gallery/Gallery.js';
-import PaintingInfo from '../PaintingInfo/PaintingInfo.js';
-import { Route, withRouter } from 'react-router-dom'
+import Gallery from '../Gallery/Gallery';
+import PaintingInfo from '../PaintingInfo/PaintingInfo';
+import PainterInfo from '../PainterInfo/PainterInfo';
+import { Route, withRouter } from 'react-router-dom';
 import './App.css';
-import usePaintings from '../Hooks/usePaintings'
+import usePaintings from '../Hooks/usePaintings';
 // import PropTypes from 'prop-types';
 
 function App() {
@@ -34,9 +35,6 @@ function App() {
     setPassword('')
     setUsername('')
   }
-
-
-
 
 // render
  const mainPage = (
@@ -81,11 +79,15 @@ function App() {
  )
   return (
   <>
-    <Route exact path= '/' render={() => mainPage} />
-    <Route exact path= '/:paintingTitle' render={({match}) => {
-      const {id} = match.params
+    <Route exact path='/' render={() => mainPage} />
+    <Route path='/:paintingTitle' render={() => {
+      // removed destructured match from render param
+      // const {id} = match.params
       return <PaintingInfo paintingInfo={selected} />
     
+    }} />
+    <Route path='/:painterName' render={() => {
+      return <PainterInfo />
     }} />
   </> )
 }

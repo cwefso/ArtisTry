@@ -6,10 +6,6 @@
   margin: 2vw;
   border: 7px solid #caa472;
  }
-
- .hidden {
-   display: none;
- }
  
 .displayed-paintings {
   display: flex;
@@ -28,4 +24,8 @@
   padding-top: 3vh;
   overflow: scroll;
   background-color: #fffaf0;
+}
+
+.hidden {
+  display: none;
 }
