@@ -3,9 +3,19 @@ import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
 import tagBtn from '../assets/tagIcon.png'
+import usePaintingInfo from '../Hooks/usePaintingInfo';
+import useArtistInfo from '../Hooks/useArtistInfo';
+import usePaintings from '../Hooks/usePaintings'
 
 function PaintingInfo(props) {
   const {title, image, completitionYear, artistName, artistId, artistUrl, height, width} = props.paintingInfo
+  
+  const data = usePaintingInfo(title, artistName)
+
+  // console.log(data.artistUrl)
+  // const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${data.artistURL}&json=2`)
+
+
   return(
     <section className="painting-page">
       <section className="painting-nav">
@@ -25,9 +35,22 @@ function PaintingInfo(props) {
           <p>Year Completed: {completitionYear}</p>
         </section>
         <section className="details-container">
-          <Link to="/:artist-name" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <p>Artist: {artistName}</p> 
-          </Link>
+
+        <Link
+          to={`/artists-gallery`}
+          aria-label='artist-gallery'
+          key={data.artistId}
+          style={{textDecoration: 'none'}}
+        >
+          <p>Artist: {artistName}</p>
+        </Link>
+
+
+
+{/* 
+          <Link to={`/${artistName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+
+          </Link> */}
           <p>Movement?</p>
           <p>Summary?</p>
           <p>Other works?</p>

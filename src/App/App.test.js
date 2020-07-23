@@ -92,14 +92,9 @@ describe('App', () => {
         <App />
       </Router>
     )
-<<<<<<< HEAD
     expect(testHistoryObject.location.pathname).toEqual('/')
 
     const paintingButton = await waitFor(() => getByRole('img'))
-=======
-    const paintingButton = await waitFor(() => getByTestId('243774'))
-    expect(testHistoryObject.location.pathname).toEqual('/')
->>>>>>> master
     fireEvent.click(paintingButton)
     expect(testHistoryObject.location.pathname).toEqual(`/Just what is it that makes today's homes so different, so appealing`)
   })

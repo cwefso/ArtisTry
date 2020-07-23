@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
-import { Route, withRouter } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import usePaintings from '../Hooks/usePaintings';
 // import PropTypes from 'prop-types';
@@ -29,16 +29,27 @@ function App() {
     </main>
  )
   return (
-  <>
-    <Route exact path='/' render={() => mainPage} />
-    <Route path='/:paintingTitle' render={() => {
-      return <PaintingInfo paintingInfo={selected} />
-    
-    }} />
-    <Route path='/:painterName' render={() => {
-      return <PainterInfo />
-    }} />
-  </> )
+    <Switch>
+      <Route path="/artists-gallery" render={(routeProps) => {
+        const { params } = routeProps.match;
+        const { id } = params;
+        return <PainterInfo info={selected} painterId={id} {...routeProps} artistName= {selected.artistName}/>
+      }} />
+
+      <Route exact path='/:paintingTitle'   render={(routeProps) => {
+        const { params } = routeProps.match;
+        const { id } = params;
+        return <PaintingInfo paintingInfo={selected} setSelected={setSelected} paintingId={id} {...routeProps}/>
+        
+      }} />
+
+
+      <Route exact path='/' render={() => mainPage} />
+    </Switch> 
+  )
+
+
+
 }
 
 export default withRouter(App);
