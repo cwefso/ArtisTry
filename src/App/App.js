@@ -19,7 +19,9 @@ function App() {
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        <Link to="/random-art" className="random-art-btn">Random Art</Link>
+        <Link to="/random-art" className="random-art-btn" style={{textDecoration: 'none'}}>
+          Random Art
+        </Link>
         <button className="my-gallery-btn">
           My Gallery
         </button>
