@@ -6,6 +6,17 @@
   box-shadow: 3px 9px 5px 0px #9a9a9a, 
     -1px 1px 18px 1px #607d8bbf;
  }
+
+ .art:active,
+ .art:hover,
+ .art:focus {
+  cursor: pointer;
+  opacity: .9;
+  box-shadow: 0 0 3px 3px #9a9a9a;
+  transform: scale(1.03);
+  transition: transform .3s;
+  transform: rotate(1deg);
+ }
  
 .displayed-paintings {
   display: flex;
@@ -19,14 +30,6 @@
   height: 100vh;
   margin-top: 8vh;
   position: absolute;
-  background: transparent;
-}
-
-.background-img {
-  position: absolute;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
 }
 
 .hidden {
