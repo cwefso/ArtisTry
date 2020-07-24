@@ -2,14 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
+import '../PaintingInfo/PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
 import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
-
-  let url
-
-  const {artistName} = props.info
+  let url;
+  const {artistName} = props.info;
 
   if(artistName !== undefined){
     url = artistName.replace(/\s+/g, '-').toLowerCase()
@@ -21,18 +20,15 @@ function PainterInfo(props) {
 
   return (
     <section className="painter-page">
-       <section className="painter-nav">
-          <Link to={"/"} style={{ textDecoration: 'none' }}>
-            <img src={backBtn} alt='back-btn' className='back-btn' />
-          </Link>
-          <h1 className="artist-name">{artistName}</h1>
-          <img src={tagBtn} alt='save-btn' className='save-btn' />
+      <section className="painter-nav">
+        <Link to={"/"} style={{ textDecoration: 'none' }}>
+          <img src={backBtn} alt='back-btn' className='back-btn' />
+        </Link>
+        <h1 className="artist-name">{artistName}</h1>
       </section>
-      <Gallery paintings={artistPaintings} />  
+      <Gallery paintings={artistPaintings}  />  
     </section>
   )
 }
-
-//<Gallery paintings={artistPaintings} />
 
 export default PainterInfo;
