@@ -33,7 +33,7 @@ function App() {
       <Route path="/artists-gallery" render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
-        return <PainterInfo info={selected} painterId={id} {...routeProps} artistName= {selected.artistName}/>
+        return <PainterInfo info={selected} painterId={id} {...routeProps} artistName= {selected.artistName} setSelected={setSelected}/>
       }} />
 
       <Route exact path='/:paintingTitle'   render={(routeProps) => {

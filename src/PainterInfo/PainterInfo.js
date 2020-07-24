@@ -28,7 +28,7 @@ function PainterInfo(props) {
           <img src={tagBtn} alt='save-btn' className='save-btn' />
       </section>
       <section aria-label="gallery">
-        <Gallery paintings={artistPaintings} />  
+        <Gallery paintings={artistPaintings} setSelected={props.setSelected}/>  
       </section>
     </section>
   )
