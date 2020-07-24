@@ -6,6 +6,7 @@ import Painting from '../Painting/Painting';
 
 function Gallery (props) {
   const setSelectedPainting = (painting) => {
+    console.log(props)
     props.setSelected(painting)
   }
 

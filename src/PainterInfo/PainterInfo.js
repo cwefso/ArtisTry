@@ -7,10 +7,8 @@ import backBtn from '../assets/back-btn.png'
 import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
-
-  let url
-
-  const {artistName} = props.info
+  let url;
+  const {artistName} = props.info;
 
   if(artistName !== undefined){
     url = artistName.replace(/\s+/g, '-').toLowerCase()
@@ -28,11 +26,9 @@ function PainterInfo(props) {
         </Link>
         <h1 className="artist-name">{artistName}</h1>
       </section>
-      <Gallery paintings={artistPaintings} />  
+      <Gallery paintings={artistPaintings}  />  
     </section>
   )
 }
-
-//<Gallery paintings={artistPaintings} />
 
 export default PainterInfo;

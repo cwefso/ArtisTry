@@ -15,7 +15,7 @@
   box-shadow: 0 0 3px 3px #9a9a9a;
   transform: scale(1.03);
   transition: transform .3s;
-  /* transform: rotate(1deg); */
+  transform: rotate(1deg);
  }
  
 .displayed-paintings {
@@ -30,15 +30,7 @@
   height: 100vh;
   margin-top: 8vh;
   position: absolute;
-  /* background: transparent; */
 }
-
-/* .background-img {
-  position: absolute;
-  z-index: 0;
-  width: 100vw;
-  height: 100vh;
-} */
 
 .hidden {
   display: none;
