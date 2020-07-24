@@ -20,37 +20,38 @@ function PaintingInfo(props) {
     <section className="painting-page">
       <section className="painting-nav">
         <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img src={backBtn} alt='back-btn' className='back-btn' />
+          <img 
+            src={backBtn} 
+            alt='back-btn'   
+            className='back-btn' 
+          />
         </Link>
         <h1 className="painting-title">{title}</h1>
-        <img src={tagBtn} alt='save-btn' className='save-btn' />
+        <img 
+          src={tagBtn} 
+          alt='save-btn'
+          tabIndex={0}   
+          className='save-btn' 
+        />
       </section>
       <section className="painting-data-container">
         <section className="painting-box">
           <img 
             className="artwork"
             src={image} 
-            alt={title}    
+            alt={title}   
           />
-          <p>Year Completed: {completitionYear}</p>
+          <p className="completion-year">Year Completed: {completitionYear}</p>
         </section>
         <section className="details-container">
-
-        <Link
-          to={`/artists-gallery`}
-          aria-label='artist-gallery'
-          key={data.artistId}
-          style={{textDecoration: 'none'}}
-        >
-          <p>Artist: {artistName}</p>
-        </Link>
-
-
-
-{/* 
-          <Link to={`/${artistName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-
-          </Link> */}
+          <Link
+            to={`/artists-gallery`}
+            aria-label='artist-gallery'
+            key={data.artistId}
+            style={{textDecoration: 'none'}}
+          >
+            <p className='artist-btn'>{artistName}</p>
+          </Link>
           <p>Movement?</p>
           <p>Summary?</p>
           <p>Other works?</p>
