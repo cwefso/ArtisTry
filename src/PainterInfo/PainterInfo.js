@@ -9,7 +9,7 @@ function PainterInfo(props) {
 
   let url
 
-  const {artistName} = props.info
+  const {artistName} = props
 
   if(artistName !== undefined){
     url = artistName.replace(/\s+/g, '-').toLowerCase()
@@ -17,7 +17,6 @@ function PainterInfo(props) {
 
   const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
 
-  console.log(artistPaintings)
 
   return (
     <section className="painter-page">
@@ -28,7 +27,9 @@ function PainterInfo(props) {
           <h1 className="artist-name">{artistName}</h1>
           <img src={tagBtn} alt='save-btn' className='save-btn' />
       </section>
-      <Gallery paintings={artistPaintings} />  
+      <section aria-label="gallery">
+        <Gallery paintings={artistPaintings} />  
+      </section>
     </section>
   )
 }
