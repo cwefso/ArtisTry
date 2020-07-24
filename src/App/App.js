@@ -27,7 +27,7 @@ function App() {
         </button>
       </section>
       <section className="gallery">
-        <img src='../assets/offwhite wallpaper.jpg' alt="background-img" className="background-img" />
+        <section className="background"></section>
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
