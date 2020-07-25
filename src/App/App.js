@@ -30,7 +30,7 @@ function App() {
         </section>
       </section>
       <section className="gallery">
-        <section className="background"></section>
+        {/* <section className="background"></section> */}
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>

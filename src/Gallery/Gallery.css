@@ -34,7 +34,6 @@
   margin-top: 8vh;
   padding-top: 3vh;
   position: relative;
-  /* position: absolute; */
   width: 100vw;
   z-index: 1;
 }
@@ -51,8 +50,11 @@
 
 .background,
 .gallery {
-  position: relative;
+  background-image: url('../assets/offwhite wallpaper.jpg');
   height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
 }
 
 .parallax::after {
@@ -69,4 +71,5 @@
 
 .bg1::after {
   background-image: url('../assets/offwhite wallpaper.jpg');
+  height: 1px;
 }
