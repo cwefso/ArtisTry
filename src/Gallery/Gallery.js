@@ -28,8 +28,8 @@ function Gallery (props) {
 
   return (
     <section>
-      {props.paintings.length === 0 && <h1>Loading Collection...</h1>}
       {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+      {props.paintings.length === 0 && <section className="displayed-paintings"><p className="main-loading">Loading Artworks...</p></section>}
     </section>
   )  
 }

@@ -17,6 +17,13 @@
   transition: transform .3s;
   transform: rotate(1deg);
  }
+
+ .main-loading {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3vh;
+  font-style: italic;
+  padding-top: 3vh;
+ }
  
 .displayed-paintings {
   display: flex;

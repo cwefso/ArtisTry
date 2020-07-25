@@ -74,22 +74,22 @@
 .painting-data-container {
   display: flex;
   font-family: 'Roboto Mono', monospace;
-  
 }
 
 .painting-box {
-  width: 65vw;
+  width: 60vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-top: 9vh;
+  padding-left: 2vh;
 }
 
 .artwork {
-  max-width: 61vw;
-  max-height: 67vh;
+  max-width: 55vw;
+  height: 60vh;
   box-shadow: 3px 9px 5px 0px #9a9a9a, 
   -1px 1px 18px 1px #607d8bbf;
 }
@@ -102,7 +102,7 @@
   color: black;
   font-family: 'Playfair Display', serif;
   font-style: italic;
-  font-size: 3.5vw;
+  font-size: 3.3vw;
   text-align: center;
   margin-right: 3vw;
 }
@@ -120,9 +120,35 @@
 }
 
 .details-container {
-  width: 35vw;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.summary {
+  font-size: 1.5vh;
+  padding-right: 4vw;
+}
+
+.detail-title {
+  font-weight: bold;
+}
+
+.loading-message {
+  font-size: 2.5vh;
+  font-style: italic;
+}
+
+.detail-location {
+  padding-right: 4vw;
+  font-size: 1.4vh;
+  font-style: italic;
+}
+
+.detail-title-location {
+  padding-right: 4vw;
+  font-size: 1.4vh;
+  font-weight: bold;
 }

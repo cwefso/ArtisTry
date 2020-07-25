@@ -7,14 +7,11 @@ import tagBtn from '../assets/tagIcon.png'
 import randomTerms from './randomTerms'
 
 function RandomArt(props) {
-
   const [reload, setReload] = useState(false)
-  
   const randomWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
   const randomPaintings = usePaintings(`http://www.wikiart.org/en/search/${randomWord}/1?json=2`)
   const newWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
   const newRandomPaintings = usePaintings(`http://www.wikiart.org/en/search/${newWord}/1?json=2`)
-
 
   return (
     <section className="painter-page">
@@ -22,16 +19,19 @@ function RandomArt(props) {
           <Link to={"/"} style={{ textDecoration: 'none' }}>
             <img src={backBtn} alt='back-btn' className='back-btn' />
           </Link>
-          <button className="random-art-btn" onClick={() => {
-                                                if(reload === true) {
-                                                  setReload(false)
-                                                }
-                                                if(reload === false){
-                                                  setReload(true)
-                                                }      
-                                              }
+          <button 
+            className="random-art-btn" 
+            onClick={() => {
+              if(reload === true) {
+                setReload(false)
+              }
+              if(reload === false){
+                setReload(true)
+              }      
+            }
           }>
-              More Art
+            {/* More Art */}
+            Explore
           </button>
           <img src={tagBtn} alt='save-btn' className='save-btn' />
       </section>
@@ -41,7 +41,5 @@ function RandomArt(props) {
     </section>
   )
 }
-
-//<Gallery paintings={artistPaintings} />
 
 export default RandomArt;

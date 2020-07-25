@@ -19,12 +19,15 @@ function App() {
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        <Link to="/random-art" className="random-art-btn" style={{textDecoration: 'none'}}>
-          Random Art
-        </Link>
-        <button className="my-gallery-btn">
-          My Gallery
-        </button>
+        <section className="nav-btn-box">
+          <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <button className="random-art-btn">Explore</button>
+            {/* <p className="random-art-btn">Explore</p> */}
+          </Link>
+          <Link to="/my-gallery" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <button className="my-gallery-btn">My Gallery</button>
+          </Link>
+        </section>
       </section>
       <section className="gallery">
         <section className="background"></section>
@@ -53,13 +56,9 @@ function App() {
         
       }} />
 
-
       <Route exact path='/' render={() => mainPage} />
     </Switch> 
   )
-
-
-
 }
 
 export default withRouter(App);
