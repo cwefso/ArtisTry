@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import UserGallery from '../UserGallery/UserGallery'
+import { Switch, Route, withRouter, Link } from 'react-router-dom';
 import './App.css';
 import usePaintings from '../Hooks/usePaintings';
 import { getFavorites } from '../apiCalls'
@@ -36,9 +37,11 @@ function App() {
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        <button className="my-gallery-btn">
-          My Gallery
-        </button>
+        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+          <button className="my-gallery-btn">
+            My Gallery
+          </button>
+        </Link>
       </section>
       <section className="gallery">
         <img src='../assets/offwhite wallpaper.jpg' alt="background-img" className="background-img" />
@@ -57,6 +60,20 @@ function App() {
           artistName= {selected.artistName}
           favorites={favorites}
           />
+      }} />
+
+      <Route path="/user-gallery" render={(routeProps) => {
+        const { params } = routeProps.match;
+        const { id } = params;
+        return (
+          <section>
+            <h1 className = "page-title" > ArtisTry </h1>
+            <UserGallery 
+              favorites={favorites}
+              setSelected={setSelected}
+            />
+          </section>
+          )
       }} />
 
       <Route exact path='/:paintingTitle'   render={(routeProps) => {
