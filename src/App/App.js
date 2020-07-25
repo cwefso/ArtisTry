@@ -38,7 +38,7 @@ function App() {
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
         <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
-          <button className="my-gallery-btn">
+          <button className="my-gallery-btn" onClick={getUserFavorites}>
             My Gallery
           </button>
         </Link>
@@ -67,7 +67,6 @@ function App() {
         const { id } = params;
         return (
           <section>
-            <h1 className = "page-title" > ArtisTry </h1>
             <UserGallery 
               favorites={favorites}
               setSelected={setSelected}

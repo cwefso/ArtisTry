@@ -1,35 +1,27 @@
 import React from 'react'
 import Painting from '../Painting/Painting'
+import Gallery from '../Gallery/Gallery'
 import {Link} from 'react-router-dom';
 import './UserGallery.css';
 
 function UserGallery (props) {
-    console.log(props);
+  const {setSelected} = props  
   const {userFavs} = props.favorites
   console.log(userFavs);
-  const setSelectedPainting = (painting) => {
-    props.setSelected(painting)
-  }
-
-  const displayedPaintings = userFavs.map(painting => {
-    return (
-      <Link
-        to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
-        aria-label='painting'
-        data-testid={painting.contentId}
-        key={painting.contentId}
-        style={{textDecoration: 'none'}}
-        onClick={() => setSelectedPainting(painting)}
-      >
-        <Painting painting={painting} key={painting.contentId} />
-      </Link>
-    )
-  })
-
+  
   return (
     <section>
-      {userFavs.length === 0 && <h1>Loading Collection...</h1>}
-      {userFavs.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+        <section className="painter-nav">
+          <Link to={"/"} style={{ textDecoration: 'none' }}>
+          <button className="my-gallery-btn">
+            Home
+          </button>
+        </Link>
+          <h1 className="artist-name">Your Gallery</h1>
+          {/* <img src={tagBtn} alt='save-btn' className='save-btn' /> */}
+      </section>
+      {userFavs.length === 0 && <h1>Add some paintings to your collection</h1>}
+      {userFavs.length > 0 && <Gallery paintings={userFavs} setSelected={setSelected} /> }
     </section>
   )  
 }
