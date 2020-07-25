@@ -28,7 +28,6 @@ function Gallery (props) {
 
   return (
     <section>
-      {props.paintings.length === 0 && <h1>Loading Collection...</h1>}
       {props.paintings.length > 0 && 
         <section className="wrapper">
             <section className="background parralax bg1">

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
 import RandomArt from '../RandomArt/RandomArt'
 import { Link, Switch, Route, withRouter } from 'react-router-dom';
-import './App.css';
 import usePaintings from '../Hooks/usePaintings';
 // import PropTypes from 'prop-types';
 

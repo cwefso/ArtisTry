@@ -49,7 +49,6 @@ describe('Gallery', () => {
   });
   
   it("should display paintings on load", () => {
-
     const { getByRole } = render(
       <BrowserRouter><Gallery paintings= {paintings}/></BrowserRouter>
     );
