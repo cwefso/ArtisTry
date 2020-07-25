@@ -19,13 +19,15 @@ function App() {
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        <Link to="/random-art" className="random-art-btn">Random Art</Link>
+        <Link to="/random-art" className="random-art-btn" style={{textDecoration: 'none'}}>
+          Random Art
+        </Link>
         <button className="my-gallery-btn">
           My Gallery
         </button>
       </section>
       <section className="gallery">
-        <img src='../assets/offwhite wallpaper.jpg' alt="background-img" className="background-img" />
+        <section className="background"></section>
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>

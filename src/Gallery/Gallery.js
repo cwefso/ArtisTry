@@ -6,16 +6,16 @@ import Painting from '../Painting/Painting';
 
 function Gallery (props) {
   const setSelectedPainting = (painting) => {
-    console.log(props)
     props.setSelected(painting)
   }
 
-  const displayedPaintings = props.paintings.map(painting => {
+  const shuffled = props.paintings.sort(() => Math.random() - 0.5)
+  const sliced = shuffled.slice(0, 50)
+  const displayedPaintings = sliced.map(painting => {
     return (
-      <section className="wrapper">
-      <section className="background parralax bg1">
-      </section>  
-      <section className="gallery static">
+
+
+
         <Link
           to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
           aria-label='painting'
@@ -26,15 +26,20 @@ function Gallery (props) {
         >
           <Painting painting={painting} key={painting.contentId} />
         </Link>
-      </section>
-    </section>
+    
     )
   })
 
   return (
     <section>
       {props.paintings.length === 0 && <h1>Loading Collection...</h1>}
-      {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+      {props.paintings.length > 0 && 
+        <section className="wrapper">
+            <section className="background parralax bg1">
+            </section>  
+            <section className="displayed-paintings static">{displayedPaintings}
+            </section>
+        </section>}
     </section>
   )  
 }
