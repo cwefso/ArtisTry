@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import backBtn from '../assets/back-btn.png'
-import tagBtn from '../assets/tagIcon.png'
 import randomTerms from './randomTerms'
+// import tagBtn from '../assets/tagIcon.png'
 
 function RandomArt(props) {
   const [reload, setReload] = useState(false)
