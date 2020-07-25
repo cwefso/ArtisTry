@@ -17,6 +17,13 @@
   transition: transform .3s;
   transform: rotate(1deg);
  }
+
+ .main-loading {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3vh;
+  font-style: italic;
+  padding-top: 3vh;
+ }
  
 .displayed-paintings {
   display: flex;
@@ -43,8 +50,11 @@
 
 .background,
 .gallery {
-  position: relative;
+  background-image: url('../assets/offwhite wallpaper.jpg');
   height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
 }
 
 .parallax::after {
@@ -61,4 +71,5 @@
 
 .bg1::after {
   background-image: url('../assets/offwhite wallpaper.jpg');
+  height: 1px;
 }

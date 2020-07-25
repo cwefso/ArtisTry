@@ -4,7 +4,8 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 
-const paintings = [{
+const paintings = [
+  {
   title: "Mona Lisa",
   contentId: 225189,
   artistContentId: 225091,
@@ -14,7 +15,8 @@ const paintings = [{
   width: 2835,
   image: "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
   height: 4289
-  }, {
+  },
+  {
     title: "The Starry Night",
     contentId: 207190,
     artistContentId: 204915,
@@ -24,7 +26,8 @@ const paintings = [{
     width: 5000,
     image: "https://uploads4.wikiart.org/00142/images/vincent-van-gogh/the-starry-night.jpg!Large.jpg",
     height: 3959
-  }, {
+  }, 
+  {
     title: "The Son of Man",
     contentId: 211454,
     artistContentId: 210903,
@@ -46,7 +49,6 @@ describe('Gallery', () => {
   });
   
   it("should display paintings on load", () => {
-
     const { getByRole } = render(
       <BrowserRouter><Gallery paintings= {paintings}/></BrowserRouter>
     );
