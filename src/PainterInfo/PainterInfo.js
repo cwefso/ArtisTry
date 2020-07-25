@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import backBtn from '../assets/back-btn.png'
-import tagBtn from '../assets/tagIcon.png'
+// import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
 
@@ -26,7 +26,7 @@ function PainterInfo(props) {
             <img src={backBtn} alt='back-btn' className='back-btn' />
           </Link>
           <h1 className="artist-name">{artistName}</h1>
-          <img src={tagBtn} alt='save-btn' className='save-btn' />
+          {/* <img src={tagBtn} alt='save-btn' className='save-btn' /> */}
       </section>
       <Gallery paintings={artistPaintings} />  
     </section>

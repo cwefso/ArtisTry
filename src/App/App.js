@@ -5,14 +5,32 @@ import PainterInfo from '../PainterInfo/PainterInfo';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import usePaintings from '../Hooks/usePaintings';
+import { getFavorites } from '../apiCalls'
 // import PropTypes from 'prop-types';
 
 function App() {
 
 // state declarations and default value
   const [selected, setSelected] = useState({})
+  const [favorites, setFavorites] = useState([])
+  const [error, setError] = useState('')
   const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
+  
 
+  const getUserFavorites = async () => {
+        const userFavs = await getFavorites()
+        setFavorites({userFavs})
+  }
+
+  useEffect(() => {
+    try {
+      getUserFavorites()
+      console.log(favorites);
+    } catch (error) {
+      setError(error)
+    }
+  }, [])
+  
 // render
  const mainPage = (
     <main>
@@ -33,13 +51,23 @@ function App() {
       <Route path="/artists-gallery" render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
-        return <PainterInfo info={selected} painterId={id} {...routeProps} artistName= {selected.artistName}/>
+        return <PainterInfo 
+          info={selected} 
+          painterId={id} {...routeProps} 
+          artistName= {selected.artistName}
+          favorites={favorites}
+          />
       }} />
 
       <Route exact path='/:paintingTitle'   render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
-        return <PaintingInfo paintingInfo={selected} setSelected={setSelected} paintingId={id} {...routeProps}/>
+        return <PaintingInfo 
+                  paintingInfo={selected} 
+                  setSelected={setSelected} 
+                  paintingId={id} {...routeProps}
+                  favorites={favorites}
+                  />
         
       }} />
 

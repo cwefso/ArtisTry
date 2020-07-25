@@ -2,14 +2,14 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Gallery.css';
 import Painting from '../Painting/Painting';
-// import PropTypes from 'prop-types';
 
 function Gallery (props) {
+  const {paintings} = props
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
 
-  const displayedPaintings = props.paintings.map(painting => {
+  const displayedPaintings = paintings.map(painting => {
     return (
       <Link
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
