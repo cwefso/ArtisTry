@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import RandomArt from '../RandomArt/RandomArt'
+import { Link, Switch, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import usePaintings from '../Hooks/usePaintings';
 // import PropTypes from 'prop-types';
@@ -18,6 +19,7 @@ function App() {
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
+        <Link to="/random-art" className="random-art-btn">Random Art</Link>
         <button className="my-gallery-btn">
           My Gallery
         </button>
@@ -34,6 +36,12 @@ function App() {
         const { params } = routeProps.match;
         const { id } = params;
         return <PainterInfo info={selected} painterId={id} {...routeProps} artistName= {selected.artistName} setSelected={setSelected}/>
+      }} />
+
+      <Route path="/random-art" render={(routeProps) => {
+        const { params } = routeProps.match;
+        const { id } = params;
+        return <RandomArt info={selected} {...routeProps} setSelected={setSelected}/>
       }} />
 
       <Route exact path='/:paintingTitle'   render={(routeProps) => {
