@@ -11,7 +11,11 @@ function PainterInfo(props) {
   const { artistName } = props.info;
 
   if(artistName !== undefined){
-    url = artistName.replace(/\s+/g, '-').toLowerCase()
+    if(artistName.includes('.')) {
+      url = artistName.replace(/\s/g, '').replace(/\./g, '-').toLowerCase()
+    } else {
+      url = artistName.replace(/\s+/g, '-').replace(/\./g, '-').toLowerCase()
+    }
   }
 
   const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
