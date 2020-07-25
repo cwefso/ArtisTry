@@ -34,6 +34,7 @@
   margin-top: 8vh;
   padding-top: 3vh;
   position: relative;
+  /* position: absolute; */
   width: 100vw;
   z-index: 1;
 }

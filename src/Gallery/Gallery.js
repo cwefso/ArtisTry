@@ -28,6 +28,14 @@ function Gallery (props) {
 
   return (
     <section>
+      {props.paintings.length === 0 && 
+          <section className="wrapper">
+              <section className="background parralax bg1">
+              </section>  
+              <section className="displayed-paintings static">
+                <h1>Loading Collection...</h1>
+              </section>
+          </section>}
       {props.paintings.length > 0 && 
         <section className="wrapper">
             <section className="background parralax bg1">
@@ -35,9 +43,28 @@ function Gallery (props) {
             <section className="displayed-paintings static">{displayedPaintings}
             </section>
         </section>}
-      {props.paintings.length === 0 && <section className="displayed-paintings"><p className="main-loading">Loading Artworks...</p></section>}
     </section>
   )  
+  // return (
+  //   <section>
+  //     {props.paintings.length > 0 &&
+  //       <section className="wrapper">
+  //           <section className="background parralax bg1">
+  //           </section>  
+  //           <section className="displayed-paintings static">
+  //             {displayedPaintings}
+  //           </section>
+  //       </section>}
+  //     {props.paintings.length === 0 && 
+  //       <section className="wrapper">
+  //         <section className="background parralax bg1">
+  //         </section> 
+  //         <section className="displayed-paintings static">
+  //           <p className="main-loading">Loading Artworks...</p>
+  //         </section>
+  //       </section>}
+  //   </section>
+  // )  
 }
 
 export default Gallery;
