@@ -33,7 +33,6 @@ function RandomArt(props) {
             {/* More Art */}
             Explore
           </button>
-          <img src={tagBtn} alt='save-btn' className='save-btn' />
       </section>
       <section aria-label="gallery">
         {reload === true ? (<Gallery paintings={randomPaintings} setSelected={props.setSelected}/>) : (<Gallery paintings={newRandomPaintings} setSelected={props.setSelected}/>) }  
