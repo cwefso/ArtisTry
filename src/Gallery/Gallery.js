@@ -6,11 +6,12 @@ import Painting from '../Painting/Painting';
 
 function Gallery (props) {
   const setSelectedPainting = (painting) => {
-    console.log(props)
     props.setSelected(painting)
   }
 
-  const displayedPaintings = props.paintings.map(painting => {
+  const shuffled = props.paintings.sort(() => Math.random() - 0.5)
+  const sliced = shuffled.slice(0, 50)
+  const displayedPaintings = sliced.map(painting => {
     return (
       <Link
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
