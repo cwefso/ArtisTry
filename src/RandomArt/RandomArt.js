@@ -15,24 +15,23 @@ function RandomArt(props) {
 
   return (
     <section className="painter-page">
-       <section className="painter-nav">
-          <Link to={"/"} style={{ textDecoration: 'none' }}>
-            <img src={backBtn} alt='back-btn' className='back-btn' />
-          </Link>
-          <button 
-            className="random-art-btn" 
-            onClick={() => {
-              if(reload === true) {
-                setReload(false)
-              }
-              if(reload === false){
-                setReload(true)
-              }      
+      <section className="painter-nav">
+        <Link to={"/"} style={{ textDecoration: 'none' }}>
+          <img src={backBtn} alt='back-btn' className='back-btn' />
+        </Link>
+        <button 
+          className="random-art-btn" 
+          onClick={() => {
+            if(reload === true) {
+              setReload(false)
             }
-          }>
-            {/* More Art */}
-            Explore
-          </button>
+            if(reload === false){
+              setReload(true)
+            }      
+          }
+        }>
+          Explore
+        </button>
       </section>
       <section aria-label="gallery">
         {reload === true ? (<Gallery paintings={randomPaintings} setSelected={props.setSelected}/>) : (<Gallery paintings={newRandomPaintings} setSelected={props.setSelected}/>) }  

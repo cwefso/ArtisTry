@@ -15,7 +15,7 @@ function App() {
   const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
 
 // render
- const mainPage = (
+  const mainPage = (
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
@@ -34,7 +34,8 @@ function App() {
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
- )
+  )
+  
   return (
     <Switch>
       <Route path="/artists-gallery" render={(routeProps) => {

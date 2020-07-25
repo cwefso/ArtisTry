@@ -6,7 +6,6 @@ import '@testing-library/jest-dom/extend-expect';
 import { createMemoryHistory } from 'history';
 
 describe('Painter Page', () => {
-
   const artistName = "Leonardo Da Vinci"
 
   it('should display all nav elements on load', () => {
@@ -22,6 +21,4 @@ describe('Painter Page', () => {
     const gallery = getByLabelText('gallery')
     expect(gallery).toBeInTheDocument()
   })
-
-
 })

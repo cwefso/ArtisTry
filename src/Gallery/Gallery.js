@@ -28,11 +28,17 @@ function Gallery (props) {
 
   return (
     <section>
-      {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+      {props.paintings.length === 0 && <h1>Loading Collection...</h1>}
+      {props.paintings.length > 0 && 
+        <section className="wrapper">
+            <section className="background parralax bg1">
+            </section>  
+            <section className="displayed-paintings static">{displayedPaintings}
+            </section>
+        </section>}
       {props.paintings.length === 0 && <section className="displayed-paintings"><p className="main-loading">Loading Artworks...</p></section>}
     </section>
   )  
 }
 
 export default Gallery;
-
