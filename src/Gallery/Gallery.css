@@ -53,9 +53,9 @@
 .gallery {
   background-image: url('../assets/offwhite wallpaper.jpg');
   height: 100vh;
-  width: max-content;
+  width: 100vw;
   z-index: -1;
-  position: absolute;
+  position: fixed;
 }
 
 .parallax::after {

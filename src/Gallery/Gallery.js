@@ -11,7 +11,7 @@ function Gallery (props) {
 
 
   const shuffled = props.paintings.sort(() => Math.random() - 0.5)
-  const sliced = shuffled.slice(0, 50)
+  const sliced = shuffled.slice(0, 100)
   const displayedPaintings = sliced.map(painting => {
     return (
       <Link

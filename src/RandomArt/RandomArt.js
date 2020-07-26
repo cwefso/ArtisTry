@@ -27,9 +27,11 @@ function RandomArt(props) {
           onClick={() => {
             if(reload === true) {
               setReload(false)
+              setPaintings(randomPaintings)
             }
             if(reload === false){
               setReload(true)
+              setPaintings(newRandomPaintings)
             }      
           }
         }>
@@ -38,7 +40,7 @@ function RandomArt(props) {
       </section>
       <section aria-label="gallery">
         {reload === true ? (
-          <Gallery paintings={randomPaintings} setSelected={props.setSelected}/>
+          <Gallery paintings={paintings} setSelected={props.setSelected}/>
         ) : (
           <Gallery paintings={newRandomPaintings} setSelected={props.setSelected}/>
         ) }
