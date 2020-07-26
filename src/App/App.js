@@ -69,6 +69,8 @@ function App() {
           painterId={id} {...routeProps} 
           artistName= {selected.artistName}
           favorites={favorites}
+          setSelected={setSelected}
+
           />
       }} />
 

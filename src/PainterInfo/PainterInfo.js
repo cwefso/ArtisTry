@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
-import backBtn from '../assets/back-btn.png'
+// import backBtn from '../assets/back-btn.png'
 // import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
+  console.log(props);
   let url;
   const { artistName } = props.info;
 
