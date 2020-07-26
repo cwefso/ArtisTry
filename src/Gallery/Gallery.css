@@ -73,3 +73,10 @@
   background-image: url('../assets/offwhite wallpaper.jpg');
   height: 1px;
 }
+
+.loading-paintings {
+  font-size: 4.5vh;
+  font-style: italic;
+  letter-spacing: .2vh;
+  color: #caa472;
+}

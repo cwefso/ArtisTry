@@ -6,10 +6,29 @@
   height: 100vh;
 }
 
+.painting-page-title {
+  font-size: 3.3vw;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  padding-left: 3.3vw;
+  letter-spacing: .17vw;
+}
+
+.painting-page-title:hover,
+.painting-page-title:active,
+.painting-page-title:focus {
+  cursor: pointer;
+  opacity: .9;
+  transform: scale(1.03);
+  transition: transform .3s;
+  border-radius: 50%;
+}
+
 .painting-title {
   font-family: 'Playfair Display', serif;
   font-size: 2.4vw;
   letter-spacing: .1vh;
+  padding-right: 10vh;
 }
 
 .artist-name {
@@ -20,22 +39,12 @@
   letter-spacing: .1vh;
 }
 
-.back-btn {
-  margin-left: 3vh;
-  margin-top: 1vh;
-  width: 4vw;
-  opacity: .8;
-}
-
-.back-btn:hover,
-.back-btn:focus,
-.back-btn:active {
-  cursor: pointer;
-  opacity: .9;
-  box-shadow: 0 0 3px 3px #9a9a9a;
-  transform: scale(1.01);
-  transition: transform .3s;
-  border-radius: 50%;
+.artist-page-name {
+  margin: auto;
+  padding-right: 15vw;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4vw;
+  letter-spacing: .1vh;
 }
 
 .save-btn {
@@ -105,6 +114,7 @@
   font-size: 3.3vw;
   text-align: center;
   margin-right: 3vw;
+  margin-left: 3vw;
 }
 
 .artist-btn:hover,
@@ -112,8 +122,7 @@
 .artist-btn:active {
   cursor: pointer;
   opacity: .9;
-  box-shadow: 0 0 3px 3px #9a9a9a;
-  transform: scale(1.03);
+  transform: scale(1.04);
   transition: transform .3s;
   border-radius: 20%;
   margin-right: 3vw;
@@ -127,16 +136,21 @@
   align-items: flex-start;
 }
 
+.artwork-details {
+  max-height: 65vh;
+}
+
 .summary {
   font-size: 1.5vh;
   padding-right: 4vw;
+  overflow: scroll;
 }
 
 .detail-title {
   font-weight: bold;
 }
 
-.loading-message {
+.loading-details-message {
   font-size: 2.5vh;
   font-style: italic;
 }
@@ -145,6 +159,7 @@
   padding-right: 4vw;
   font-size: 1.4vh;
   font-style: italic;
+  padding-bottom: 3vh;
 }
 
 .detail-title-location {

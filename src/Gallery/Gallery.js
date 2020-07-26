@@ -1,6 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import './Gallery.css';
+import {Link} from 'react-router-dom';
 import Painting from '../Painting/Painting';
 // import PropTypes from 'prop-types';
 
@@ -33,7 +33,7 @@ function Gallery (props) {
               <section className="background parallax bg1">
               </section>  
               <section className="displayed-paintings static">
-                <h1>Loading Collection...</h1>
+                <h1 className='loading-paintings'>Loading Collection...</h1>
               </section>
           </section>}
       {props.paintings.length > 0 && 

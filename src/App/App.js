@@ -9,11 +9,9 @@ import usePaintings from '../Hooks/usePaintings';
 // import PropTypes from 'prop-types';
 
 function App() {
-
 // state declarations and default value
   const [selected, setSelected] = useState({})
-  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
-
+  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
 // render
   const mainPage = (
     <main>

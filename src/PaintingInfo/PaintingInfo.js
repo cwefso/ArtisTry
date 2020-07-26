@@ -1,46 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
-import backBtn from '../assets/back-btn.png'
 import tagBtn from '../assets/tagIcon.png'
 import usePaintingInfo from '../Hooks/usePaintingInfo';
-import useArtistInfo from '../Hooks/useArtistInfo';
-import usePaintings from '../Hooks/usePaintings'
+import usePaintingSummary from '../Hooks/usePaintingSummary'
+// import useArtistInfo from '../Hooks/useArtistInfo';
+// import usePaintings from '../Hooks/usePaintings'
 
 function PaintingInfo(props) {
   const {title, image, completitionYear, artistName, contentId, artistId, artistUrl, height, width} = props.paintingInfo
-  
   const data = usePaintingInfo(title, artistName)
-  const [paintingDetails, setPaintingDetails] = useState({})
-  const { style, description, technique, period, galleryName } = paintingDetails;
-  // console.log(data.artistUrl)
-  // const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${data.artistURL}&json=2`)
-  
-  
-  const getPaintingDetails = () => {
-    fetch('https://fe-cors-proxy.herokuapp.com', {
-      headers: {
-        "Target-URL": `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
-      }
-    })
-      .then(res => res.json())
-      .then(res => setPaintingDetails(res))
-      .catch(err => console.log(err))
-  }
-
-  useEffect(() => {
-    getPaintingDetails()
-  }, [])
+  const paintingSummary = usePaintingSummary(contentId)
+  const { style, description, technique, period, galleryName } = paintingSummary;
 
   return(
     <section className="painting-page">
       <section className="painting-nav">
-        <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img 
-            src={backBtn} 
-            alt='back-btn'   
-            className='back-btn' 
-          />
+        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <label htmlFor="home button"></label>
+          <h1 
+            aria-label="home button"
+            className="painting-page-title">
+            ArtisTry
+          </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
         <img 
@@ -74,7 +56,7 @@ function PaintingInfo(props) {
             {technique && <><p className="detail-title">Technique</p><p>{technique}</p></>}
             {period && <><p className="detail-title">Period</p><p>{period}</p></>}
             {galleryName && <><p className="detail-title-location">Location</p><p className="detail-location">{galleryName}</p></>}
-          </section>) : <p className='loading-message'>Loading Painting Details...</p>}
+          </section>) : <p className='loading-details-message'>Loading Painting Details...</p>}
         </section>
       </section>
     </section>
