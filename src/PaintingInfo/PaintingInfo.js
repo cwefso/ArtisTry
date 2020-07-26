@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import React, {useState, useEffect} from 'react'
-=======
 import React, { useState, useEffect } from 'react';
->>>>>>> c94c8fbad6ecf45e162b968cef645cd1b98967a5
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
