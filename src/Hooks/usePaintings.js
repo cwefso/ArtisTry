@@ -3,9 +3,11 @@ import {useState, useEffect} from 'react';
 // http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
 
 const usePaintings = (url) => {
+  console.log(url)
   const [paintings, setPaintings] = useState([]);
 
   useEffect(() => {
+    setPaintings([])
     const loadPaintings = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {
         headers: {

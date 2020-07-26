@@ -3,7 +3,7 @@ const randomTerms = [
   "no", 
   "col", 
   "cep", 
-  "octopus", 
+  "octo", 
   "tel", 
   "mic", 
   "not", 
