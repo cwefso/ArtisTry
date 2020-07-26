@@ -3,7 +3,6 @@ import './Painting.css';
 // import PropTypes from 'prop-types';
 
 function Painting (props) {
-
   const hideBrokenImages = () => {
     const img = document.getElementById(props.painting.contentId)
     img.classList.add('hidden')

@@ -1,17 +1,88 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
-import tagBtn from '../assets/tagIcon.png'
+import backBtn from '../assets/back-btn.png'
+import selectedTagBtn from '../assets/selectedTag.png'
+import unselectedTagBtn from '../assets/unselectedTag.png'
 import usePaintingInfo from '../Hooks/usePaintingInfo';
+import { getFavorites } from '../apiCalls'
+import useArtistInfo from '../Hooks/useArtistInfo';
+import usePaintings from '../Hooks/usePaintings'
+// import tagBtn from '../assets/tagIcon.png'
 import usePaintingSummary from '../Hooks/usePaintingSummary'
-// import useArtistInfo from '../Hooks/useArtistInfo';
-// import usePaintings from '../Hooks/usePaintings'
+
 
 function PaintingInfo(props) {
-  const { title, image, completitionYear, artistName, contentId } = props.paintingInfo
+
+  const [isFavorite, setIsFavorite] = useState(false)
+  const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
+  const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
+  const [paintingDetails, setPaintingDetails] = useState({})
+  // const { style, description, technique, period, galleryName } = paintingDetails;
+  let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
   const { style, description, technique, period, galleryName } = paintingSummary;
+  
+
+  const toggleFavs = () => {
+    setIsFavorite(!isFavorite)
+    isFavorite ? deleteFromFavs(contentId) : addToFavs() 
+  }
+
+  const addToFavs = () => {
+    const{title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height}=props.paintingInfo
+    fetch(
+      "http://localhost:3001/api/v1/favorites", {
+        "method": "POST",
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": JSON.stringify({
+          'title': title,
+          'contentId': contentId,
+          'artistContentId': artistContentId,
+          'artistName': artistName,
+          'completitionYear': completitionYear,
+          'yearAsString': yearAsString,
+          'width': width,
+          'image': image,
+          'height': height,
+          'name': 'image'
+        })
+      }
+    )
+  }
+
+  const deleteFromFavs = (contentId) => {
+    fetch(`http://localhost:3001/api/v1/favorites/${contentId}`, {
+      method: 'DELETE'
+    })
+  }
+
+  useEffect(() => {
+    if(userFavs) {
+      const isPaintingAFav = userFavs.find(favorite => favorite.artistContentId === artistContentId)
+      isPaintingAFav && setIsFavorite(true) 
+    }
+  }, []) 
+  
+  const getPaintingDetails = () => {
+    fetch('https://fe-cors-proxy.herokuapp.com', {
+      headers: {
+        "Target-URL": `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
+      }
+    })
+      .then(res => res.json())
+      .then(res => setPaintingDetails(res))
+      .catch(err => console.log(err))
+  }
+
+
+  useEffect(() => {
+    getPaintingDetails()
+  }, [])
+
 
   return(
     <section className="painting-page">
@@ -25,11 +96,9 @@ function PaintingInfo(props) {
           </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
-        <img 
-          src={tagBtn} 
-          alt='save-btn'
-          tabIndex={0}   
-          className='save-btn' 
+        < img src = {tagBtn} alt='save-btn'
+        className = 'save-btn'
+        onClick = {toggleFavs}
         />
       </section>
       <section className="painting-data-container">
