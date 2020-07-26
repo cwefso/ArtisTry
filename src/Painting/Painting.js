@@ -1,21 +1,38 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react'
 import './Painting.css';
 // import PropTypes from 'prop-types';
 
 function Painting (props) {
+  const [broken, setBroken] = useState(false)
+
   const hideBrokenImages = () => {
-    const img = document.getElementById(props.painting.contentId)
-    img.classList.add('hidden')
+    setBroken(true)
   }
+
+  const restrictedUrl = props.painting.image.includes("FRAME")
+
+  useEffect(() => {
+    if(restrictedUrl === true){
+      setBroken(true)
+    }
+  }, []) 
+
+
 
   return(
     <section className="painting" id={props.painting.contentId}>
+    {broken === true && 
+      <section className="broken hidden">
+        broken
+      </section>}
+    {broken === false && 
       <img 
-        src={props.painting.image} 
-        alt={props.painting.title}
-        name={props.painting.title} 
-        className={'art'} 
-        onError={hideBrokenImages} />
+      src={props.painting.image} 
+      alt={props.painting.title}
+      name={props.painting.title} 
+      className={'art'} 
+      onError={hideBrokenImages} />
+    }
     </section>
   )
 }

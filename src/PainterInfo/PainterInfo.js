@@ -18,7 +18,7 @@ function PainterInfo(props) {
     }
   }
 
-  const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
+  const { paintings } = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
 
   return (
     <section className="painter-page">
@@ -29,7 +29,7 @@ function PainterInfo(props) {
         <h1 className="artist-page-name">{artistName}</h1>
       </section>
       <section aria-label="gallery">
-        <Gallery paintings={artistPaintings} setSelected={props.setSelected}/>
+        <Gallery paintings={paintings} setSelected={props.setSelected}/>
       </section>
     </section>
   )

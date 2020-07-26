@@ -7,14 +7,14 @@ import unselectedTagBtn from '../assets/unselectedTag.png'
 import usePaintingInfo from '../Hooks/usePaintingInfo';
 import { getFavorites } from '../apiCalls'
 import useArtistInfo from '../Hooks/useArtistInfo';
-import usePaintings from '../Hooks/usePaintings'
 // import tagBtn from '../assets/tagIcon.png'
 import usePaintingSummary from '../Hooks/usePaintingSummary'
-
 
 function PaintingInfo(props) {
 
   const [isFavorite, setIsFavorite] = useState(false)
+  const [paintings, setPaintings] = useState([]);
+
   const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)

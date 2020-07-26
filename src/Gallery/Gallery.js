@@ -4,15 +4,17 @@ import {Link} from 'react-router-dom';
 import Painting from '../Painting/Painting';
 
 function Gallery (props) {
-  const {paintings} = props
+  // const {paintings} = props
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
 
+  const shuffleAndSlice = () => {
+    // const shuffled = props.paintings.sort(() => Math.random() - 0.5)
+    return props.paintings.slice(0, 100)
+  }
 
-  const shuffled = props.paintings.sort(() => Math.random() - 0.5)
-  const sliced = shuffled.slice(0, 50)
-  const displayedPaintings = sliced.map(painting => {
+  const displayedPaintings = shuffleAndSlice().map(painting => {
     return (
       <Link
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
