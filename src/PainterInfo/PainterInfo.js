@@ -23,10 +23,10 @@ function PainterInfo(props) {
   return (
     <section className="painter-page">
       <section className="painter-nav">
-        <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img src={backBtn} alt='back-btn' className='back-btn' />
+        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <h1 className="painting-page-title">ArtisTry</h1>
         </Link>
-        <h1 className="artist-name">{artistName}</h1>
+        <h1 className="artist-page-name">{artistName}</h1>
       </section>
       <section aria-label="gallery">
         <Gallery paintings={artistPaintings} setSelected={props.setSelected}/>

@@ -12,7 +12,6 @@ import { getFavorites } from '../apiCalls'
 // import PropTypes from 'prop-types';
 
 function App() {
-
 // state declarations and default value
   const [selected, setSelected] = useState({})
   const [favorites, setFavorites] = useState([])
@@ -35,6 +34,7 @@ function App() {
     }
   }, [])
   
+
 // render
   const mainPage = (
     <main>

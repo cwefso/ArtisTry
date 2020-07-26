@@ -5,8 +5,6 @@ import {useState, useEffect} from 'react';
 const usePaintings = (url) => {
   const [paintings, setPaintings] = useState([]);
 
-// useEffect 
-
   useEffect(() => {
     const loadPaintings = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {

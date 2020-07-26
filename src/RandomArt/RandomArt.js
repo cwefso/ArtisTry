@@ -2,9 +2,7 @@ import React, {useState} from 'react'
 import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
-import backBtn from '../assets/back-btn.png'
 import randomTerms from './randomTerms'
-// import tagBtn from '../assets/tagIcon.png'
 
 function RandomArt(props) {
   const [reload, setReload] = useState(false)
@@ -16,8 +14,12 @@ function RandomArt(props) {
   return (
     <section className="painter-page">
       <section className="painter-nav">
-        <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img src={backBtn} alt='back-btn' className='back-btn' />
+        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <label htmlFor="home button"></label>
+          <h1 
+            aria-label="home button" className="painting-page-title">
+            ArtisTry
+          </h1>
         </Link>
         <button 
           className="random-art-btn" 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
@@ -8,17 +8,21 @@ import usePaintingInfo from '../Hooks/usePaintingInfo';
 import { getFavorites } from '../apiCalls'
 import useArtistInfo from '../Hooks/useArtistInfo';
 import usePaintings from '../Hooks/usePaintings'
+// import tagBtn from '../assets/tagIcon.png'
+import usePaintingSummary from '../Hooks/usePaintingSummary'
+
 
 function PaintingInfo(props) {
 
   const [isFavorite, setIsFavorite] = useState(false)
-  const {artistContentId, contentId} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
   const {userFavs} = props.favorites
-  const {title, image, completitionYear, artistName, contentId, artistId, artistUrl, height, width} = props.paintingInfo
   const data = usePaintingInfo(title, artistName)
   const [paintingDetails, setPaintingDetails] = useState({})
-  const { style, description, technique, period, galleryName } = paintingDetails;
+  // const { style, description, technique, period, galleryName } = paintingDetails;
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
+  const paintingSummary = usePaintingSummary(contentId)
+  const { style, description, technique, period, galleryName } = paintingSummary;
   
 
   const toggleFavs = () => {
@@ -83,12 +87,13 @@ function PaintingInfo(props) {
   return(
     <section className="painting-page">
       <section className="painting-nav">
-        <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img 
-            src={backBtn} 
-            alt='back-btn'   
-            className='back-btn' 
-          />
+        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <label htmlFor="home button"></label>
+          <h1 
+            aria-label="home button"
+            className="painting-page-title">
+            ArtisTry
+          </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
         < img src = {tagBtn} alt='save-btn'
@@ -120,7 +125,7 @@ function PaintingInfo(props) {
             {technique && <><p className="detail-title">Technique</p><p>{technique}</p></>}
             {period && <><p className="detail-title">Period</p><p>{period}</p></>}
             {galleryName && <><p className="detail-title-location">Location</p><p className="detail-location">{galleryName}</p></>}
-          </section>) : <p className='loading-message'>Loading Painting Details...</p>}
+          </section>) : <p className='loading-details-message'>Loading Painting Details...</p>}
         </section>
       </section>
     </section>
