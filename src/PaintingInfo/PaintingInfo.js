@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react'
+=======
+import React, { useState, useEffect } from 'react';
+>>>>>>> c94c8fbad6ecf45e162b968cef645cd1b98967a5
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
@@ -15,8 +19,9 @@ function PaintingInfo(props) {
 
   const [isFavorite, setIsFavorite] = useState(false)
   const [paintings, setPaintings] = useState([]);
-  const {userFavs} = props.favorites
+
   const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
+  const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
   const [paintingDetails, setPaintingDetails] = useState({})
   // const { style, description, technique, period, galleryName } = paintingDetails;
