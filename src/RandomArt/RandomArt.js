@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
@@ -6,11 +6,14 @@ import randomTerms from './randomTerms'
 
 function RandomArt(props) {
   const [reload, setReload] = useState(false)
-  const [paintings, setPaintings] = useState([]);
   const randomWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const randomPaintings = usePaintings(`http://www.wikiart.org/en/search/${randomWord}/1?json=2`)
   const newWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const newRandomPaintings = usePaintings(`http://www.wikiart.org/en/search/${newWord}/1?json=2`)
+  let randomSearch = usePaintings(`http://www.wikiart.org/en/search/${randomWord}/1?json=2`)
+  const newSearch = usePaintings(`http://www.wikiart.org/en/search/${newWord}/1?json=2`)
+
+  if(reload){
+    randomSearch = newSearch
+  }
 
   return (
     <section className="painter-page">
@@ -25,25 +28,14 @@ function RandomArt(props) {
         <button 
           className="random-art-btn" 
           onClick={() => {
-            if(reload === true) {
-              setReload(false)
-              setPaintings(randomPaintings)
-            }
-            if(reload === false){
-              setReload(true)
-              setPaintings(newRandomPaintings)
-            }      
+            reload ? setReload(false) : setReload(true)
           }
         }>
           Explore
         </button>
       </section>
       <section aria-label="gallery">
-        {reload === true ? (
-          <Gallery paintings={paintings} setSelected={props.setSelected}/>
-        ) : (
-          <Gallery paintings={newRandomPaintings} setSelected={props.setSelected}/>
-        ) }
+          <Gallery paintings={randomSearch} setSelected={props.setSelected}/>
       </section>
     </section>
   )
