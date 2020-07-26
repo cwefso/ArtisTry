@@ -7,6 +7,7 @@ const usePaintings = (url) => {
   const [paintings, setPaintings] = useState([]);
 
   useEffect(() => {
+    setPaintings([])
     const loadPaintings = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {
         headers: {

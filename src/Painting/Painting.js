@@ -22,7 +22,7 @@ function Painting (props) {
   return(
     <section className="painting" id={props.painting.contentId}>
     {broken === true && 
-      <section className="broken">
+      <section className="broken hidden">
         broken
       </section>}
     {broken === false && 
