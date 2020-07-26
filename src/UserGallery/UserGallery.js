@@ -6,8 +6,7 @@ import './UserGallery.css';
 
 function UserGallery (props) {
   const {setSelected} = props  
-  const {userFavs} = props.favorites
-  console.log(userFavs);
+  const userFavs = props.favorites.userFavs || []
   
   return (
     <section>

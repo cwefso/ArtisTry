@@ -19,6 +19,7 @@ function App() {
   
 
   const getUserFavorites = async () => {
+    console.log('hi');
         const userFavs = await getFavorites()
         setFavorites({userFavs})
   }
@@ -82,6 +83,7 @@ function App() {
                   paintingInfo={selected} 
                   setSelected={setSelected} 
                   paintingId={id} {...routeProps}
+                  getUserFavorites={getUserFavorites}
                   favorites={favorites}
                   />
         

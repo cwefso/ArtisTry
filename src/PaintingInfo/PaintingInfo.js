@@ -5,28 +5,28 @@ import backBtn from '../assets/back-btn.png'
 import selectedTagBtn from '../assets/selectedTag.png'
 import unselectedTagBtn from '../assets/unselectedTag.png'
 import usePaintingInfo from '../Hooks/usePaintingInfo';
+import { getFavorites } from '../apiCalls'
 import useArtistInfo from '../Hooks/useArtistInfo';
 import usePaintings from '../Hooks/usePaintings'
 
 function PaintingInfo(props) {
 
   const [isFavorite, setIsFavorite] = useState(false)
-  const {artistContentId} = props.paintingInfo
+  const {artistContentId, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const {title, image, completitionYear, artistName, artistId, artistUrl, height, width} = props.paintingInfo
   const data = usePaintingInfo(title, artistName)
-  const tagBtn = isFavorite ? selectedTagBtn : unselectedTagBtn
+  let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
+  
 
   const toggleFavs = () => {
-    console.log('hi');
-    const {contentId} = props.paintingInfo
-    const match = userFavs.find(userFav => userFav.contentId === contentId)
-    match ? deleteFromFavs(contentId) : addToFavs() 
+    setIsFavorite(!isFavorite)
+    isFavorite ? deleteFromFavs(contentId) : addToFavs() 
   }
 
   const addToFavs = () => {
     const{title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height}=props.paintingInfo
-    fetch( 
+    fetch(
       "http://localhost:3001/api/v1/favorites", {
         "method": "POST",
         "headers": {
@@ -52,7 +52,6 @@ function PaintingInfo(props) {
     fetch(`http://localhost:3001/api/v1/favorites/${contentId}`, {
       method: 'DELETE'
     })
-    .then(response => console.log(response))
   }
 
   useEffect(() => {
@@ -72,7 +71,10 @@ function PaintingInfo(props) {
           <img src={backBtn} alt='back-btn' className='back-btn' />
         </Link>
         <h1 className="painting-title">{title}</h1>
-        <img src={tagBtn} alt='save-btn' className='save-btn' onClick={toggleFavs} />
+        < img src = {tagBtn} alt='save-btn'
+        className = 'save-btn'
+        onClick = {toggleFavs}
+        />
       </section>
       <section className="painting-data-container">
         <section className="painting-box">
