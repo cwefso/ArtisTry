@@ -49,7 +49,6 @@ const randomTerms = [
   "city", 
   "kil", 
   "lik", 
-  "off", 
   "god", 
   "music", 
   "hands", 

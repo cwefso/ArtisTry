@@ -7,7 +7,6 @@ import unselectedTagBtn from '../assets/unselectedTag.png'
 import usePaintingInfo from '../Hooks/usePaintingInfo';
 import { getFavorites } from '../apiCalls'
 import useArtistInfo from '../Hooks/useArtistInfo';
-import usePaintings from '../Hooks/usePaintings'
 // import tagBtn from '../assets/tagIcon.png'
 import usePaintingSummary from '../Hooks/usePaintingSummary'
 

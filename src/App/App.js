@@ -16,7 +16,7 @@ function App() {
   const [selected, setSelected] = useState({})
   const [favorites, setFavorites] = useState([])
   const [error, setError] = useState('')
-  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
+  const {paintings} = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
   
 
   const getUserFavorites = async () => {
@@ -42,7 +42,7 @@ function App() {
         <h1 className="page-title">ArtisTry</h1>
         <section className="nav-btn-box">
           <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <button className="random-art-btn">Explore</button>
+            <button className="random-button">Explore</button>
             {/* <p className="random-art-btn">Explore</p> */}
           </Link>
           <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>

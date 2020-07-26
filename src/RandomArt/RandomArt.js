@@ -5,15 +5,19 @@ import Gallery from '../Gallery/Gallery';
 import randomTerms from './randomTerms'
 
 function RandomArt(props) {
-  const [reload, setReload] = useState(false)
-  const randomWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const newWord = randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  let randomSearch = usePaintings(`http://www.wikiart.org/en/search/${randomWord}/1?json=2`)
-  const newSearch = usePaintings(`http://www.wikiart.org/en/search/${newWord}/1?json=2`)
 
-  if(reload){
-    randomSearch = newSearch
+  const [reload, setReload] = useState(false)
+
+  const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
+  const {paintings, setUrl, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+
+  const handleClick = () => {
+    window.location.reload(false)
+    // if(!loading){
+    //   setUrl(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+    // }
   }
+
 
   return (
     <section className="painter-page">
@@ -26,16 +30,16 @@ function RandomArt(props) {
           </h1>
         </Link>
         <button 
-          className="random-art-btn" 
-          onClick={() => {
-            reload ? setReload(false) : setReload(true)
-          }
-        }>
+          className={`random-button ${loading && "random-button--loading"}`}
+          style={{background: loading ? "#333333" : "#f2f2f2", color: loading ? "#f2f2f2" : "#333333"}} 
+          onClick= {handleClick}
+        >
           Explore
         </button>
       </section>
       <section aria-label="gallery">
-          <Gallery paintings={randomSearch} setSelected={props.setSelected}/>
+          {!error && <Gallery paintings={paintings} setSelected={props.setSelected}/>}
+          {error && <p>WHAT DID YOU DO!?</p>}
       </section>
     </section>
   )

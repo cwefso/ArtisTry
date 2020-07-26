@@ -2,12 +2,16 @@ import {useState, useEffect} from 'react';
 
 // http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
 
-const usePaintings = (url) => {
-  console.log(url)
+const usePaintings = (initialUrl) => {
+
   const [paintings, setPaintings] = useState([]);
+  const [url, setUrl] = useState(initialUrl)
+  const [loading, setLoading] =  useState(true)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    setPaintings([])
+    setError(false)
+    setLoading(true)
     const loadPaintings = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {
         headers: {
@@ -15,14 +19,21 @@ const usePaintings = (url) => {
         }
       })
         .then(res => res.json())
-        .then(result => setPaintings(result))
-        .catch(err => console.log(err.message))
+        .then(result => {
+          setPaintings(result)
+          setLoading(false)
+        })
+        .catch(err => {
+          console.log(err.message)
+          setLoading(false)
+          setError(true)
+        })
     }
 
     loadPaintings()
-  }, [])
+  }, [url])
   
-  return paintings
+  return {paintings, setUrl, loading, error}
 }
 
 export default usePaintings;
