@@ -12,9 +12,8 @@ import usePaintings from '../Hooks/usePaintings'
 function PaintingInfo(props) {
 
   const [isFavorite, setIsFavorite] = useState(false)
-  const {artistContentId, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
-  const {title, image, completitionYear, artistName, contentId, artistId, artistUrl, height, width} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
   const data = usePaintingInfo(title, artistName)
   const [paintingDetails, setPaintingDetails] = useState({})
   const { style, description, technique, period, galleryName } = paintingDetails;
