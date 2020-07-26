@@ -6,29 +6,70 @@
   box-shadow: 3px 9px 5px 0px #9a9a9a, 
     -1px 1px 18px 1px #607d8bbf;
  }
+
+ .art:active,
+ .art:hover,
+ .art:focus {
+  cursor: pointer;
+  opacity: .9;
+  box-shadow: 0 0 3px 3px #9a9a9a;
+  transform: scale(1.03);
+  transition: transform .3s;
+  transform: rotate(1deg);
+ }
+
+ .main-loading {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 3vh;
+  font-style: italic;
+  padding-top: 3vh;
+ }
  
 .displayed-paintings {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  height: 100vh;
   justify-content: center;
-  width: 100vw;
-  padding-top: 3vh;
-  position: absolute;
-  z-index: 1;
-  height: 100vh;
   margin-top: 8vh;
-  position: absolute;
-  background: transparent;
-}
-
-.background-img {
-  position: absolute;
-  z-index: 0;
+  padding-top: 3vh;
+  position: relative;
   width: 100vw;
-  height: 100vh;
+  z-index: 1;
 }
 
 .hidden {
   display: none;
+}
+
+.wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.background,
+.gallery {
+  background-image: url('../assets/offwhite wallpaper.jpg');
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
+}
+
+.parallax::after {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.bg1::after {
+  background-image: url('../assets/offwhite wallpaper.jpg');
+  height: 1px;
 }

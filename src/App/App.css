@@ -15,7 +15,7 @@
 	-moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
   z-index: 2;
-  position: absolute;
+  position: fixed;
 }
 
 .page-title {
@@ -23,6 +23,12 @@
   font-family: 'Playfair Display', serif;
   font-style: italic;
   margin-left: 1vw;
+}
+
+.nav-btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .my-gallery-btn {
@@ -35,4 +41,37 @@
   letter-spacing: .2vh;
   border-radius: 1vh;
   background-color: #ffff;
+  opacity: .7;
 }
+
+.random-art-btn {
+  margin-right: 4vw;
+  width: 12vw;
+  height: 6vh;
+  font-size: 1.5vw;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: .2vh;
+  border-radius: 1vh;
+  background-color: #ffff;
+  opacity: .7;
+}
+
+.my-gallery-btn:hover,
+.my-gallery-btn:focus,
+.random-art-btn:hover,
+.random-art-btn:focus {
+  cursor: pointer;
+  opacity: .8;
+  box-shadow: 0px 0px 1px 1px #9a9a9a;
+  transform: scale(1.04);
+  transition: transform .3s;
+ }
+
+ /* .background {
+  background-image: url('../assets/offwhite wallpaper.jpg');
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  position: absolute;
+} */

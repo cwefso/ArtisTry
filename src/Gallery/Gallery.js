@@ -9,7 +9,10 @@ function Gallery (props) {
     props.setSelected(painting)
   }
 
-  const displayedPaintings = paintings.map(painting => {
+
+  const shuffled = props.paintings.sort(() => Math.random() - 0.5)
+  const sliced = shuffled.slice(0, 50)
+  const displayedPaintings = sliced.map(painting => {
     return (
       <Link
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
@@ -26,11 +29,24 @@ function Gallery (props) {
 
   return (
     <section>
-      {props.paintings.length === 0 && <h1>Loading Collection...</h1>}
-      {props.paintings.length > 0 && <section className="displayed-paintings">{displayedPaintings}</section>}
+      {props.paintings.length === 0 && 
+          <section className="wrapper">
+              <section className="background parallax bg1">
+              </section>  
+              <section className="displayed-paintings static">
+                <h1>Loading Collection...</h1>
+              </section>
+          </section>}
+      {props.paintings.length > 0 && 
+        <section className="wrapper">
+          <section className="background parallax bg1">
+          </section>  
+          <section className="displayed-paintings static">
+            {displayedPaintings}
+          </section>
+        </section>}
     </section>
   )  
 }
 
 export default Gallery;
-

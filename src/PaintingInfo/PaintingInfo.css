@@ -1,4 +1,5 @@
-.painting-page {
+.painting-page,
+.painter-page {
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -7,21 +8,57 @@
 
 .painting-title {
   font-family: 'Playfair Display', serif;
-  font-size: 4.5vw;
+  font-size: 2.4vw;
+  letter-spacing: .1vh;
+}
+
+.artist-name {
+  margin: auto;
+  padding-right: 7vw;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4vw;
+  letter-spacing: .1vh;
 }
 
 .back-btn {
   margin-left: 3vh;
   margin-top: 1vh;
-  width: 5vw;
+  width: 4vw;
+  opacity: .8;
+}
+
+.back-btn:hover,
+.back-btn:focus,
+.back-btn:active {
+  cursor: pointer;
+  opacity: .9;
+  box-shadow: 0 0 3px 3px #9a9a9a;
+  transform: scale(1.01);
+  transition: transform .3s;
+  border-radius: 50%;
 }
 
 .save-btn {
   margin-right: 4vh;
-  width: 4.5vw;
+  width: 3.5vw;
+  opacity: .8;
 }
 
-.painting-nav {
+.save-btn:hover,
+.save-btn:focus,
+.save-btn:active {
+  cursor: pointer;
+  opacity: .9;
+  box-shadow: 0 0 3px 3px #9a9a9a;
+  transform: scale(1.01);
+  transition: transform .3s;
+  border-radius: 10%;
+  padding-bottom: .2vh;
+}
+
+.painting-nav,
+.painter-nav {
+  width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: space-between;
@@ -30,6 +67,8 @@
   -webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
   box-shadow: 0 8px 6px -6px black;
+  z-index: 2;
+  position: fixed;
 }
 
 .painting-data-container {
@@ -38,25 +77,78 @@
 }
 
 .painting-box {
-  width: 65vw;
+  width: 60vw;
   height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 9vh;
+  padding-left: 2vh;
 }
 
 .artwork {
-  max-width: 61vw;
-  max-height: 67vh;
+  max-width: 55vw;
+  height: 60vh;
   box-shadow: 3px 9px 5px 0px #9a9a9a, 
   -1px 1px 18px 1px #607d8bbf;
 }
 
+.completion-year {
+  margin-top: 4vh;
+}
+
+.artist-btn {
+  color: black;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 3.3vw;
+  text-align: center;
+  margin-right: 3vw;
+}
+
+.artist-btn:hover,
+.artist-btn:focus,
+.artist-btn:active {
+  cursor: pointer;
+  opacity: .9;
+  box-shadow: 0 0 3px 3px #9a9a9a;
+  transform: scale(1.03);
+  transition: transform .3s;
+  border-radius: 20%;
+  margin-right: 3vw;
+}
+
 .details-container {
-  width: 35vw;
+  width: 40vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+.summary {
+  font-size: 1.5vh;
+  padding-right: 4vw;
+}
+
+.detail-title {
+  font-weight: bold;
+}
+
+.loading-message {
+  font-size: 2.5vh;
+  font-style: italic;
+}
+
+.detail-location {
+  padding-right: 4vw;
+  font-size: 1.4vh;
+  font-style: italic;
+}
+
+.detail-title-location {
+  padding-right: 4vw;
+  font-size: 1.4vh;
+  font-weight: bold;
 }

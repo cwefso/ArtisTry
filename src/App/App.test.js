@@ -3,7 +3,6 @@ import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
 import App from './App';
-import usePaintings from '../Hooks/usePaintings'
 import { createMemoryHistory } from 'history';
 jest.mock('../apiCalls.js')
 
@@ -29,7 +28,8 @@ describe('App', () => {
       "width": 1296,
       "image": "https://uploads6.wikiart.org/images/canaletto/the-river-thames-with-st-paul-s-cathedral-on-lord-mayor-s-day.jpg!Large.jpg",
       "height": 676,
-      "name": 'image'
+      "name": 'image',
+      "testId": 42
     },
     {
       "title": "Just what is it that makes today's homes so different, so appealing?",
@@ -58,26 +58,20 @@ describe('App', () => {
   ]
 
   it('should display all nav elements on load', () => {
-    const { getByText, getByPlaceholderText, getByRole } = render(<MemoryRouter><App /></MemoryRouter>);
+    const { getByText, getByPlaceholderText, getByRole } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>);
     const pageTitle = getByText('ArtisTry')
-    const usernameInput = getByPlaceholderText('username')
-    const passwordInput = getByPlaceholderText('password')
-    const loginBtn = getByRole('button')
     expect(pageTitle).toBeInTheDocument()
-    expect(usernameInput).toBeInTheDocument()
-    expect(passwordInput).toBeInTheDocument()
-    expect(loginBtn).toBeInTheDocument()
   })
 
   it('should display loading fetch message', () => {
-    const { getByText } = render(<MemoryRouter><App /></MemoryRouter>)
+    const { getByText } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
     const loadingMessage = getByText('Loading Collection...')
     expect(loadingMessage).toBeInTheDocument()
   })
 
   it('should display all paintings once fetch is resolved', async () => {
-    const { getAllByRole, findByRole} = render(<MemoryRouter><App /></MemoryRouter>)
-    const images = await findAllByRole('img', { "name": "image" })
+    const { getAllByRole, findAllByRole} = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
+    const images = await findAllByRole('img')
     expect(images).toHaveLength(3)
   })
 
@@ -89,7 +83,7 @@ describe('App', () => {
     const testHistoryObject = createMemoryHistory()
     const { getByTestId, getByRole } = render(
       <Router history={ testHistoryObject }>
-        <App />
+        <App paintings={paintings}/>
       </Router>
     )
     expect(testHistoryObject.location.pathname).toEqual('/')

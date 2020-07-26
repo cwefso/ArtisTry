@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
@@ -14,8 +14,10 @@ function PaintingInfo(props) {
   const [isFavorite, setIsFavorite] = useState(false)
   const {artistContentId, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
-  const {title, image, completitionYear, artistName, artistId, artistUrl, height, width} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId, artistId, artistUrl, height, width} = props.paintingInfo
   const data = usePaintingInfo(title, artistName)
+  const [paintingDetails, setPaintingDetails] = useState({})
+  const { style, description, technique, period, galleryName } = paintingDetails;
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
   
 
@@ -60,15 +62,33 @@ function PaintingInfo(props) {
       isPaintingAFav && setIsFavorite(true) 
     }
   }, []) 
+  
+  const getPaintingDetails = () => {
+    fetch('https://fe-cors-proxy.herokuapp.com', {
+      headers: {
+        "Target-URL": `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
+      }
+    })
+      .then(res => res.json())
+      .then(res => setPaintingDetails(res))
+      .catch(err => console.log(err))
+  }
 
-  // console.log(data.artistUrl)
-  // const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${data.artistURL}&json=2`)
+
+  useEffect(() => {
+    getPaintingDetails()
+  }, [])
+
 
   return(
     <section className="painting-page">
       <section className="painting-nav">
         <Link to={"/"} style={{ textDecoration: 'none' }}>
-          <img src={backBtn} alt='back-btn' className='back-btn' />
+          <img 
+            src={backBtn} 
+            alt='back-btn'   
+            className='back-btn' 
+          />
         </Link>
         <h1 className="painting-title">{title}</h1>
         < img src = {tagBtn} alt='save-btn'
@@ -81,31 +101,26 @@ function PaintingInfo(props) {
           <img 
             className="artwork"
             src={image} 
-            alt={title}    
+            alt={title}   
           />
-          <p>Year Completed: {completitionYear}</p>
+          <p className="completion-year">Year Completed: {completitionYear}</p>
         </section>
         <section className="details-container">
-
-        <Link
-          to={`/artists-gallery`}
-          aria-label='artist-gallery'
-          key={data.artistId}
-          style={{textDecoration: 'none'}}
-        >
-          <p>Artist: {artistName}</p>
-        </Link>
-
-
-
-{/* 
-          <Link to={`/${artistName}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-
-          </Link> */}
-          <p>Movement?</p>
-          <p>Summary?</p>
-          <p>Other works?</p>
-          <p>Similar Artists?</p>
+          <Link
+            to={`/artists-gallery`}
+            aria-label='artist-gallery'
+            key={data.artistId}
+            style={{textDecoration: 'none'}}
+          >
+            <p className='artist-btn'>{artistName}</p>
+          </Link>
+          {style ? (<section className="artwork-details">
+            {style && <><p className="detail-title">Movement</p><p>{style}</p></>}
+            {description && <><p className="detail-title">Description</p><p className="summary">{description}</p></>}
+            {technique && <><p className="detail-title">Technique</p><p>{technique}</p></>}
+            {period && <><p className="detail-title">Period</p><p>{period}</p></>}
+            {galleryName && <><p className="detail-title-location">Location</p><p className="detail-location">{galleryName}</p></>}
+          </section>) : <p className='loading-message'>Loading Painting Details...</p>}
         </section>
       </section>
     </section>

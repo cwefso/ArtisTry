@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import './App.css';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
 import UserGallery from '../UserGallery/UserGallery'
 import { Switch, Route, withRouter, Link } from 'react-router-dom';
 import './App.css';
+import RandomArt from '../RandomArt/RandomArt'
 import usePaintings from '../Hooks/usePaintings';
 import { getFavorites } from '../apiCalls'
 // import PropTypes from 'prop-types';
@@ -34,22 +36,29 @@ function App() {
   }, [])
   
 // render
- const mainPage = (
+  const mainPage = (
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
-        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
-          <button className="my-gallery-btn" onClick={getUserFavorites}>
-            My Gallery
-          </button>
-        </Link>
+        <section className="nav-btn-box">
+          <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <button className="random-art-btn">Explore</button>
+            {/* <p className="random-art-btn">Explore</p> */}
+          </Link>
+          <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+            <button className="my-gallery-btn" onClick={getUserFavorites}>
+              My Gallery
+            </button>
+          </Link>
+        </section>
       </section>
       <section className="gallery">
-        <img src='../assets/offwhite wallpaper.jpg' alt="background-img" className="background-img" />
+        {/* <section className="background"></section> */}
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
- )
+  )
+  
   return (
     <Switch>
       <Route path="/artists-gallery" render={(routeProps) => {
@@ -76,6 +85,12 @@ function App() {
           )
       }} />
 
+      <Route path="/random-art" render={(routeProps) => {
+        const { params } = routeProps.match;
+        const { id } = params;
+        return <RandomArt info={selected} {...routeProps} setSelected={setSelected}/>
+      }} />
+
       <Route exact path='/:paintingTitle'   render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
@@ -89,13 +104,9 @@ function App() {
         
       }} />
 
-
       <Route exact path='/' render={() => mainPage} />
     </Switch> 
   )
-
-
-
 }
 
 export default withRouter(App);
