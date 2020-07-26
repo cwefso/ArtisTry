@@ -12,9 +12,9 @@ import { getFavorites } from '../apiCalls'
 // import PropTypes from 'prop-types';
 
 function App() {
-
 // state declarations and default value
   const [selected, setSelected] = useState({})
+<<<<<<< HEAD
   const [favorites, setFavorites] = useState([])
   const [error, setError] = useState('')
   const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
@@ -35,6 +35,9 @@ function App() {
     }
   }, [])
   
+=======
+  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
+>>>>>>> 6938375d42a8f00dcf218633c241f3cc5ecbbb0d
 // render
   const mainPage = (
     <main>
