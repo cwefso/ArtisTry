@@ -8,7 +8,7 @@ import usePaintingSummary from '../Hooks/usePaintingSummary'
 // import usePaintings from '../Hooks/usePaintings'
 
 function PaintingInfo(props) {
-  const {title, image, completitionYear, artistName, contentId, artistId, artistUrl, height, width} = props.paintingInfo
+  const { title, image, completitionYear, artistName, contentId } = props.paintingInfo
   const data = usePaintingInfo(title, artistName)
   const paintingSummary = usePaintingSummary(contentId)
   const { style, description, technique, period, galleryName } = paintingSummary;
