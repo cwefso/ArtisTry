@@ -9,3 +9,9 @@
     })
       .then(res => res.json())
   }; 
+
+  export const getFavorites = () => {
+    return fetch('http://localhost:3001/api/v1/favorites')
+      .then(res => res.json())
+      .then(data => data.favorites)
+  }; 

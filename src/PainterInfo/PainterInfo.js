@@ -4,7 +4,7 @@ import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
 import backBtn from '../assets/back-btn.png'
-import tagBtn from '../assets/tagIcon.png'
+// import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
   let url;

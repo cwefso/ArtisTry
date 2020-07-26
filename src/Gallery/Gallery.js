@@ -2,12 +2,13 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import './Gallery.css';
 import Painting from '../Painting/Painting';
-// import PropTypes from 'prop-types';
 
 function Gallery (props) {
+  const {paintings} = props
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
+
 
   const shuffled = props.paintings.sort(() => Math.random() - 0.5)
   const sliced = shuffled.slice(0, 50)
