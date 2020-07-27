@@ -9,19 +9,15 @@ import './App.css';
 import RandomArt from '../RandomArt/RandomArt'
 import usePaintings from '../Hooks/usePaintings';
 import { getFavorites } from '../apiCalls'
-// import PropTypes from 'prop-types';
 
 function App() {
-// state declarations and default value
   const [selected, setSelected] = useState({})
   const [favorites, setFavorites] = useState([])
   const [error, setError] = useState('')
-  const paintings = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
-  
-
+  const {paintings} = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
   const getUserFavorites = async () => {
-        const userFavs = await getFavorites()
-        setFavorites({userFavs})
+  const userFavs = await getFavorites()
+  setFavorites({userFavs})
   }
 
   useEffect(() => {
@@ -32,26 +28,20 @@ function App() {
     }
   }, [])
   
-
-// render
   const mainPage = (
     <main>
       <section className="header">
         <h1 className="page-title">ArtisTry</h1>
         <section className="nav-btn-box">
           <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
-            <button className="random-art-btn">Explore</button>
-            {/* <p className="random-art-btn">Explore</p> */}
+            <button className="random-button">Explore</button>
           </Link>
           <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
-            <button className="my-gallery-btn" onClick={getUserFavorites}>
-              My Gallery
-            </button>
+            <button className="my-gallery-btn" onClick={getUserFavorites}>My Gallery</button>
           </Link>
         </section>
       </section>
       <section className="gallery">
-        {/* <section className="background"></section> */}
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
@@ -63,47 +53,40 @@ function App() {
         const { params } = routeProps.match;
         const { id } = params;
         return <PainterInfo 
+          {...routeProps} 
           info={selected} 
-          painterId={id} {...routeProps} 
+          painterId={id} 
           artistName= {selected.artistName}
           favorites={favorites}
           setSelected={setSelected}
-
           />
       }} />
 
-      <Route path="/user-gallery" render={(routeProps) => {
-        const { params } = routeProps.match;
-        const { id } = params;
+      <Route path="/user-gallery" render={() => {
         return (
           <section>
-            <UserGallery 
-              favorites={favorites}
-              setSelected={setSelected}
-            />
+            <UserGallery favorites={favorites} setSelected={setSelected} />
           </section>
           )
       }} />
 
-      <Route path="/random-art" render={(routeProps) => {
-        const { params } = routeProps.match;
-        const { id } = params;
-        return <RandomArt info={selected} {...routeProps} setSelected={setSelected}/>
+      <Route path="/random-art" render={() => {
+        return <RandomArt info={selected} setSelected={setSelected} getUserFavorites={getUserFavorites} />
       }} />
 
       <Route exact path='/:paintingTitle'   render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
         return <PaintingInfo 
+                  {...routeProps}
                   paintingInfo={selected} 
                   setSelected={setSelected} 
-                  paintingId={id} {...routeProps}
+                  paintingId={id} 
                   getUserFavorites={getUserFavorites}
                   favorites={favorites}
-                  />
-        
+                />
       }} />
-
+      
       <Route exact path='/' render={() => mainPage} />
     </Switch> 
   )

@@ -35,9 +35,9 @@
 
 .artist-name {
   margin: auto;
-  padding-right: 7vw;
+  padding-right: 17vw;
   font-family: 'Playfair Display', serif;
-  font-size: 2.4vw;
+  font-size: 2.2vw;
   letter-spacing: .1vh;
 }
 
@@ -170,6 +170,18 @@
   font-weight: bold;
 }
 
+.no-favorites-message {
+  font-size: 3vh;
+  color: black;
+  letter-spacing: .2vh;
+  z-index: 10;
+  position: absolute;
+  text-align: center;
+  padding: 34vh;
+  margin-left: 28vh;
+  font-family: 'Roboto Mono', monospace;
+}
+
 @media screen and (max-width: 440px) {
 
   .art {
@@ -213,6 +225,7 @@
       padding-left: 0;
     }
 }
+
 @media screen and (max-width: 440px) {
 
   .artist-btn {
@@ -251,11 +264,11 @@
     min-height: 15vh;
   }
 
-.painting-box {
-  margin-top: 20%;
-  height: 50vh;
-  padding-left: 0;
-}
+  .painting-box {
+   margin-top: 20%;
+   height: 50vh;
+   padding-left: 0;
+  }
 }
 
 @media screen and (max-width: 760px) {
@@ -295,9 +308,10 @@
     min-width: 35vw;
     min-height: 15vh;
   }
-.painting-box {
-  margin-top: 20%;
-  height: 50vh;
-  padding-left: 0;
+  .painting-box {
+    margin-top: 20%;
+    height: 50vh;
+    padding-left: 0;
+  }
 }
-}
+
