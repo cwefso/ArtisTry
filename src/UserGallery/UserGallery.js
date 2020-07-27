@@ -1,5 +1,5 @@
 import React from 'react';
-import './UserGallery.css';
+import '../PaintingInfo/PaintingInfo.css';
 import Gallery from '../Gallery/Gallery';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -22,8 +22,10 @@ function UserGallery (props) {
           </Link>
           <h1 className="artist-name">My Gallery</h1>
       </section>
-      {userFavs.length === 0 && <h1>Add some paintings to your collection</h1>}
-      {userFavs.length > 0 && <Gallery paintings={userFavs} setSelected={setSelected} /> }
+      <section>
+        {userFavs.length > 0 && <Gallery paintings={userFavs} setSelected={setSelected} /> }
+        {userFavs.length === 0 && <h1 className="no-favorites-message">Add some paintings to your collection</h1>}
+      </section>
     </section>
   )  
 }

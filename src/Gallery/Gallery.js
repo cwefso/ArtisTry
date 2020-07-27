@@ -37,11 +37,11 @@ function Gallery (props) {
               <section className="displayed-paintings static">
                 <section className="loading-container">
                   <h1 className='loading-paintings'>Loading Collection</h1>
-                  <section class="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
+                  <section className="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
                 </section>
               </section>
               <section className="loading-container">
-                <section class="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
+                <section className="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
               </section>
           </section>}
       {props.paintings.length > 0 && 

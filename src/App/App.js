@@ -86,7 +86,7 @@ function App() {
                   favorites={favorites}
                 />
       }} />
-
+      
       <Route exact path='/' render={() => mainPage} />
     </Switch> 
   )
