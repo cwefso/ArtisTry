@@ -20,7 +20,6 @@ function App() {
   
 
   const getUserFavorites = async () => {
-    console.log('hi');
         const userFavs = await getFavorites()
         setFavorites({userFavs})
   }
@@ -28,7 +27,6 @@ function App() {
   useEffect(() => {
     try {
       getUserFavorites()
-      console.log(favorites);
     } catch (error) {
       setError(error)
     }
