@@ -2,6 +2,7 @@ import React from 'react';
 import './Gallery.css';
 import {Link} from 'react-router-dom';
 import Painting from '../Painting/Painting';
+import PropTypes from 'prop-types';
 
 function Gallery (props) {
   // const {paintings} = props
@@ -52,3 +53,14 @@ function Gallery (props) {
 }
 
 export default Gallery;
+
+
+Gallery.propTypes = {
+  paintings: PropTypes.array,
+  setSelected: PropTypes.func
+  // id: PropTypes.number, 
+  // ratings: PropTypes.array, 
+  // handleMovie: PropTypes.func, 
+  // poster_path: PropTypes.string, 
+  // average_rating: PropTypes.number
+}

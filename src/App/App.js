@@ -9,7 +9,6 @@ import './App.css';
 import RandomArt from '../RandomArt/RandomArt'
 import usePaintings from '../Hooks/usePaintings';
 import { getFavorites } from '../apiCalls'
-// import PropTypes from 'prop-types';
 
 function App() {
 // state declarations and default value
@@ -28,7 +27,6 @@ function App() {
   useEffect(() => {
     try {
       getUserFavorites()
-      console.log(favorites);
     } catch (error) {
       setError(error)
     }
