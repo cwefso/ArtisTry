@@ -5,17 +5,12 @@ import Gallery from '../Gallery/Gallery';
 import randomTerms from './randomTerms'
 
 function RandomArt(props) {
-
-  const [reload, setReload] = useState(false)
-
-  const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const {paintings, setUrl, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+  const shuffle = require('shuffle-array')
+  let getRandomWord = () => shuffle.pick(randomTerms)
+  const {paintings, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
 
   const handleClick = () => {
-    window.location.reload(false)
-    // if(!loading){
-    //   setUrl(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
-    // }
+    window.location.reload()
   }
 
 
@@ -36,6 +31,11 @@ function RandomArt(props) {
         >
           Explore
         </button>
+        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+            <button className="my-gallery-btn">
+              My Gallery
+            </button>
+        </Link>
       </section>
       <section aria-label="gallery">
           {!error && <Gallery paintings={paintings} setSelected={props.setSelected}/>}

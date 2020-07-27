@@ -15,18 +15,15 @@ function Painting (props) {
     if(restrictedUrl === true){
       setBroken(true)
     }
-  }, []) 
-
+  }, [broken]) 
 
 
   return(
     <section className="painting" id={props.painting.contentId}>
-    {broken === true && 
-      <section className="broken hidden">
-        broken
-      </section>}
-    {broken === false && 
-      <img 
+    {broken === true && <section tabindex="-1"></section>}
+    {broken === false &&  
+      <img
+      tabIndex="0" 
       src={props.painting.image} 
       alt={props.painting.title}
       name={props.painting.title} 

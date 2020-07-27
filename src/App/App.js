@@ -20,7 +20,7 @@ function App() {
   
 
   const getUserFavorites = async () => {
-    console.log('hi');
+
         const userFavs = await getFavorites()
         setFavorites({userFavs})
   }
@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     try {
       getUserFavorites()
-      console.log(favorites);
+
     } catch (error) {
       setError(error)
     }
@@ -52,7 +52,7 @@ function App() {
           </Link>
         </section>
       </section>
-      <section className="gallery">
+      <section className="gallery" aria-label="gallery">
         {/* <section className="background"></section> */}
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>

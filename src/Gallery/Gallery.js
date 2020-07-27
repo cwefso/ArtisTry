@@ -4,19 +4,22 @@ import {Link} from 'react-router-dom';
 import Painting from '../Painting/Painting';
 
 function Gallery (props) {
-  // const {paintings} = props
+
+  const shuffle = require('shuffle-array')
+
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
 
   const shuffleAndSlice = () => {
-    // const shuffled = props.paintings.sort(() => Math.random() - 0.5)
-    return props.paintings.slice(0, 100)
+    const shuffled = shuffle(props.paintings)
+    return shuffled.slice(0, 100)
   }
 
   const displayedPaintings = shuffleAndSlice().map(painting => {
     return (
       <Link
+        tabIndex="-1"
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
         aria-label='painting'
         data-testid={painting.contentId}
