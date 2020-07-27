@@ -8,12 +8,9 @@ import PropTypes from 'prop-types';
 function RandomArt(props) {
   const [reload, setReload] = useState(false)
   const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const {paintings, setUrl, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+  const {paintings, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
   const handleClick = () => {
-    window.location.reload(false)
-    // if(!loading){
-    //   setUrl(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
-    // }
+    window.location.reload()
   }
 
   return (

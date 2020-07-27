@@ -41,7 +41,7 @@ function App() {
           </Link>
         </section>
       </section>
-      <section className="gallery">
+      <section className="gallery" aria-label="gallery">
         <Gallery paintings={paintings} setSelected={setSelected} />
       </section>
     </main>
