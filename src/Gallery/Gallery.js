@@ -11,12 +11,12 @@ function Gallery (props) {
     props.setSelected(painting)
   }
 
-  const shuffleAndSlice = () => {
-    const shuffled = shuffle(props.paintings)
-    return shuffled.slice(0, 100)
-  }
+  // const shuffleAndSlice = () => {
+    // return shuffle(props.paintings)
+    // return shuffled.slice(0, 100)
+  // }
 
-  const displayedPaintings = shuffleAndSlice().map(painting => {
+  const displayedPaintings = props.paintings.map(painting => {
     return (
       <Link
         tabIndex="-1"

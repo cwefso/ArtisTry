@@ -19,6 +19,7 @@ function PainterInfo(props) {
   }
 
   const { paintings } = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
+  console.log(paintings)
 
   return (
     <section className="painter-page">
