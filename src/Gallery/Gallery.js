@@ -22,7 +22,7 @@ function Gallery (props) {
         style={{textDecoration: 'none'}}
         onClick={() => setSelectedPainting(painting)}
       >
-        <Painting painting={painting} key={painting.contentId} />
+        <Painting painting={painting} key={painting.contentId} data-testid='painting' />
       </Link>
     )
   })

@@ -1,6 +1,6 @@
   import React from 'react'
 import { Link } from 'react-router-dom'
-import usePaintings from '../Hooks/usePaintings';
+import usePaintings from  '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
 
@@ -17,6 +17,7 @@ function PainterInfo(props) {
   }
 
   const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
+  console.log(artistPaintings);
 
   return (
     <section className="painter-page">
