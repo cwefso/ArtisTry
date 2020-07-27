@@ -56,7 +56,7 @@ function PaintingInfo(props) {
 
   useEffect(() => {
     if(userFavs) {
-      const isPaintingAFav = userFavs.find(favorite => favorite.artistContentId === artistContentId)
+      const isPaintingAFav = userFavs.find(favorite => favorite.contentId === contentId)
       isPaintingAFav && setIsFavorite(true) 
     }
   }, []) 
