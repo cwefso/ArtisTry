@@ -1,16 +1,14 @@
 import React, {useState, useEffect} from 'react'
 import './Painting.css';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 function Painting (props) {
   const [broken, setBroken] = useState(false)
-
   const hideBrokenImages = () => {
     setBroken(true)
   }
-
   const restrictedUrl = props.painting.image.includes("FRAME")
-
+  
   useEffect(() => {
     if(restrictedUrl === true){
       setBroken(true)
@@ -35,3 +33,15 @@ function Painting (props) {
 }
 
 export default Painting;
+
+Painting.propTypes = { 
+    artistContentId: PropTypes.number,
+    artistName: PropTypes.string,
+    completitionYear: PropTypes.number,
+    contentId: PropTypes.number,
+    height: PropTypes.number,
+    image: PropTypes.string,
+    title: PropTypes.string,
+    width: PropTypes.number,
+    yearAsString: PropTypes.string
+}
