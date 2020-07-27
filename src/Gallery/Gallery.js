@@ -5,16 +5,9 @@ import Painting from '../Painting/Painting';
 
 function Gallery (props) {
 
-  const shuffle = require('shuffle-array')
-
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
-
-  // const shuffleAndSlice = () => {
-    // return shuffle(props.paintings)
-    // return shuffled.slice(0, 100)
-  // }
 
   const displayedPaintings = props.paintings.map(painting => {
     return (
