@@ -5,11 +5,9 @@ import Painting from '../Painting/Painting';
 import PropTypes from 'prop-types';
 
 function Gallery (props) {
-  // const {paintings} = props
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
-
   const shuffleAndSlice = () => {
     // const shuffled = props.paintings.sort(() => Math.random() - 0.5)
     return props.paintings.slice(0, 100)
@@ -37,7 +35,13 @@ function Gallery (props) {
               <section className="background parallax bg1">
               </section>  
               <section className="displayed-paintings static">
-                <h1 className='loading-paintings'>Loading Collection...</h1>
+                <section className="loading-container">
+                  <h1 className='loading-paintings'>Loading Collection</h1>
+                  <section class="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
+                </section>
+              </section>
+              <section className="loading-container">
+                <section class="loading-roll"><section></section><section></section><section></section><section></section><section></section><section></section><section></section><section></section></section>
               </section>
           </section>}
       {props.paintings.length > 0 && 
@@ -54,13 +58,7 @@ function Gallery (props) {
 
 export default Gallery;
 
-
 Gallery.propTypes = {
   paintings: PropTypes.array,
   setSelected: PropTypes.func
-  // id: PropTypes.number, 
-  // ratings: PropTypes.array, 
-  // handleMovie: PropTypes.func, 
-  // poster_path: PropTypes.string, 
-  // average_rating: PropTypes.number
 }
