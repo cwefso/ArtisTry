@@ -1,24 +1,30 @@
 import React from 'react'
 import PainterInfo from './PainterInfo'
-import { render, waitFor, fireEvent, screen } from '@testing-library/react';
-import { MemoryRouter, Router } from 'react-router-dom'
+import { render } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
-import { createMemoryHistory } from 'history';
+// import { createMemoryHistory } from 'history';
 
 describe('Painter Page', () => {
-  const artistName = "Leonardo Da Vinci"
-
-  it('should display all nav elements on load', () => {
-    const { getByAltText } = render(<MemoryRouter><PainterInfo info={artistName}/></MemoryRouter>);
-    const backButton = getByAltText("back-btn")
-    const saveButton = getByAltText("save-btn")
-    expect(backButton).toBeInTheDocument()
-    expect(saveButton).toBeInTheDocument()
-  })
-
-  it('should render a gallery', () => {
-    const { getByLabelText } = render(<MemoryRouter><PainterInfo artistName= {artistName}/></MemoryRouter>);
+  it('should render a gallery', async () => {
+    const { getByLabelText } = render(
+      <MemoryRouter>
+        <PainterInfo info={{artistName: "Leonardo Da Vinci" }} />
+      </MemoryRouter>
+    );
     const gallery = getByLabelText('gallery')
     expect(gallery).toBeInTheDocument()
+  })
+  
+  it('should display all nav elements on load', async () => {
+    const { getByRole, getByText } = render(
+      <MemoryRouter>
+        <PainterInfo info={{artistName: "Leonardo Da Vinci" }} />
+      </MemoryRouter>
+    );
+    const artistTitle = getByText('Leonardo Da Vinci')
+    const homeButton = getByRole("link", { getByText: "ArtistTry" })
+    expect(artistTitle).toBeInTheDocument()
+    expect(homeButton).toBeInTheDocument()
   })
 })

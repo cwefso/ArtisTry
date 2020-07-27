@@ -183,52 +183,16 @@
 }
 
 @media screen and (max-width: 440px) {
-
   .art {
     max-width: 90vw;
   }
-  .artist-btn {
-    font-size: 3vh;
-    min-width: 80%;
-  }
-  .summary {
-    font-size: 2vh;
-  }
-    .painting-data-container {
-      flex-direction: column;
-      align-items: center;
-      font-size: auto;
-    }
-    .painting-title {
-      font-size: 2.5vh;
-      align-items: right;
-    }
 
-    .details-container{
-      align-items: center;
-      font-size: auto;
-    }
-    .artwork-details {
-      text-align: center;
-    }
-  
-    .artwork{
-      max-width: 90vw;
-      max-height: 60vh;
-      height: auto;
-      min-width: 35vw;
-      min-height: 15vh;
-    }
-    .painting-box {
-      margin-top: 20%;
-      height: 50vh;
-      padding-left: 0;
-    }
-}
-
-@media screen and (max-width: 440px) {
+  .painting-page-title {
+    font-size: 5.3vw;
+  }
 
   .artist-btn {
+    /* padding-top: 7vh; */
     font-size: 3vh;
     min-width: 80%;
   }
@@ -237,6 +201,64 @@
   }
 
   .painting-data-container {
+    padding-top: 6vh;
+    flex-direction: column;
+    align-items: center;
+    font-size: auto;
+  }
+
+  .painting-title {
+    font-size: 2.5vh;
+    align-items: right;
+  }
+
+  .details-container{
+    align-items: center;
+    font-size: auto;
+  }
+
+  .artwork-details {
+    text-align: center;
+  }
+
+  .artwork{
+    max-width: 55vw;
+    height: 60vh;
+    /* max-width: 90vw;
+    max-height: 60vh;
+    height: auto;
+    min-width: 35vw;
+    min-height: 15vh; */
+  }
+
+  .painting-box {
+    margin-top: 20%;
+    height: 50vh;
+    padding-left: 0;
+  }
+
+  .save-btn {
+    width: 6.5vw;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .artist-btn {
+    /* padding-top: 7vh; */
+    font-size: 3vh;
+    min-width: 80%;
+  }
+
+  .summary {
+    font-size: 2vh;
+  }
+
+  .painting-page-title {
+    font-size: 5.3vw;
+  }
+
+  .painting-data-container {
+    padding-top: 6vh;
     flex-direction: column;
     align-items: center;
     font-size: auto;
@@ -257,11 +279,13 @@
   }
   
   .artwork{
-    max-width: 90vw;
+    max-width: 55vw;
+    height: 60vh;
+    /* max-width: 90vw;
     max-height: 60vh;
     height: auto;
     min-width: 35vw;
-    min-height: 15vh;
+    min-height: 15vh; */
   }
 
   .painting-box {
@@ -272,17 +296,24 @@
 }
 
 @media screen and (max-width: 760px) {
-
   .artist-btn {
+    width: 80vw;
+    /* padding-top: 7vh; */
     font-size: 3vh;
     min-width: 80%;
   }
 
+  .painting-page-title {
+    font-size: 5.3vw;
+  }
+
   .summary {
+    width: 82vw;
     font-size: 2vh;
   }
 
   .painting-data-container {
+    padding-top: 6vh;
     flex-direction: column;
     align-items: center;
     font-size: auto;
@@ -302,16 +333,24 @@
   }
   
   .artwork{
-    max-width: 90vw;
+    max-width: 92vw;
+    height: 35vh;
+    /* max-width: 55vw;
+    height: 60vh; */
+    /* max-width: 90vw;
     max-height: 60vh;
     height: auto;
     min-width: 35vw;
-    min-height: 15vh;
+    min-height: 15vh; */
   }
   .painting-box {
     margin-top: 20%;
     height: 50vh;
     padding-left: 0;
+  }
+
+  .save-btn {
+    width: 6.5vw;
   }
 }
 
