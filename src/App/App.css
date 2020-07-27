@@ -31,6 +31,7 @@
   align-items: center;
 }
 
+.random-button,
 .my-gallery-btn {
   margin-right: 4vw;
   width: 12vw;
@@ -42,36 +43,16 @@
   border-radius: 1vh;
   background-color: #ffff;
   opacity: .7;
-}
-
-.random-button {
-  margin-right: 4vw;
-  width: 12vw;
-  height: 6vh;
-  font-size: 1.5vw;
-  text-align: center;
-  font-family: 'Playfair Display', serif;
-  letter-spacing: .2vh;
-  border-radius: 1vh;
-  background-color: #ffff;
-  opacity: .7;
+  color: black;
 }
 
 .my-gallery-btn:hover,
 .my-gallery-btn:focus,
-.random-art-btn:hover,
-.random-art-btn:focus {
+.random-button:hover,
+.random-button:focus {
   cursor: pointer;
   opacity: .8;
   box-shadow: 0px 0px 1px 1px #9a9a9a;
   transform: scale(1.04);
   transition: transform .3s;
  }
-
- /* .background {
-  background-image: url('../assets/offwhite wallpaper.jpg');
-  height: 100vh;
-  width: 100vw;
-  z-index: -1;
-  position: absolute;
-} */

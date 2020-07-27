@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
-import backBtn from '../assets/back-btn.png'
-// import tagBtn from '../assets/tagIcon.png'
+import PropTypes from 'prop-types';
 
 function PainterInfo(props) {
   let url;
@@ -36,3 +35,13 @@ function PainterInfo(props) {
 }
 
 export default PainterInfo;
+
+PainterInfo.propTypes = {
+  artistName: PropTypes.string,
+  favorites: PropTypes.object || PropTypes.array,
+  history: PropTypes.object,
+  info: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  setSelected: PropTypes.func
+}
