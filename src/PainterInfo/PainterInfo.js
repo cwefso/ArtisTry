@@ -1,10 +1,8 @@
-import React from 'react'
+  import React from 'react'
 import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
-import backBtn from '../assets/back-btn.png'
-// import tagBtn from '../assets/tagIcon.png'
 
 function PainterInfo(props) {
   let url;
@@ -24,9 +22,9 @@ function PainterInfo(props) {
     <section className="painter-page">
       <section className="painter-nav">
         <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1 className="painting-page-title">ArtisTry</h1>
+          <h1 className="painting-page-title" data-testid='ArtisTry'>ArtisTry</h1>
         </Link>
-        <h1 className="artist-page-name">{artistName}</h1>
+        <h1 className="artist-page-name" data-testid={artistName}>{artistName}</h1>
       </section>
       <section aria-label="gallery">
         <Gallery paintings={artistPaintings} setSelected={props.setSelected}/>
