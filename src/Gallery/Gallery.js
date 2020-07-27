@@ -5,17 +5,15 @@ import Painting from '../Painting/Painting';
 import PropTypes from 'prop-types';
 
 function Gallery (props) {
+
   const setSelectedPainting = (painting) => {
     props.setSelected(painting)
   }
-  const shuffleAndSlice = () => {
-    // const shuffled = props.paintings.sort(() => Math.random() - 0.5)
-    return props.paintings.slice(0, 100)
-  }
 
-  const displayedPaintings = shuffleAndSlice().map(painting => {
+  const displayedPaintings = props.paintings.map(painting => {
     return (
       <Link
+        tabIndex="-1"
         to={ painting.title ? `/${painting.title}` : `/${painting.contentId}` }
         aria-label='painting'
         data-testid={painting.contentId}

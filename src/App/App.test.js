@@ -61,13 +61,23 @@ describe('App', () => {
   it('should display all nav elements on load', () => {
     const { getByText, getByPlaceholderText, getByRole } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>);
     const pageTitle = getByText('ArtisTry')
+    const galleryLink = getByRole('link', {name: 'My Gallery'}) 
+    const exploreLink = getByRole('link', {name: 'Explore'}) 
     expect(pageTitle).toBeInTheDocument()
+    expect(galleryLink).toBeInTheDocument()
+    expect(exploreLink).toBeInTheDocument()
   })
 
   it('should display loading fetch message', () => {
     const { getByText } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
     const loadingMessage = getByText('Loading Collection...')
     expect(loadingMessage).toBeInTheDocument()
+  })
+
+  it('should render a gallery component', async () => {
+    const { getByLabelText } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
+    const gallery = getByLabelText('gallery')
+    expect(gallery).toBeInTheDocument()
   })
 
   it.skip('should display all paintings once fetch is resolved', async () => {
@@ -100,6 +110,32 @@ describe('App', () => {
     const paintingButton = await waitFor(() => getByRole('img'))
     fireEvent.click(paintingButton)
     expect(testHistoryObject.location.pathname).toEqual(`/Just what is it that makes today's homes so different, so appealing`)
+  })
+
+  it('should change to the route path of /user-gallery when the My Gallery button is clicked', async () => {
+    const testHistoryObject = createMemoryHistory()
+    const { getByRole } = render(
+      <Router history={ testHistoryObject }>
+        <App paintings={paintings}/>
+      </Router>
+    )
+    expect(testHistoryObject.location.pathname).toEqual('/')
+    const galleryLink = getByRole('link', {name: 'My Gallery'})
+    fireEvent.click(galleryLink)
+    expect(testHistoryObject.location.pathname).toEqual(`/user-gallery`) 
+  })
+
+  it('should change to the route path of /random-art when the Explore button is clicked', async () => {
+    const testHistoryObject = createMemoryHistory()
+    const { getByRole } = render(
+      <Router history={ testHistoryObject }>
+        <App paintings={paintings}/>
+      </Router>
+    )
+    expect(testHistoryObject.location.pathname).toEqual('/')
+    const exploreLink = getByRole('link', {name: 'Explore'})
+    fireEvent.click(exploreLink)
+    expect(testHistoryObject.location.pathname).toEqual(`/random-art`) 
   })
 
   afterAll(() => {

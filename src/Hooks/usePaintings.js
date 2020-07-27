@@ -8,6 +8,8 @@ const usePaintings = (initialUrl) => {
   const [url, setUrl] = useState(initialUrl)
   const [loading, setLoading] =  useState(true)
   const [error, setError] = useState(false)
+  const shuffle = require('shuffle-array')
+
 
   useEffect(() => {
     setError(false)
@@ -20,7 +22,7 @@ const usePaintings = (initialUrl) => {
       })
         .then(res => res.json())
         .then(result => {
-          setPaintings(result)
+          setPaintings(shuffle(result))
           setLoading(false)
         })
         .catch(err => {
