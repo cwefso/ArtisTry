@@ -79,7 +79,7 @@ describe('App', () => {
 
   })
 
-  it.skip('should change path locations when a painting is clicked', async () => {
+  it('should change path locations when a painting is clicked', async () => {
     const testHistoryObject = createMemoryHistory()
     const { getByTestId, getByRole } = render(
       <Router history={ testHistoryObject }>
