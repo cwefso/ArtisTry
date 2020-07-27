@@ -16,8 +16,8 @@ function App() {
   const [error, setError] = useState('')
   const {paintings} = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
   const getUserFavorites = async () => {
-    const userFavs = await getFavorites()
-    setFavorites({userFavs})
+  const userFavs = await getFavorites()
+  setFavorites({userFavs})
   }
 
   useEffect(() => {

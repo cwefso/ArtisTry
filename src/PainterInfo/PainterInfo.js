@@ -6,6 +6,7 @@ import '../PaintingInfo/PaintingInfo.css'
 import PropTypes from 'prop-types';
 
 function PainterInfo(props) {
+  console.log(props);
   let url;
   const { artistName } = props.info;
 
