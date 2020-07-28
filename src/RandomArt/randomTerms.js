@@ -1,4 +1,9 @@
+// const test = [""]
+
+// const randomTerms = test
+
 const randomTerms = [ 
+  "pol",
   "hep", 
   "no", 
   "col", 
