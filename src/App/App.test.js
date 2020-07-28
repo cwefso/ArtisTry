@@ -2,10 +2,13 @@ import React from 'react';
 import { render, waitFor, fireEvent, screen } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
+import { act, renderHook } from '@testing-library/react-hooks'
 import App from './App';
 import { createMemoryHistory } from 'history';
 import { getPaintings } from '../apiCalls';
-jest.mock('../apiCalls.js')
+// import { usePaintings } from '../Hooks/usePaintings';
+// jest.mock('../apiCalls.js')
+// jest.mock('../Hooks/usePaintings.js')
 
 describe('App', () => {
   const originalError = console.error
@@ -20,7 +23,7 @@ describe('App', () => {
       if (/Warning.*not wrapped in act/.test(args[0])) {
         return
       }
-      originalError.call(console, ...args)
+      // originalError.call(console, ...args)
     }
   })
 
@@ -86,16 +89,21 @@ describe('App', () => {
     expect(gallery).toBeInTheDocument()
   })
 
-  it.skip('should display all paintings once fetch is resolved', async () => {
-    const fetchedPaintings = await getPaintings.mockResolvedValueOnce(paintings)
-    
-    await waitFor(() => {
-      const { getAllByRole, findAllByRole} = render(<MemoryRouter><App paintings={fetchedPaintings} /></MemoryRouter>)
-      const images = findAllByRole('img')
-      console.log(images);
-      expect(images).toHaveLength(3)
+  it.only('should display all paintings once fetch is resolved', async () => {
+    const usePaintings = jest.fn()
 
-    })
+    await act(async () => renderHook(() => usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')))
+
+    expect(usePaintings).toBeCalledWith('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
+    // usePaintings.mockResolvedValueOnce(paintings)
+    // const { getAllByRole, findAllByRole} = render(<MemoryRouter><App paintings={fetchedPaintings} /></MemoryRouter>)
+
+    // await waitFor(() => {
+      // const images = findAllByRole('img')
+      // console.log(images);
+      // expect(images).toHaveLength(3)
+
+    // })
   })
 
 
@@ -149,9 +157,10 @@ describe('App', () => {
   })
 
   it('should add a painting to the favorites when it is clicked', () => {
-    const {
-      getByAltText
-    } = render(paintingInfoElement)
+
+    const testHistoryObject = createMemoryHistory()
+    const { getByAltText } = render(
+      <Router history={ testHistoryObject }><App paintings={paintings}/></Router>)
     const favButton = getByAltText('save-btn')
     fireEvent.click(favButton)
 
