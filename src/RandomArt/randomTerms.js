@@ -73,4 +73,7 @@ const randomTerms = [
   'tech'
 ]
 
+// const test = "drag"
+// randomTerms = test
+
 export default randomTerms
