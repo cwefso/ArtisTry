@@ -34,7 +34,7 @@ function PaintingInfo(props) {
     const check = (data) => (data || 'none')
 
     fetch(
-      'http://localhost:3001/api/v1/favorites', {
+      'http://artistry-turing-app.herokuapp.com/api/v1/favorites', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -56,7 +56,7 @@ function PaintingInfo(props) {
   }
 
   const deleteFromFavs = (contentId) => {
-    fetch(`http://localhost:3001/api/v1/favorites/${contentId}`, {
+    fetch(`http://artistry-turing-app.herokuapp.com/api/v1/favorites/${contentId}`, {
       method: 'DELETE'
     })
   }
