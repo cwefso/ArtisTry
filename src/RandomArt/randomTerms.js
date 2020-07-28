@@ -60,4 +60,4 @@ const randomTerms = [
   "tech" 
 ];
 
-export default randomTerms
+export default randomTerms;

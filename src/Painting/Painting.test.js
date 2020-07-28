@@ -29,5 +29,4 @@ describe("Painting", () => {
     const img = getByRole("img")
     expect(img).toBeInTheDocument();
   })
-
 })

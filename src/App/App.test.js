@@ -93,7 +93,8 @@ describe('App', () => {
   })
 
 
-  it.skip('should change page if image gets clicked', async () => {
+  it("should direct user to painting info page on painting click", async () => {
+    
   })
 
   it.skip('should change path locations when a painting is clicked', async () => {

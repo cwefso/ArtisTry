@@ -8,7 +8,6 @@ import { getPaintings } from '../ApiCalls'
 jest.mock('../ApiCalls')
 import '@testing-library/jest-dom';
 
-
 describe('UserGallery', () => {
     let userGalleryElement1 = null
     let userGalleryElement2 = null

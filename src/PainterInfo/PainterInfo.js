@@ -3,10 +3,7 @@ import { Link } from 'react-router-dom'
 import usePaintings from  '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
-<<<<<<< HEAD
-=======
 import PropTypes from 'prop-types';
->>>>>>> master
 
 function PainterInfo(props) {
   console.log(props);
@@ -21,13 +18,7 @@ function PainterInfo(props) {
     }
   }
 
-<<<<<<< HEAD
-  const artistPaintings = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
-  console.log(artistPaintings);
-=======
   const { paintings } = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
-  console.log(paintings)
->>>>>>> master
 
   return (
     <section className="painter-page">
