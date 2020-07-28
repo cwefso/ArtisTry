@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import usePaintings from  '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
-import '../PaintingInfo/PaintingInfo.css'
+// import '../ArtistGallery/ArtistGallery.css'
 import PropTypes from 'prop-types';
 
 function ArtistGallery(props) {
