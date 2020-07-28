@@ -12,6 +12,7 @@ function PaintingInfo(props) {
   const {title, image, completitionYear, artistName, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
+  console.log(data, 'data in painting info')
   const [paintings, setPaintings] = useState([]);
   const [paintingDetails, setPaintingDetails] = useState({})
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn

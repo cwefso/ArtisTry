@@ -6,15 +6,15 @@ import '@testing-library/jest-dom';
 
 const paintings = [
   {
-  title: "Mona Lisa",
-  contentId: 225189,
-  artistContentId: 225091,
-  artistName: "Leonardo da Vinci",
-  competitionYear: 1519,
-  yearAsString: "1519",
-  width: 2835,
-  image: "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
-  height: 4289
+    title: "Mona Lisa",
+    contentId: 225189,
+    artistContentId: 225091,
+    artistName: "Leonardo da Vinci",
+    competitionYear: 1519,
+    yearAsString: "1519",
+    width: 2835,
+    image: "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+    height: 4289
   },
   {
     title: "The Starry Night",
@@ -43,15 +43,13 @@ const paintings = [
 describe('Gallery', () => {
 
   it('renders loading message', () => {
-    const { getByText } = render(<BrowserRouter><Gallery paintings= {[]}/></BrowserRouter>);
+    const { getByText } = render(<BrowserRouter><Gallery paintings={[]} /></BrowserRouter>);
     const loadingMessage = getByText("Loading Collection...");
     expect(loadingMessage).toBeInTheDocument();
   });
   
   it("should display paintings on load", () => {
-    const { getByRole } = render(
-      <BrowserRouter><Gallery paintings= {paintings}/></BrowserRouter>
-    );
+    const { getByRole } = render(<BrowserRouter><Gallery paintings={paintings} /></BrowserRouter>);
     const mona = getByRole('img', {name: "Mona Lisa"} );      
     const starry = getByRole('img', {name: "The Starry Night"} );
     const son = getByRole('img', {name: "The Son of Man"}); 
