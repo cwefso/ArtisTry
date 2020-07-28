@@ -68,7 +68,6 @@ function App() {
           )
         }}
       />
-
       <Route
         path="/user-gallery"
         render={() => (
@@ -77,12 +76,10 @@ function App() {
           </section>
         )}
       />
-
       <Route
         path="/random-art"
         render={() => <RandomArt info={selected} setSelected={setSelected} getUserFavorites={getUserFavorites} />}
       />
-
       <Route
         exact
         path="/:paintingTitle"
@@ -101,7 +98,6 @@ function App() {
           )
         }}
       />
-
       <Route exact path="/" render={() => mainPage} />
     </Switch>
   )

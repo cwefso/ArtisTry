@@ -1,13 +1,11 @@
 import { useState, useEffect } from 'react'
-
-// http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
-
 const usePaintings = (initialUrl) => {
   const [paintings, setPaintings] = useState([])
   const [url, setUrl] = useState(initialUrl)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const shuffle = require('shuffle-array')
+  // http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
 
   useEffect(() => {
     setError(false)

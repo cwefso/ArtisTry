@@ -6,7 +6,6 @@ import Gallery from '../Gallery/Gallery'
 import randomTerms from './randomTerms'
 
 function RandomArt(props) {
-  const [reload, setReload] = useState(false)
   const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
   const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
   const handleClick = () => {

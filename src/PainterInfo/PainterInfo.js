@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
 import usePaintings from '../Hooks/usePaintings'
 import Gallery from '../Gallery/Gallery'
 import '../PaintingInfo/PaintingInfo.css'
-import PropTypes from 'prop-types'
 
 function PainterInfo(props) {
   let url
@@ -25,10 +25,10 @@ function PainterInfo(props) {
         </Link>
         <h1 className="artist-page-name">{artistName}</h1>
         <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <button className="random-button">Explore</button>
+          <button type="button" className="random-button">Explore</button>
         </Link>
         <Link to="/user-gallery" style={{ textDecoration: 'none' }}>
-          <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
+          <button type="button" className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
         </Link>
       </section>
       <section aria-label="gallery">
