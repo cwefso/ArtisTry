@@ -1,5 +1,5 @@
 import React from 'react'
-import PainterInfo from './PainterInfo'
+import ArtistGallery from './ArtistGallery'
 import { render, waitFor, fireEvent, screen, within } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
@@ -11,7 +11,7 @@ describe('Painter Page', () => {
   const info = {artistName:"Leonardo Da Vinci"}
 
   it('should display all nav elements on load', () => {
-    const { getByTestId } = render(<MemoryRouter><PainterInfo info={info}/></MemoryRouter>);
+    const { getByTestId } = render(<MemoryRouter><ArtistGallery info={info}/></MemoryRouter>);
     const backButton = getByTestId('ArtisTry')
     const saveButton = getByTestId("Leonardo Da Vinci")
     expect(backButton).toBeInTheDocument()
@@ -63,7 +63,7 @@ describe('Painter Page', () => {
   //   ]
   // })
 
-      const { getByLabelText, getByAltText } = render(<MemoryRouter><PainterInfo info = {info}/></MemoryRouter>);
+      const { getByLabelText, getByAltText } = render(<MemoryRouter><ArtistGallery info = {info}/></MemoryRouter>);
 
       const gallery = getByLabelText('gallery')
       // const paintings = await waitFor(() => within(gallery).getByAltText(`The River Thames with St. Paul's Cathedral on Lord Mayor's Day`))

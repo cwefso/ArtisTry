@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
-import PainterInfo from '../PainterInfo/PainterInfo';
+import ArtistGallery from '../ArtistGallery/ArtistGallery';
 import UserGallery from '../UserGallery/UserGallery'
 import { Switch, Route, withRouter, Link } from 'react-router-dom';
 import './App.css';
@@ -52,7 +52,7 @@ function App() {
       <Route path="/artists-gallery" render={(routeProps) => {
         const { params } = routeProps.match;
         const { id } = params;
-        return <PainterInfo 
+        return <ArtistGallery 
           info={selected} 
           painterId={id} 
           artistName= {selected.artistName}
