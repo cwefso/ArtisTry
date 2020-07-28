@@ -19,7 +19,7 @@
 .painting-page-title:focus {
   cursor: pointer;
   opacity: .9;
-  transform: scale(1.03);
+  transform: scale(1.05);
   transition: transform .3s;
   border-radius: 50%;
 }
@@ -28,20 +28,19 @@
   font-family: 'Playfair Display', serif;
   font-size: 2.2vw;
   letter-spacing: .1vh;
-  padding-right: 10vh;
   max-width: 65vw;
   text-align: center;
 }
 
 .artist-name {
   margin: auto;
-  padding-right: 17vw;
   font-family: 'Playfair Display', serif;
   font-size: 2.2vw;
   letter-spacing: .1vh;
 }
 
 .artist-page-name {
+  padding-left: 10vh;
   margin: auto;
   font-family: 'Playfair Display', serif;
   font-size: 2.4vw;
@@ -49,9 +48,9 @@
 }
 
 .save-btn {
-  margin-right: 4vh;
-  width: 3.5vw;
-  opacity: .8;
+  margin-right: 7vh;
+  width: 3.4vw;
+  opacity: .9;
 }
 
 .save-btn:hover,
@@ -287,6 +286,10 @@
     font-size: 5.3vw;
   }
 
+  .artist-name {
+    font-size: 5.2vw;
+  }
+
   .artist-btn {
     width: 80vw;
     font-size: 3vh;
@@ -319,6 +322,7 @@
     align-items: center;
     font-size: auto;
   }
+
   .artwork-details {
     text-align: center;
   }
@@ -327,6 +331,7 @@
     max-width: 92vw;
     height: 35vh;
   }
+
   .painting-box {
     margin-top: 20%;
     height: 50vh;
@@ -335,6 +340,7 @@
 
   .save-btn {
     width: 6.5vw;
+    margin-right: 4vw;
   }
 
   .artist-page-name {

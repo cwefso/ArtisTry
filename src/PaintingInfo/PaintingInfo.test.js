@@ -1,26 +1,26 @@
 import React from 'react'
-import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
-import PaintingInfo from '../PaintingInfo/PaintingInfo'
+import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import PaintingInfo from './PaintingInfo'
 
 describe('PaintingInfo', () => {
-  let paintingInfoElement;
-  let painting;
-  let testHistoryObject;
+  let paintingInfoElement
+  let painting
+  let testHistoryObject
   beforeEach(() => {
     painting = {
-    title: 'Mona Lisa',
-    image: 'thing',
-    completitionYear: 1519,
-    artistName: 'Leonardo da Vinci',
-    artistId: 1,
-    artistUrl: 'url.Leo',
-    height: 1,
-    width: 1
+      title: 'Mona Lisa',
+      image: 'thing',
+      completitionYear: 1519,
+      artistName: 'Leonardo da Vinci',
+      artistId: 1,
+      artistUrl: 'url.Leo',
+      height: 1,
+      width: 1
     }
-    paintingInfoElement=(
-      <MemoryRouter history={ testHistoryObject }>
-        <PaintingInfo  paintingInfo={painting}  />
+    paintingInfoElement = (
+      <MemoryRouter history={testHistoryObject}>
+        <PaintingInfo paintingInfo={painting} />
       </MemoryRouter>
     )
   })
