@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 function PaintingInfo(props) {
   const [isFavorite, setIsFavorite] = useState(false)
-  const {title, image, completitionYear, artistName, contentId, artistContentId} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
   const [paintings, setPaintings] = useState([]);
@@ -17,7 +17,6 @@ function PaintingInfo(props) {
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
   const { style, description, technique, period, galleryName } = paintingSummary;
-  // const { style, description, technique, period, galleryName } = paintingDetails;
   
   const toggleFavs = () => {
     setIsFavorite(!isFavorite)
@@ -59,7 +58,7 @@ function PaintingInfo(props) {
       const isPaintingAFav = userFavs.find(favorite => favorite.contentId === contentId)
       isPaintingAFav && setIsFavorite(true) 
     }
-  }, []) 
+  }, [userFavs, contentId]) 
   
   const getPaintingDetails = () => {
     fetch('https://fe-cors-proxy.herokuapp.com', {
