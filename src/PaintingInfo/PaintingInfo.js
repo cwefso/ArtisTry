@@ -1,30 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import './PaintingInfo.css'
-import backBtn from '../assets/back-btn.png'
-import selectedTagBtn from '../assets/selectedTag.png'
-import unselectedTagBtn from '../assets/unselectedTag.png'
+import { Link } from 'react-router-dom';
+import './PaintingInfo.css';
+import selectedTagBtn from '../assets/selectedTag.png';
+import unselectedTagBtn from '../assets/unselectedTag.png';
 import usePaintingInfo from '../Hooks/usePaintingInfo';
-import { getFavorites } from '../apiCalls'
-import useArtistInfo from '../Hooks/useArtistInfo';
-import usePaintings from '../Hooks/usePaintings'
-// import tagBtn from '../assets/tagIcon.png'
-import usePaintingSummary from '../Hooks/usePaintingSummary'
-
+import usePaintingSummary from '../Hooks/usePaintingSummary';
+import PropTypes from 'prop-types';
 
 function PaintingInfo(props) {
-
   const [isFavorite, setIsFavorite] = useState(false)
-  const {title, image, completitionYear, artistName, contentId, artistContentId, artistUrl, height, width} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId, artistContentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
+  const [paintings, setPaintings] = useState([]);
   const [paintingDetails, setPaintingDetails] = useState({})
-  // const { style, description, technique, period, galleryName } = paintingDetails;
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
   const { style, description, technique, period, galleryName } = paintingSummary;
+  // const { style, description, technique, period, galleryName } = paintingDetails;
   
-
   const toggleFavs = () => {
     setIsFavorite(!isFavorite)
     isFavorite ? deleteFromFavs(contentId) : addToFavs() 
@@ -62,7 +56,7 @@ function PaintingInfo(props) {
 
   useEffect(() => {
     if(userFavs) {
-      const isPaintingAFav = userFavs.find(favorite => favorite.artistContentId === artistContentId)
+      const isPaintingAFav = userFavs.find(favorite => favorite.contentId === contentId)
       isPaintingAFav && setIsFavorite(true) 
     }
   }, []) 
@@ -78,11 +72,9 @@ function PaintingInfo(props) {
       .catch(err => console.log(err))
   }
 
-
   useEffect(() => {
     getPaintingDetails()
   }, [])
-
 
   return(
     <section className="painting-page">
@@ -96,9 +88,11 @@ function PaintingInfo(props) {
           </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
-        < img src = {tagBtn} alt='save-btn'
-        className = 'save-btn'
-        onClick = {toggleFavs}
+        < img 
+          src = {tagBtn} 
+          alt='save-btn'
+          className = 'save-btn'
+          onClick = {toggleFavs}
         />
       </section>
       <section className="painting-data-container">
@@ -133,3 +127,13 @@ function PaintingInfo(props) {
 }
 
 export default PaintingInfo;
+
+PaintingInfo.propTypes = {
+  favorites: PropTypes.object,
+  getUserFavorites: PropTypes.func,
+  history: PropTypes.object,
+  location: PropTypes.object,
+  match: PropTypes.object,
+  paintingInfo: PropTypes.object,
+  setSelected: PropTypes.func
+}

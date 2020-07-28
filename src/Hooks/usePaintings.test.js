@@ -64,3 +64,5 @@ describe('the usePaintings hook', () => {
       expect(result.current.paintings.length).toEqual(3)
   })
 });
+
+// refactor based on painting being destructured from usePaintings
