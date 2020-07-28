@@ -1,68 +1,81 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# ArtisTry
 
-## Available Scripts
+  This application is deployed on heroku: *HERE*
 
-In the project directory, you can run:
+  An application for budding art connoisseurs, to peruse and procure a personalized collection of paintings.
 
-### `npm start`
+This project was bootstrapped with Create React App and uses data retrieved from the [WikiArt API.](https://www.wikiart.org/en/App/GetApi)
+   
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Contributors:
+  - Carlos Alfredo Flores (GitHub: [carflor](https://github.com/carflor))
+  - Joe Haefling (GitHub: [Josephhaefling](https://github.com/Josephhaefling))
+  - Charles Wefso (GitHub: [CWefso](https://github.com/cwefso))
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Learning Goals
+  - Designing an application from scratch.
+  - Researching and effectively using a previously unknown technology.
+  - Building applications in React.
+  - Implementing React Hooks.
+  - Testing React with Jest and React Testing Library.
+  - Developing solid practices for project management.
+  - Using Router to manage URL states.
+  - Using Express to build a micro-service.
+  - Managing API fetch calls and writing endpoints in the microservice.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Server Install Instructions
 
-### `npm run build`
+  - Clone down the micro-service located here: [ArtisTry-backend] (https://github.com/Josephhaefling/ArtisTry-backend)
+  - Run ``` npm install```
+  - Run ``` node server.js ```
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Application Install Instruction
+  In a different directory than the server:
+  - Clone down this repo
+  - Run ``` npm install```
+  - Run ``` npm start```
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+  - Go to [localhost.3000](http://localhost:3000) in your browser.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Overview
+  The primary emphasis of this project was on researching and effectively implementing a technology to which we had not previously been exposed. Our "stretch technology" was React Hooks, which we were able to leverage to manage state and component lifecycle methods.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![Main Page](url)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  Upon loading the application, our enterprising enthusiasts will be greeted with an array of the most commonly sought-out artworks in our collection. 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+![Painting Details](url)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+ You must know more! If you need more information about a work of art simply click on the image and the information available about the art will be displayed. It's good stuff to know. Who knows who might need to impress?
 
-## Learn More
+ ![Artist Gallery](url)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+ You've suddenly discovered an artist of which you were not previously aware and barely evaded a social catastrophe. If you'd like to see more works of art by your new favorite artist that you can't shut up about, simply click on the artist's name on the painting details page.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Favorite Painting](url)
 
-### Code Splitting
+  If you love a painting, make sure to save it to your personal collection. Look at you! You're developing a sense of taste.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![My Gallery](url)
 
-### Analyzing the Bundle Size
+ If you would like to see your personal art collection, simply select the "My Gallery" button. Is there a particular work that you can't get out of your head? This is where you can come back to look at it over and over and over again until you go mad! 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+ ![Explore](url)
 
-### Making a Progressive Web App
+ So knowledgable about famous work of art that you're no fun at parties? Time to broaden your horizons. Use the "Explore" button to see a seemingly random selection of paintings.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
 
-### Advanced Configuration
+## Technologies Used
+  - React
+  - React Hooks
+  - Router
+  - React Testing Library / Jest
+  - Express
+  - JavaScript
+  - HTML/CSS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Systems/Practices
+  - git/Version Control
+  - ARIA
