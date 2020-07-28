@@ -1,15 +1,13 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react'
 
 // http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${artistURL}&json=2
 
 const usePaintings = (initialUrl) => {
-
-  const [paintings, setPaintings] = useState([]);
+  const [paintings, setPaintings] = useState([])
   const [url, setUrl] = useState(initialUrl)
-  const [loading, setLoading] =  useState(true)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const shuffle = require('shuffle-array')
-
 
   useEffect(() => {
     setError(false)
@@ -17,15 +15,15 @@ const usePaintings = (initialUrl) => {
     const loadPaintings = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {
         headers: {
-          "Target-URL": url
+          'Target-URL': url
         }
       })
-        .then(res => res.json())
-        .then(result => {
+        .then((res) => res.json())
+        .then((result) => {
           setPaintings(shuffle(result))
           setLoading(false)
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err.message)
           setLoading(false)
           setError(true)
@@ -33,9 +31,11 @@ const usePaintings = (initialUrl) => {
     }
 
     loadPaintings()
-  }, [url])
-  
-  return {paintings, setUrl, loading, error}
+  }, [shuffle, url])
+
+  return {
+    paintings, setUrl, loading, error
+  }
 }
 
-export default usePaintings;
+export default usePaintings

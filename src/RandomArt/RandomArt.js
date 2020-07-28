@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import usePaintings from '../Hooks/usePaintings';
-import Gallery from '../Gallery/Gallery';
-import randomTerms from './randomTerms';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import usePaintings from '../Hooks/usePaintings'
+import Gallery from '../Gallery/Gallery'
+import randomTerms from './randomTerms'
 
 function RandomArt(props) {
   const [reload, setReload] = useState(false)
   const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
-  const {paintings, loading, error} =  usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+  const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
   const handleClick = () => {
     window.location.reload()
   }
@@ -16,34 +16,34 @@ function RandomArt(props) {
   return (
     <section className="painter-page">
       <section className="painter-nav">
-        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <label htmlFor="home button"></label>
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <label htmlFor="home button" />
           <h1 aria-label="home button" className="painting-page-title">
             ArtisTry
           </h1>
         </Link>
         <section>
-          <button 
-            className={`random-button ${loading && "random-button--loading"}`}
-            style={{background: loading ? "#333333" : "#fff"}} 
+          <button
+            className={`random-button ${loading && 'random-button--loading'}`}
+            style={{ background: loading ? '#333333' : '#fff' }}
             onClick={handleClick}
           >
             Explore
           </button>
-          <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+          <Link to="/user-gallery" style={{ textDecoration: 'none' }}>
             <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
           </Link>
         </section>
       </section>
       <section aria-label="gallery">
-        {!error && <Gallery paintings={paintings} setSelected={props.setSelected}/>}
+        {!error && <Gallery paintings={paintings} setSelected={props.setSelected} />}
         {error && <p>WHAT DID YOU DO!?</p>}
       </section>
     </section>
   )
 }
 
-export default RandomArt;
+export default RandomArt
 
 RandomArt.propTypes = {
   info: PropTypes.object,

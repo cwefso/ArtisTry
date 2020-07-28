@@ -33,7 +33,7 @@ function UserGallery(props) {
   )
 }
 
-export default UserGallery;
+export default UserGallery
 
 UserGallery.propTypes = {
   favorites: PropTypes.object || PropTypes.array,

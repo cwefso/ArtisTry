@@ -1,46 +1,52 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import './PaintingInfo.css';
-import selectedTagBtn from '../assets/selectedTag.png';
-import unselectedTagBtn from '../assets/unselectedTag.png';
-import usePaintingInfo from '../Hooks/usePaintingInfo';
-import usePaintingSummary from '../Hooks/usePaintingSummary';
-import PropTypes from 'prop-types';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import './PaintingInfo.css'
+import PropTypes from 'prop-types'
+import selectedTagBtn from '../assets/selectedTag.png'
+import unselectedTagBtn from '../assets/unselectedTag.png'
+import usePaintingInfo from '../Hooks/usePaintingInfo'
+import usePaintingSummary from '../Hooks/usePaintingSummary'
 
 function PaintingInfo(props) {
   const [isFavorite, setIsFavorite] = useState(false)
-  const {title, image, completitionYear, artistName, contentId, artistContentId} = props.paintingInfo
-  const {userFavs} = props.favorites
+  const {
+    title, image, completitionYear, artistName, contentId, artistContentId
+  } = props.paintingInfo
+  const { userFavs } = props.favorites
   const data = usePaintingInfo(title, artistName)
-  const [paintings, setPaintings] = useState([]);
+  const [paintings, setPaintings] = useState([])
   const [paintingDetails, setPaintingDetails] = useState({})
-  let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
+  const tagBtn = isFavorite ? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
-  const { style, description, technique, period, galleryName } = paintingSummary;
+  const {
+    style, description, technique, period, galleryName
+  } = paintingSummary
   const toggleFavs = () => {
     setIsFavorite(!isFavorite)
-    isFavorite ? deleteFromFavs(contentId) : addToFavs() 
+    isFavorite ? deleteFromFavs(contentId) : addToFavs()
   }
 
   const addToFavs = () => {
-    const{title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height}=props.paintingInfo
+    const {
+      title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height
+    } = props.paintingInfo
     fetch(
-      "http://localhost:3001/api/v1/favorites", {
-        "method": "POST",
-        "headers": {
-          "content-type": "application/json"
+      'http://localhost:3001/api/v1/favorites', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json'
         },
-        "body": JSON.stringify({
-          'title': title,
-          'contentId': contentId,
-          'artistContentId': artistContentId,
-          'artistName': artistName,
-          'completitionYear': completitionYear,
-          'yearAsString': yearAsString,
-          'width': width,
-          'image': image,
-          'height': height,
-          'name': 'image'
+        body: JSON.stringify({
+          title,
+          contentId,
+          artistContentId,
+          artistName,
+          completitionYear,
+          yearAsString,
+          width,
+          image,
+          height,
+          name: 'image'
         })
       }
     )
@@ -53,78 +59,109 @@ function PaintingInfo(props) {
   }
 
   useEffect(() => {
-    if(userFavs) {
-      const isPaintingAFav = userFavs.find(favorite => favorite.contentId === contentId)
-      isPaintingAFav && setIsFavorite(true) 
+    if (userFavs) {
+      const isPaintingAFav = userFavs.find((favorite) => favorite.contentId === contentId)
+      isPaintingAFav && setIsFavorite(true)
     }
-  }, []) 
-  
+  }, [contentId, userFavs])
+
   const getPaintingDetails = () => {
     fetch('https://fe-cors-proxy.herokuapp.com', {
       headers: {
-        "Target-URL": `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
+        'Target-URL': `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
       }
     })
-      .then(res => res.json())
-      .then(res => setPaintingDetails(res))
-      .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((res) => setPaintingDetails(res))
+      .catch((err) => console.log(err))
   }
 
   useEffect(() => {
     getPaintingDetails()
-  }, [])
+  }, [getPaintingDetails])
 
-  return(
+  return (
     <section className="painting-page">
       <section className="painting-nav">
-        <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <label htmlFor="home button"></label>
-          <h1 
+        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <label htmlFor="home button" />
+          <h1
             aria-label="home button"
-            className="painting-page-title">
+            className="painting-page-title"
+          >
             ArtisTry
           </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
-        <img 
-          src = {tagBtn} 
-          alt='save-btn'
-          className = 'save-btn'
-          onClick = {toggleFavs}
+        <img
+          src={tagBtn}
+          alt="save-btn"
+          className="save-btn"
+          onClick={toggleFavs}
         />
       </section>
       <section className="painting-data-container">
         <section className="painting-box">
-          <img 
+          <img
             className="artwork"
-            src={image} 
-            alt={title}   
+            src={image}
+            alt={title}
           />
-          <p className="completion-year">Year Completed: {completitionYear}</p>
+          <p className="completion-year">
+            Year Completed:
+            {completitionYear}
+          </p>
         </section>
         <section className="details-container">
           <Link
-            to={`/artists-gallery`}
-            aria-label='artist-gallery'
+            to="/artists-gallery"
+            aria-label="artist-gallery"
             key={data.artistId}
-            style={{textDecoration: 'none'}}
+            style={{ textDecoration: 'none' }}
           >
-            <p className='artist-btn'>{artistName}</p>
+            <p className="artist-btn">{artistName}</p>
           </Link>
-          {style ? (<section className="artwork-details">
-            {style && <><p className="detail-title">Movement</p><p>{style}</p></>}
-            {description && <><p className="detail-title">Description</p><p className="summary">{description}</p></>}
-            {technique && <><p className="detail-title">Technique</p><p>{technique}</p></>}
-            {period && <><p className="detail-title">Period</p><p>{period}</p></>}
-            {galleryName && <><p className="detail-title-location">Location</p><p className="detail-location">{galleryName}</p></>}
-          </section>) : <p className='loading-details-message'>Loading Painting Details...</p>}
+          {style ? (
+            <section className="artwork-details">
+              {style && (
+              <>
+                <p className="detail-title">Movement</p>
+                <p>{style}</p>
+              </>
+              )}
+              {description && (
+              <>
+                <p className="detail-title">Description</p>
+                <p className="summary">{description}</p>
+              </>
+              )}
+              {technique && (
+              <>
+                <p className="detail-title">Technique</p>
+                <p>{technique}</p>
+              </>
+              )}
+              {period && (
+              <>
+                <p className="detail-title">Period</p>
+                <p>{period}</p>
+              </>
+              )}
+              {galleryName && (
+              <>
+                <p className="detail-title-location">Location</p>
+                <p className="detail-location">{galleryName}</p>
+              </>
+              )}
+            </section>
+          ) : <p className="loading-details-message">Loading Painting Details...</p>}
         </section>
       </section>
     </section>
   )
 }
 
-export default PaintingInfo;
+export default PaintingInfo
 
 PaintingInfo.propTypes = {
   favorites: PropTypes.object,

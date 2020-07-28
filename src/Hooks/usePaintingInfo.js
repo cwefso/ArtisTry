@@ -7,7 +7,7 @@ const usePaintingInfo = (title, artistName) => {
     const loadPaintingInfo = () => {
       fetch('https://fe-cors-proxy.herokuapp.com', {
         headers: {
-          "Target-URL": `https://www.wikiart.org/en/api/2/PaintingSearch?term=[${artistName} ${title}]`
+          'Target-URL': `https://www.wikiart.org/en/api/2/PaintingSearch?term=[${artistName} ${title}]`
         }
       })
         .then((res) => res.json())
