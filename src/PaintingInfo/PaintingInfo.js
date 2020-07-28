@@ -101,10 +101,10 @@ function PaintingInfo(props) {
         </section>
         <section className="details-container">
           <Link
-            to="/artists-gallery"
-            aria-label="artist-gallery"
-            key={data.artistId}
-            style={{ textDecoration: 'none' }}
+            to={`/artists-gallery`}
+            aria-label='artist-gallery'
+            key={ Date.now() }
+            style={{textDecoration: 'none'}}
           >
             <p className="artist-btn">{artistName}</p>
           </Link>
