@@ -21,6 +21,9 @@ function UserGallery (props) {
             </h1>
           </Link>
           <h1 className="artist-name">My Gallery</h1>
+          <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <button className="random-button">Explore</button>
+          </Link>
       </section>
       <section>
         {userFavs.length > 0 && <Gallery paintings={userFavs} setSelected={setSelected} /> }

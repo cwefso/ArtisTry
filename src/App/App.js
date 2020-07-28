@@ -3,12 +3,12 @@ import './App.css';
 import Gallery from '../Gallery/Gallery';
 import PaintingInfo from '../PaintingInfo/PaintingInfo';
 import PainterInfo from '../PainterInfo/PainterInfo';
-import UserGallery from '../UserGallery/UserGallery'
+import UserGallery from '../UserGallery/UserGallery';
 import { Switch, Route, withRouter, Link } from 'react-router-dom';
 import './App.css';
-import RandomArt from '../RandomArt/RandomArt'
+import RandomArt from '../RandomArt/RandomArt';
 import usePaintings from '../Hooks/usePaintings';
-import { getFavorites } from '../apiCalls'
+import { getFavorites } from '../apiCalls';
 
 function App() {
   const [selected, setSelected] = useState({})
@@ -16,8 +16,8 @@ function App() {
   const [error, setError] = useState('')
   const {paintings} = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings');
   const getUserFavorites = async () => {
-  const userFavs = await getFavorites()
-  setFavorites({userFavs})
+    const userFavs = await getFavorites()
+    setFavorites({userFavs})
   }
 
   useEffect(() => {
@@ -58,6 +58,7 @@ function App() {
           painterId={id} 
           artistName= {selected.artistName}
           favorites={favorites}
+          getUserFavorites={getUserFavorites}
           setSelected={setSelected}
           />
       }} />

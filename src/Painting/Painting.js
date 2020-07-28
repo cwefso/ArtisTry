@@ -15,10 +15,9 @@ function Painting (props) {
     }
   }, [broken]) 
 
-
   return(
     <section className="painting" id={props.painting.contentId}>
-    {broken === true && <section tabindex="-1"></section>}
+    {broken === true && <section tabIndex="-1"></section>}
     {broken === false &&  
       <img
       tabIndex="0" 

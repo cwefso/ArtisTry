@@ -9,7 +9,6 @@ function PainterInfo(props) {
   console.log(props, 'props in painter page');
   let url;
   const { artistName } = props.info;
-
   if(artistName !== undefined){
     if(artistName.includes('.')) {
       url = artistName.replace(/\s/g, '').replace(/\./g, '-').toLowerCase()
@@ -17,9 +16,7 @@ function PainterInfo(props) {
       url = artistName.replace(/\s+/g, '-').replace(/\./g, '-').toLowerCase()
     }
   }
-
   const { paintings } = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
-  console.log(paintings)
 
   return (
     <section className="painter-page">
@@ -28,6 +25,9 @@ function PainterInfo(props) {
           <h1 className="painting-page-title">ArtisTry</h1>
         </Link>
         <h1 className="artist-page-name">{artistName}</h1>
+        <Link to="/random-art" style={{ textDecoration: 'none', color: 'inherit' }}>
+          <button className="random-button">Explore</button>
+        </Link>
         <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
           <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
         </Link>
@@ -48,5 +48,6 @@ PainterInfo.propTypes = {
   info: PropTypes.object,
   location: PropTypes.object,
   match: PropTypes.object,
-  setSelected: PropTypes.func
+  setSelected: PropTypes.func,
+  getUserFavorites: PropTypes.func
 }
