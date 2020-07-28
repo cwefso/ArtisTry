@@ -1,4 +1,15 @@
 const randomTerms = [
+  'goat',
+  'hat',
+  'dragon',
+  'imagination',
+  'future',
+  'cube',
+  'leaf',
+  'day',
+  'open',
+  'butterfly',
+  'fish',
   'hep',
   'no',
   'col',
@@ -57,6 +68,8 @@ const randomTerms = [
   'jef',
   'new',
   'old',
+  'human',
+  'beach',
   'tech'
 ]
 
