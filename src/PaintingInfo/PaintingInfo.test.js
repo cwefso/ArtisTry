@@ -36,4 +36,3 @@ describe('PaintingInfo', () => {
     expect(completionYear).toBeInTheDocument()
   })
 })
-

@@ -1,26 +1,23 @@
   
 import { renderHook } from '@testing-library/react-hooks';
 import usePaintingSummary from './usePaintingSummary';
-// import TestRenderer from 'react-test-renderer';
 
-
-describe('the usePaintingSummary hook', () => {
+describe('the usePaintingInfo hook', () => {
   beforeAll(() => {
     jest.spyOn(global, 'fetch').mockImplementation(() => Promise.resolve({
       json: () => Promise.resolve({
-        paintingSummary: [
+        paintingInfo: [
           {
-           artistUrl: "edward-hopper",
-           url: "morning-sun",
-           location: null,
-           period: null,
-           genre: "genre painting",
-           style: "New Realism",
-           technique: null,
-           galleryName: "Columbus Museum of Art",
-           title: "Morning Sun",
-           artistName: "Hopper Edward",
-           completionYear: 1952
+            artistId: "57726d85edc2cb3880b48ccd",
+            artistName: "Leonardo da Vinci",
+            artistUrl: "leonardo-da-vinci",
+            completitionYear: 1519,
+            height: 600,
+            id: "57727444edc2cb3880cb7bf6",
+            image: "https://uploads7.wikiart.org/images/leonardo-da-vinci/mona-lisa.jpg!Large.jpg",
+            title: "Mona Lisa",
+            url: null,
+            width: 397
           }
         ]
       })
@@ -40,6 +37,6 @@ describe('the usePaintingSummary hook', () => {
     const { result, waitForNextUpdate } = renderHook(() => usePaintingSummary());
     await waitForNextUpdate();
     expect(fetch).toHaveBeenCalledTimes(1);
-    expect(result.current.paintingSummary.length).toEqual(1)
+    expect(result.current.paintingInfo.length).toEqual(1)
   })
 });

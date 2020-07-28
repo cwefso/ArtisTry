@@ -68,5 +68,4 @@ describe('Explore Page', () => {
     const gallery = getByLabelText('gallery')
     expect(gallery).toBeInTheDocument()
   })
-
 })
