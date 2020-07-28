@@ -6,7 +6,7 @@ import '../PaintingInfo/PaintingInfo.css'
 import PropTypes from 'prop-types';
 
 function PainterInfo(props) {
-  console.log(props);
+  console.log(props, 'props in painter page');
   let url;
   const { artistName } = props.info;
 
@@ -28,6 +28,9 @@ function PainterInfo(props) {
           <h1 className="painting-page-title">ArtisTry</h1>
         </Link>
         <h1 className="artist-page-name">{artistName}</h1>
+        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+          <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
+        </Link>
       </section>
       <section aria-label="gallery">
         <Gallery paintings={paintings} setSelected={props.setSelected}/>

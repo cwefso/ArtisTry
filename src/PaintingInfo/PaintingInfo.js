@@ -89,7 +89,7 @@ function PaintingInfo(props) {
           </h1>
         </Link>
         <h1 className="painting-title">{title}</h1>
-        < img 
+        <img 
           src = {tagBtn} 
           alt='save-btn'
           className = 'save-btn'
