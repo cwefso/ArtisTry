@@ -30,6 +30,9 @@ function PaintingInfo(props) {
     const {
       title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height
     } = props.paintingInfo
+
+    const check = (data) => (data || 'none')
+
     fetch(
       'http://localhost:3001/api/v1/favorites', {
         method: 'POST',
@@ -37,15 +40,15 @@ function PaintingInfo(props) {
           'content-type': 'application/json'
         },
         body: JSON.stringify({
-          title,
-          contentId,
-          artistContentId,
-          artistName,
-          completitionYear,
-          yearAsString,
-          width,
-          image,
-          height,
+          title: check(title),
+          contentId: check(contentId),
+          artistContentId: check(artistContentId),
+          artistName: check(artistName),
+          completitionYear: check(completitionYear),
+          yearAsString: check(yearAsString),
+          width: check(width),
+          image: check(image),
+          height: check(height),
           name: 'image'
         })
       }
@@ -64,21 +67,6 @@ function PaintingInfo(props) {
       isPaintingAFav && setIsFavorite(true)
     }
   }, [contentId, userFavs])
-
-  const getPaintingDetails = () => {
-    fetch('https://fe-cors-proxy.herokuapp.com', {
-      headers: {
-        'Target-URL': `http://www.wikiart.org/en/App/Painting/ImageJson/${contentId}`
-      }
-    })
-      .then((res) => res.json())
-      .then((res) => setPaintingDetails(res))
-      .catch((err) => console.log(err))
-  }
-
-  useEffect(() => {
-    getPaintingDetails()
-  }, [getPaintingDetails])
 
   return (
     <section className="painting-page">

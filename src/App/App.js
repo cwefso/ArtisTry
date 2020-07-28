@@ -5,7 +5,7 @@ import {
 } from 'react-router-dom'
 import Gallery from '../Gallery/Gallery'
 import PaintingInfo from '../PaintingInfo/PaintingInfo'
-import PainterInfo from '../PainterInfo/PainterInfo'
+import ArtistGallery from '../ArtistGallery/ArtistGallery';
 import UserGallery from '../UserGallery/UserGallery'
 import RandomArt from '../RandomArt/RandomArt'
 import usePaintings from '../Hooks/usePaintings'
@@ -56,14 +56,13 @@ function App() {
           const { params } = routeProps.match
           const { id } = params
           return (
-            <PainterInfo
-              {...routeProps}
+            <ArtistGallery
               info={selected}
               painterId={id}
-              artistName={selected.artistName}
+              artistName= {selected.artistName}
               favorites={favorites}
-              getUserFavorites={getUserFavorites}
               setSelected={setSelected}
+              getUserFavorites={getUserFavorites}
             />
           )
         }}
@@ -71,9 +70,10 @@ function App() {
       <Route
         path="/user-gallery"
         render={() => (
-          <section>
-            <UserGallery favorites={favorites} setSelected={setSelected} />
-          </section>
+          <UserGallery
+            favorites={favorites}
+            setSelected={setSelected}
+          />
         )}
       />
       <Route
