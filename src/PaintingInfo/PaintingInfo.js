@@ -8,11 +8,11 @@ import usePaintingSummary from '../Hooks/usePaintingSummary';
 import PropTypes from 'prop-types';
 
 function PaintingInfo(props) {
+  console.log(props);
   const [isFavorite, setIsFavorite] = useState(false)
   const {title, image, completitionYear, artistName, contentId, artistContentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
-  console.log(data, 'data in painting info')
   const [paintings, setPaintings] = useState([]);
   const [paintingDetails, setPaintingDetails] = useState({})
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn

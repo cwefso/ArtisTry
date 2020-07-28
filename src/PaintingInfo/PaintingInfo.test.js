@@ -3,24 +3,33 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import PaintingInfo from '../PaintingInfo/PaintingInfo'
 
+
 describe('PaintingInfo', () => {
   let paintingInfoElement;
   let painting;
+  let favorites;
   let testHistoryObject;
+  
   beforeEach(() => {
+    
     painting = {
-    title: 'Mona Lisa',
-    image: 'thing',
-    completitionYear: 1519,
-    artistName: 'Leonardo da Vinci',
-    artistId: 1,
-    artistUrl: 'url.Leo',
-    height: 1,
-    width: 1
+      "title": "The River Thames with St. Paul's Cathedral on Lord Mayor's Day",
+      "contentId": 250550,
+      "artistContentId": 250406,
+      "artistName": "Canaletto",
+      "completitionYear": 1746,
+      "yearAsString": "1746",
+      "width": 1296,
+      "image": "https://uploads6.wikiart.org/images/canaletto/the-river-thames-with-st-paul-s-cathedral-on-lord-mayor-s-day.jpg!Large.jpg",
+      "height": 676,
+      "name": 'image',
+      "testId": 42
     }
+    favorites = {userFavs: []}
+
     paintingInfoElement=(
       <MemoryRouter history={ testHistoryObject }>
-        <PaintingInfo  paintingInfo={painting}  />
+        <PaintingInfo  selected={painting} paintingId={painting.title} favorites={favorites} paintingInfo={painting}  />
       </MemoryRouter>
     )
   })
@@ -35,4 +44,6 @@ describe('PaintingInfo', () => {
     expect(artistName).toBeInTheDocument()
     expect(completionYear).toBeInTheDocument()
   })
+
+  
 })

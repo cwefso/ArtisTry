@@ -9,7 +9,13 @@ jest.mock('../apiCalls.js')
 
 describe('App', () => {
   const originalError = console.error
+  let toggleFavs
+  let addToFavs
+  let deleteFromFavs
   beforeAll(() => {
+    toggleFavs = jest.fn().mockImplementation(() => {})
+    addToFavs = jest.fn().mockImplementation(() => {})
+    deleteFromFavs = jest.fn().mockImplementation(() => {})
     console.error = (...args) => {
       if (/Warning.*not wrapped in act/.test(args[0])) {
         return
@@ -140,5 +146,15 @@ describe('App', () => {
 
   afterAll(() => {
     console.error = originalError
+  })
+
+  it('should add a painting to the favorites when it is clicked', () => {
+    const {
+      getByAltText
+    } = render(paintingInfoElement)
+    const favButton = getByAltText('save-btn')
+    fireEvent.click(favButton)
+
+    expect(toggleFavs).toBeCalledTimes(1)
   })
 })
