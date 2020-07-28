@@ -10,7 +10,7 @@ import usePaintingSummary from '../Hooks/usePaintingSummary'
 function PaintingInfo(props) {
   const [isFavorite, setIsFavorite] = useState(false)
   const {
-    title, image, completitionYear, artistName, contentId, artistContentId
+    title, image, completitionYear, artistName, contentId
   } = props.paintingInfo
   const { userFavs } = props.favorites
   const data = usePaintingInfo(title, artistName)
@@ -84,7 +84,6 @@ function PaintingInfo(props) {
     <section className="painting-page">
       <section className="painting-nav">
         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <label htmlFor="home button" />
           <h1
             aria-label="home button"
             className="painting-page-title"

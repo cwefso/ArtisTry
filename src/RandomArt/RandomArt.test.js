@@ -1,11 +1,8 @@
 import React from 'react'
-import RandomArt from './RandomArt'
-import {
-  render, waitFor, fireEvent, screen
-} from '@testing-library/react'
-import { MemoryRouter, Router } from 'react-router-dom'
+import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
-import { createMemoryHistory } from 'history'
+import RandomArt from './RandomArt'
 
 const paintings = [
   {
