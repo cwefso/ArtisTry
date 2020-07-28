@@ -26,6 +26,9 @@ function PaintingInfo(props) {
 
   const addToFavs = () => {
     const{title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height}=props.paintingInfo
+    
+    const check = (data) => data ? data : "none";
+
     fetch(
       "http://localhost:3001/api/v1/favorites", {
         "method": "POST",
@@ -33,15 +36,15 @@ function PaintingInfo(props) {
           "content-type": "application/json"
         },
         "body": JSON.stringify({
-          'title': title,
-          'contentId': contentId,
-          'artistContentId': artistContentId,
-          'artistName': artistName,
-          'completitionYear': completitionYear,
-          'yearAsString': yearAsString,
-          'width': width,
-          'image': image,
-          'height': height,
+          'title': check(title),
+          'contentId': check(contentId),
+          'artistContentId': check(artistContentId),
+          'artistName': check(artistName),
+          'completitionYear': check(completitionYear),
+          'yearAsString': check(yearAsString),
+          'width': check(width),
+          'image': check(image),
+          'height': check(height),
           'name': 'image'
         })
       }

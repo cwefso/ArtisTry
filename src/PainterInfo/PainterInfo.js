@@ -27,6 +27,9 @@ function PainterInfo(props) {
           <h1 className="painting-page-title" data-testid='ArtisTry'>ArtisTry</h1>
         </Link>
         <h1 className="artist-page-name" data-testid={artistName}>{artistName}</h1>
+        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+            <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
+        </Link>
       </section>
       <section aria-label="gallery">
         <Gallery paintings={paintings} setSelected={props.setSelected}/>
