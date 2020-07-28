@@ -1,4 +1,5 @@
-const randomTerms = [ 
+let randomTerms = [ 
+  "pol",
   "hep", 
   "no", 
   "col", 
@@ -57,7 +58,14 @@ const randomTerms = [
   "jef", 
   "new", 
   "old",
-  "tech" 
+  "tech",
+  "com",
+  "egypt",
+  "aztec" 
 ];
+
+// const test = ["egypt"]
+
+// randomTerms = test
 
 export default randomTerms;

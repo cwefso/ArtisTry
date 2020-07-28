@@ -53,7 +53,6 @@ function App() {
         const { params } = routeProps.match;
         const { id } = params;
         return <PainterInfo 
-          {...routeProps} 
           info={selected} 
           painterId={id} 
           artistName= {selected.artistName}
@@ -78,7 +77,6 @@ function App() {
         const { params } = routeProps.match;
         const { id } = params;
         return <PaintingInfo 
-                  {...routeProps}
                   paintingInfo={selected} 
                   setSelected={setSelected} 
                   paintingId={id} 

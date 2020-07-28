@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 function PaintingInfo(props) {
   console.log(props);
   const [isFavorite, setIsFavorite] = useState(false)
-  const {title, image, completitionYear, artistName, contentId, artistContentId} = props.paintingInfo
+  const {title, image, completitionYear, artistName, contentId} = props.paintingInfo
   const {userFavs} = props.favorites
   const data = usePaintingInfo(title, artistName)
   const [paintings, setPaintings] = useState([]);
@@ -18,7 +18,6 @@ function PaintingInfo(props) {
   let tagBtn = isFavorite? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
   const { style, description, technique, period, galleryName } = paintingSummary;
-  // const { style, description, technique, period, galleryName } = paintingDetails;
   
   const toggleFavs = () => {
     setIsFavorite(!isFavorite)
@@ -27,6 +26,9 @@ function PaintingInfo(props) {
 
   const addToFavs = () => {
     const{title, contentId, artistContentId, artistName, completitionYear, yearAsString, width, image, height}=props.paintingInfo
+    
+    const check = (data) => data ? data : "none";
+
     fetch(
       "http://localhost:3001/api/v1/favorites", {
         "method": "POST",
@@ -34,15 +36,15 @@ function PaintingInfo(props) {
           "content-type": "application/json"
         },
         "body": JSON.stringify({
-          'title': title,
-          'contentId': contentId,
-          'artistContentId': artistContentId,
-          'artistName': artistName,
-          'completitionYear': completitionYear,
-          'yearAsString': yearAsString,
-          'width': width,
-          'image': image,
-          'height': height,
+          'title': check(title),
+          'contentId': check(contentId),
+          'artistContentId': check(artistContentId),
+          'artistName': check(artistName),
+          'completitionYear': check(completitionYear),
+          'yearAsString': check(yearAsString),
+          'width': check(width),
+          'image': check(image),
+          'height': check(height),
           'name': 'image'
         })
       }
@@ -60,7 +62,7 @@ function PaintingInfo(props) {
       const isPaintingAFav = userFavs.find(favorite => favorite.contentId === contentId)
       isPaintingAFav && setIsFavorite(true) 
     }
-  }, []) 
+  }, [userFavs, contentId]) 
   
   const getPaintingDetails = () => {
     fetch('https://fe-cors-proxy.herokuapp.com', {

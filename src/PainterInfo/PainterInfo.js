@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import usePaintings from '../Hooks/usePaintings';
+import usePaintings from  '../Hooks/usePaintings';
 import Gallery from '../Gallery/Gallery';
 import '../PaintingInfo/PaintingInfo.css'
 import PropTypes from 'prop-types';
@@ -19,15 +19,17 @@ function PainterInfo(props) {
   }
 
   const { paintings } = usePaintings(`http://www.wikiart.org/en/App/Painting/PaintingsByArtist?artistUrl=${url}&json=2`);
-  console.log(paintings)
 
   return (
     <section className="painter-page">
       <section className="painter-nav">
         <Link to={"/"} style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1 className="painting-page-title">ArtisTry</h1>
+          <h1 className="painting-page-title" data-testid='ArtisTry'>ArtisTry</h1>
         </Link>
-        <h1 className="artist-page-name">{artistName}</h1>
+        <h1 className="artist-page-name" data-testid={artistName}>{artistName}</h1>
+        <Link to={"/user-gallery"} style={{ textDecoration: 'none' }}>
+            <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
+        </Link>
       </section>
       <section aria-label="gallery">
         <Gallery paintings={paintings} setSelected={props.setSelected}/>
