@@ -32,7 +32,7 @@ This project was bootstrapped with Create React App and uses data retrieved from
   The primary emphasis of this project was on researching and effectively implementing a technology to which we had not previously been exposed. Our "stretch technology" was React Hooks, which we were able to leverage to manage state and component lifecycle methods.
 
 
-Main Page : https://i.gyazo.com/ae75eb71f2d595cb675d374ad7b3f538.gif
+[Main Page](https://i.gyazo.com/ae75eb71f2d595cb675d374ad7b3f538.gif)
 
   Upon loading the application, our enterprising enthusiasts will be greeted with an array of the most commonly sought-out artworks in our collection. 
 
