@@ -1,6 +1,5 @@
-import { renderHook } from '@testing-library/react-hooks'
-import usePaintings from './usePaintings'
-// import TestRenderer from 'react-test-renderer';
+import {renderHook} from '@testing-library/react-hooks';
+import usePaintings from './usePaintings';
 
 describe('the usePaintings hook', () => {
   beforeAll(() => {
@@ -55,12 +54,9 @@ describe('the usePaintings hook', () => {
   })
 
   it('should make the api call to fetch the default value and set it in the state', async () => {
-    const { result, waitForNextUpdate } = renderHook(() => usePaintings())
-    await waitForNextUpdate()
-    expect(fetch).toHaveBeenCalledTimes(1)
-    console.log(result)
-    expect(result.current.paintings.length).toEqual(3)
+      const { result, waitForNextUpdate } = renderHook(() => usePaintings());
+      await waitForNextUpdate();
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(result.current.paintings.length).toEqual(0)
   })
-})
-
-// refactor based on painting being destructured from usePaintings
+});

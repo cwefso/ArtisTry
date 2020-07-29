@@ -42,18 +42,18 @@ const paintings = [
 
 describe('Gallery', () => {
   it('renders loading message', () => {
-    const { getByText } = render(<BrowserRouter><Gallery paintings={[]} /></BrowserRouter>)
-    const loadingMessage = getByText('Loading Collection...')
-    expect(loadingMessage).toBeInTheDocument()
-  })
-
-  it('should display paintings on load', () => {
-    const { getByRole } = render(<BrowserRouter><Gallery paintings={paintings} /></BrowserRouter>)
-    const mona = getByRole('img', { name: 'Mona Lisa' })
-    const starry = getByRole('img', { name: 'The Starry Night' })
-    const son = getByRole('img', { name: 'The Son of Man' })
-    expect(mona).toBeInTheDocument()
-    expect(starry).toBeInTheDocument()
-    expect(son).toBeInTheDocument()
+    const { getByText } = render(<BrowserRouter><Gallery paintings={[]} /></BrowserRouter>);
+    const loadingMessage = getByText("Loading Collection");
+    expect(loadingMessage).toBeInTheDocument();
+  });
+  
+  it("should display paintings on load", () => {
+    const { getByRole } = render(<BrowserRouter><Gallery paintings={paintings} /></BrowserRouter>);
+    const mona = getByRole('img', {name: "Mona Lisa"} );      
+    const starry = getByRole('img', {name: "The Starry Night"} );
+    const son = getByRole('img', {name: "The Son of Man"}); 
+    expect(mona).toBeInTheDocument();
+    expect(starry).toBeInTheDocument();
+    expect(son).toBeInTheDocument();
   })
 })
