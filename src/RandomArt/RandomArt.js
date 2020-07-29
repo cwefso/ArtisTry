@@ -11,7 +11,7 @@ function RandomArt(props) {
   const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
 
   const handleClick = () => {
-    window.location.reload(false);
+    window.location.reload(true);
   }
 
   return (
