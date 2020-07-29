@@ -12,6 +12,7 @@
     "shuffle-array": "^1.0.1"
   },
   "scripts": {
+    "build-copy": "react-scripts build && rm -rf ../ArtisTry-backend/build && mv build ../ArtisTry-backend/",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
