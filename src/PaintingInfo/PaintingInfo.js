@@ -8,13 +8,14 @@ import usePaintingInfo from '../Hooks/usePaintingInfo'
 import usePaintingSummary from '../Hooks/usePaintingSummary'
 
 function PaintingInfo(props) {
+  console.log(props);
   const [isFavorite, setIsFavorite] = useState(false)
   const {
     title, image, completitionYear, artistName, contentId
   } = props.paintingInfo
   const { userFavs } = props.favorites
   const data = usePaintingInfo(title, artistName)
-  const [paintings, setPaintings] = useState([])
+  const [paintings, setPaintings] = useState([]);
   const [paintingDetails, setPaintingDetails] = useState({})
   const tagBtn = isFavorite ? selectedTagBtn : unselectedTagBtn
   const paintingSummary = usePaintingSummary(contentId)
@@ -101,10 +102,10 @@ function PaintingInfo(props) {
         </section>
         <section className="details-container">
           <Link
-            to="/artists-gallery"
-            aria-label="artist-gallery"
-            key={data.artistId}
-            style={{ textDecoration: 'none' }}
+            to={`/artists-gallery`}
+            aria-label='artist-gallery'
+            key={ Date.now() }
+            style={{textDecoration: 'none'}}
           >
             <p className="artist-btn">{artistName}</p>
           </Link>

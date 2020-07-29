@@ -1,23 +1,27 @@
-import React from 'react'
-import {
-  render, waitFor, fireEvent, screen
-} from '@testing-library/react'
+import React from 'react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
-import '@testing-library/jest-dom/extend-expect'
-import { createMemoryHistory } from 'history'
-import App from './App'
-import { getPaintings } from '../apiCalls'
-
-jest.mock('../apiCalls.js')
-
+import '@testing-library/jest-dom/extend-expect';
+import { act, renderHook } from '@testing-library/react-hooks'
+import App from './App';
+import { createMemoryHistory } from 'history';
+import { getPaintings } from '../apiCalls';
+    
+const usePaintings = jest.fn()
 describe('App', () => {
   const originalError = console.error
+  let toggleFavs
+  let addToFavs
+  let deleteFromFavs
   beforeAll(() => {
+    toggleFavs = jest.fn().mockImplementation(() => {})
+    addToFavs = jest.fn().mockImplementation(() => {})
+    deleteFromFavs = jest.fn().mockImplementation(() => {})
     console.error = (...args) => {
       if (/Warning.*not wrapped in act/.test(args[0])) {
         return
       }
-      originalError.call(console, ...args)
+      // originalError.call(console, ...args)
     }
   })
 
@@ -71,31 +75,29 @@ describe('App', () => {
     expect(exploreLink).toBeInTheDocument()
   })
 
-  it('should display loading fetch message', () => {
-    const { getByText } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
-    const loadingMessage = getByText('Loading Collection...')
-    expect(loadingMessage).toBeInTheDocument()
-  })
-
   it('should render a gallery component', async () => {
     const { getByLabelText } = render(<MemoryRouter><App paintings={paintings} /></MemoryRouter>)
     const gallery = getByLabelText('gallery')
     expect(gallery).toBeInTheDocument()
   })
 
-  it.skip('should display all paintings once fetch is resolved', async () => {
-    const fetchedPaintings = await getPaintings.mockResolvedValueOnce(paintings)
-
-    await waitFor(() => {
-      const { getAllByRole, findAllByRole } = render(<MemoryRouter><App paintings={fetchedPaintings} /></MemoryRouter>)
-      const images = findAllByRole('img')
-      console.log(images)
-      expect(images).toHaveLength(3)
-    })
+  it('should display loading fetch message', async () => {
+    usePaintings.mockResolvedValue(paintings)
+    const {result} = await waitFor(() => renderHook(usePaintings))
+    await usePaintings()
+    const { getByLabelText} = render(<MemoryRouter><App /></MemoryRouter>)
+    const gallery = getByLabelText('gallery')
+    
+    expect(gallery).toBeInTheDocument()
   })
 
-  it('should direct user to painting info page on painting click', async () => {
+  it('should display all paintings once fetch is resolved', async () => {
+    const usePaintings = jest.fn()
 
+    await act(async () => renderHook(() => usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')))
+
+    expect(usePaintings).toBeCalledWith('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
+    expect(usePaintings).toBeCalledTimes(1)
   })
 
   it.skip('should change path locations when a painting is clicked', async () => {
@@ -141,5 +143,16 @@ describe('App', () => {
 
   afterAll(() => {
     console.error = originalError
+  })
+
+  it.skip('should add a painting to the favorites when it is clicked', () => {
+
+    const testHistoryObject = createMemoryHistory()
+    const { getByAltText } = render(
+      <Router history={ testHistoryObject }><App paintings={paintings}/></Router>)
+    const favButton = getByAltText('save-btn')
+    fireEvent.click(favButton)
+
+    expect(toggleFavs).toBeCalledTimes(1)
   })
 })
