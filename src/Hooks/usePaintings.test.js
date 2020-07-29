@@ -54,21 +54,9 @@ describe('the usePaintings hook', () => {
   })
 
   it('should make the api call to fetch the default value and set it in the state', async () => {
-<<<<<<< HEAD
       const { result, waitForNextUpdate } = renderHook(() => usePaintings());
       await waitForNextUpdate();
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(result.current.paintings.length).toEqual(0)
   })
 });
-=======
-    const { result, waitForNextUpdate } = renderHook(() => usePaintings())
-    await waitForNextUpdate()
-    expect(fetch).toHaveBeenCalledTimes(1)
-    console.log(result)
-    expect(result.current.paintings.length).toEqual(3)
-  })
-})
-
-// refactor based on painting being destructured from usePaintings
->>>>>>> master

@@ -3,9 +3,6 @@ import { render } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect'
 import RandomArt from './RandomArt'
-import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom'
-import '@testing-library/jest-dom/extend-expect';
 
 describe('Explore Page', () => {
   it('should display all nav elements on load', () => {

@@ -1,28 +1,13 @@
-<<<<<<< HEAD
 import React from 'react';
-import { render, waitFor, fireEvent, screen, within } from '@testing-library/react';
+import { render, waitFor, fireEvent } from '@testing-library/react';
 import { MemoryRouter, Router } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
-import { act, renderHook, waitForNextUpdate } from '@testing-library/react-hooks'
+import { act, renderHook } from '@testing-library/react-hooks'
 import App from './App';
 import { createMemoryHistory } from 'history';
 import { getPaintings } from '../apiCalls';
     
 const usePaintings = jest.fn()
-=======
-import React from 'react'
-import {
-  render, waitFor, fireEvent, screen
-} from '@testing-library/react'
-import { MemoryRouter, Router } from 'react-router-dom'
-import '@testing-library/jest-dom/extend-expect'
-import { createMemoryHistory } from 'history'
-import App from './App'
-import { getPaintings } from '../apiCalls'
-
-jest.mock('../apiCalls.js')
-
->>>>>>> master
 describe('App', () => {
   const originalError = console.error
   let toggleFavs
@@ -96,7 +81,6 @@ describe('App', () => {
     expect(gallery).toBeInTheDocument()
   })
 
-<<<<<<< HEAD
   it('should display loading fetch message', async () => {
     usePaintings.mockResolvedValue(paintings)
     const {result} = await waitFor(() => renderHook(usePaintings))
@@ -114,21 +98,6 @@ describe('App', () => {
 
     expect(usePaintings).toBeCalledWith('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
     expect(usePaintings).toBeCalledTimes(1)
-=======
-  it.skip('should display all paintings once fetch is resolved', async () => {
-    const fetchedPaintings = await getPaintings.mockResolvedValueOnce(paintings)
-
-    await waitFor(() => {
-      const { getAllByRole, findAllByRole } = render(<MemoryRouter><App paintings={fetchedPaintings} /></MemoryRouter>)
-      const images = findAllByRole('img')
-      console.log(images)
-      expect(images).toHaveLength(3)
-    })
-  })
-
-  it('should direct user to painting info page on painting click', async () => {
-
->>>>>>> master
   })
 
   it.skip('should change path locations when a painting is clicked', async () => {

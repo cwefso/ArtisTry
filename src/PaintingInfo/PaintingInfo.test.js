@@ -5,21 +5,14 @@ import PaintingInfo from './PaintingInfo'
 
 
 describe('PaintingInfo', () => {
-<<<<<<< HEAD
   let paintingInfoElement;
   let painting;
   let favorites;
   let testHistoryObject;
   
-=======
-  let paintingInfoElement
-  let painting
-  let testHistoryObject
->>>>>>> master
   beforeEach(() => {
     
     painting = {
-<<<<<<< HEAD
       "title": "The River Thames with St. Paul's Cathedral on Lord Mayor's Day",
       "contentId": 250550,
       "artistContentId": 250406,
@@ -37,20 +30,6 @@ describe('PaintingInfo', () => {
     paintingInfoElement=(
       <MemoryRouter history={ testHistoryObject }>
         <PaintingInfo  selected={painting} paintingId={painting.title} favorites={favorites} paintingInfo={painting}  />
-=======
-      title: 'Mona Lisa',
-      image: 'thing',
-      completitionYear: 1519,
-      artistName: 'Leonardo da Vinci',
-      artistId: 1,
-      artistUrl: 'url.Leo',
-      height: 1,
-      width: 1
-    }
-    paintingInfoElement = (
-      <MemoryRouter history={testHistoryObject}>
-        <PaintingInfo paintingInfo={painting} />
->>>>>>> master
       </MemoryRouter>
     )
   })
@@ -59,7 +38,7 @@ describe('PaintingInfo', () => {
     const { getByText } = render(paintingInfoElement)
     const title = getByText(`The River Thames with St. Paul's Cathedral on Lord Mayor's Day`)
     const artistName = getByText('Canaletto')
-    const completionYear = getByText('Year Completed: 1746')
+    const completionYear = getByText('Year Completed:1746')
     
     expect(title).toBeInTheDocument()
     expect(artistName).toBeInTheDocument()
