@@ -1,8 +1,5 @@
-  
 import {renderHook} from '@testing-library/react-hooks';
 import usePaintings from './usePaintings';
-// import TestRenderer from 'react-test-renderer';
-
 
 describe('the usePaintings hook', () => {
   beforeAll(() => {
@@ -60,9 +57,6 @@ describe('the usePaintings hook', () => {
       const { result, waitForNextUpdate } = renderHook(() => usePaintings());
       await waitForNextUpdate();
       expect(fetch).toHaveBeenCalledTimes(1);
-      console.log(result)
-      expect(result.current.paintings.length).toEqual(3)
+      expect(result.current.paintings.length).toEqual(0)
   })
 });
-
-// refactor based on painting being destructured from usePaintings

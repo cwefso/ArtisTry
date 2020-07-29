@@ -36,14 +36,12 @@ describe('PaintingInfo', () => {
 
   it('should render the painting title, artist name, and year to the dom', () => {
     const { getByText } = render(paintingInfoElement)
-    const title = getByText('Mona Lisa')
-    const artistName = getByText('Leonardo da Vinci')
-    const completionYear = getByText('Year Completed: 1519')
-
+    const title = getByText(`The River Thames with St. Paul's Cathedral on Lord Mayor's Day`)
+    const artistName = getByText('Canaletto')
+    const completionYear = getByText('Year Completed: 1746')
+    
     expect(title).toBeInTheDocument()
     expect(artistName).toBeInTheDocument()
     expect(completionYear).toBeInTheDocument()
   })
-
-  
 })
