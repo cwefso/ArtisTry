@@ -52,7 +52,7 @@ This project was bootstrapped with Create React App and uses data retrieved from
 
  If you would like to see your personal art collection, simply select the "My Gallery" button. Is there a particular work that you can't get out of your head? This is where you can come back to look at it over and over and over again until you go mad! 
 
- ![Explore](url)
+ ![Explore](https://i.gyazo.com/71306c2de8d2f7974ed3c8ded58b8072.gif)
 
  So knowledgable about famous work of art that you're no fun at parties? Time to broaden your horizons. Use the "Explore" button to see a seemingly random selection of paintings.
 
