@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import usePaintings from '../Hooks/usePaintings'
@@ -7,11 +7,11 @@ import randomTerms from './randomTerms'
 
 function RandomArt(props) {
   const shuffle = require('shuffle-array')
-  const getRandomWord = () => shuffle.pick(randomTerms)
+  let getRandomWord = () => shuffle.pick(randomTerms)
   const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
-  
+
   const handleClick = () => {
-    window.location.reload()
+    window.location.reload(false);
   }
 
   return (
