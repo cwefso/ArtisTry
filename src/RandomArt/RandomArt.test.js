@@ -1,16 +1,18 @@
 import React from 'react'
+import { render } from '@testing-library/react'
+import { MemoryRouter } from 'react-router-dom'
+import '@testing-library/jest-dom/extend-expect'
 import RandomArt from './RandomArt'
 import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom'
 import '@testing-library/jest-dom/extend-expect';
 
 describe('Explore Page', () => {
-
   it('should display all nav elements on load', () => {
-    const { getByText,  getByRole } = render(<MemoryRouter><RandomArt /></MemoryRouter>);
+    const { getByText, getByRole } = render(<MemoryRouter><RandomArt /></MemoryRouter>)
     const pageTitle = getByText('ArtisTry')
-    const galleryLink = getByRole('link', {name: 'My Gallery'}) 
-    const exploreLink = getByRole('button', {name: 'Explore'}) 
+    const galleryLink = getByRole('link', { name: 'My Gallery' })
+    const exploreLink = getByRole('button', { name: 'Explore' })
     expect(pageTitle).toBeInTheDocument()
     expect(galleryLink).toBeInTheDocument()
     expect(exploreLink).toBeInTheDocument()
@@ -23,7 +25,7 @@ describe('Explore Page', () => {
   })
 
   it('should render a gallery', () => {
-    const { getByLabelText } = render(<MemoryRouter><RandomArt /></MemoryRouter>);
+    const { getByLabelText } = render(<MemoryRouter><RandomArt /></MemoryRouter>)
     const gallery = getByLabelText('gallery')
     expect(gallery).toBeInTheDocument()
   })
