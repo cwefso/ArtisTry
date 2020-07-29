@@ -6,8 +6,10 @@ import Gallery from '../Gallery/Gallery'
 import randomTerms from './randomTerms'
 
 function RandomArt(props) {
-  const getRandomWord = () => randomTerms[Math.floor(Math.random() * randomTerms.length)]
+  const shuffle = require('shuffle-array')
+  const getRandomWord = () => shuffle.pick(randomTerms)
   const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
+  
   const handleClick = () => {
     window.location.reload()
   }
