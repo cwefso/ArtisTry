@@ -10,9 +10,6 @@ function RandomArt(props) {
   let getRandomWord = () => shuffle.pick(randomTerms)
   const { paintings, loading, error } = usePaintings(`http://www.wikiart.org/en/search/${getRandomWord()}/1?json=2`)
 
-  const handleClick = () => {
-    window.location.reload(true);
-  }
 
   return (
     <section className="painter-page">
@@ -24,13 +21,6 @@ function RandomArt(props) {
           </h1>
         </Link>
         <section>
-          <button
-            className={`random-button ${loading && 'random-button--loading'}`}
-            style={{ background: loading ? '#333333' : '#fff' }}
-            onClick={handleClick}
-          >
-            Explore
-          </button>
           <Link to="/user-gallery" style={{ textDecoration: 'none' }}>
             <button className="my-gallery-btn" onClick={props.getUserFavorites}>My Gallery</button>
           </Link>
