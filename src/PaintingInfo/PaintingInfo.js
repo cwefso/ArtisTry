@@ -8,7 +8,6 @@ import usePaintingInfo from '../Hooks/usePaintingInfo'
 import usePaintingSummary from '../Hooks/usePaintingSummary'
 
 function PaintingInfo(props) {
-  console.log(props);
   const [isFavorite, setIsFavorite] = useState(false)
   const {
     title, image, completitionYear, artistName, contentId

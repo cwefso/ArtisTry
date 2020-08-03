@@ -16,7 +16,7 @@ function App() {
   const [favorites, setFavorites] = useState([])
   const [error, setError] = useState('')
   const { paintings } = usePaintings('http://www.wikiart.org/en/App/Painting/MostViewedPaintings')
-  
+
   const getUserFavorites = async () => {
     const userFavs = await getFavorites()
     setFavorites({ userFavs })
@@ -82,8 +82,7 @@ function App() {
         render={() => <RandomArt info={selected} setSelected={setSelected} getUserFavorites={getUserFavorites} />}
       />
       <Route
-        exact
-        path="/:paintingTitle"
+        exact path="/:paintingTitle"
         render={(routeProps) => {
           const { params } = routeProps.match
           const { id } = params
