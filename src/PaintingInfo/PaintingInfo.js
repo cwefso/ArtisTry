@@ -35,7 +35,7 @@ function PaintingInfo(props) {
     const check = (data) => (data || 'none')
 
     fetch(
-      'https://artistry-turing-app.herokuapp.com/api/v1/favorites', {
+      'https://artistry-backend-psi.vercel.app/api/v1/favorites', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -57,7 +57,7 @@ function PaintingInfo(props) {
   }
 
   const deleteFromFavs = (contentId) => {
-    fetch(`https://artistry-turing-app.herokuapp.com/api/v1/favorites/${contentId}`, {
+    fetch(`https://artistry-backend-psi.vercel.app/api/v1/favorites/${contentId}`, {
       method: 'DELETE'
     })
   }

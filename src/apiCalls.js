@@ -8,7 +8,7 @@
   }; 
 
   export const getFavorites = () => {
-    return fetch('https://artistry-turing-app.herokuapp.com/api/v1/favorites')
+    return fetch('https://artistry-backend-psi.vercel.app/api/v1/favorites')
       .then(res => res.json())
       .then(data => data.favorites)
   }; 
