@@ -8,7 +8,7 @@
   }; 
 
   export const getFavorites = () => {
-    return fetch('https://artistry-backend-psi.vercel.app/api/v1/favorites')
+    return fetch('artistry-backend-o9f8uj2f0-charles-wefsos-projects.vercel.app/api/v1/favorites')
       .then(res => res.json())
       .then(data => data.favorites)
   }; 

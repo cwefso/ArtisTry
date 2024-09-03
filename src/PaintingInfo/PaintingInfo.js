@@ -35,7 +35,7 @@ function PaintingInfo(props) {
     const check = (data) => (data || 'none')
 
     fetch(
-      'https://artistry-backend-psi.vercel.app/api/v1/favorites', {
+      'artistry-backend-o9f8uj2f0-charles-wefsos-projects.vercel.app/api/v1/favorites', {
         method: 'POST',
         headers: {
           'content-type': 'application/json'
@@ -57,7 +57,7 @@ function PaintingInfo(props) {
   }
 
   const deleteFromFavs = (contentId) => {
-    fetch(`https://artistry-backend-psi.vercel.app/api/v1/favorites/${contentId}`, {
+    fetch(`artistry-backend-o9f8uj2f0-charles-wefsos-projects.vercel.app/api/v1/favorites/${contentId}`, {
       method: 'DELETE'
     })
   }
